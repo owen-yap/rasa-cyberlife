@@ -1,0 +1,321 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- cough_dry
+- affirm
+- inform_fever
+- goodbye
+- give_temperature
+- greet
+- nlu_fallback
+- inform_asthma
+- give_age
+- deny
+- thank_you
+- give_gender
+- give_cough_symptom
+- give_color
+- cough_phlegm
+- inform_allergy
+- cough_blood
+- out_of_scope
+entities:
+- allergy
+slots:
+  age:
+    type: text
+    influence_conversation: false
+  gender:
+    type: text
+    influence_conversation: false
+  confirm_allergy:
+    type: bool
+    influence_conversation: false
+  allergy:
+    type: text
+    influence_conversation: false
+  asthma:
+    type: text
+    influence_conversation: false
+  coughing:
+    type: bool
+    influence_conversation: false
+  cough_type:
+    type: text
+    influence_conversation: false
+  dry_cough:
+    type: bool
+    influence_conversation: false
+  cough_with_phlegm:
+    type: bool
+    influence_conversation: false
+  phlegm_color:
+    type: text
+    influence_conversation: false
+  coughing_up_blood:
+    type: bool
+    influence_conversation: false
+  cough_duration:
+    type: text
+    influence_conversation: false
+  chronic_cough:
+    type: bool
+    influence_conversation: false
+  persistent_cough:
+    type: bool
+    influence_conversation: false
+  pain_when_coughing:
+    type: bool
+    influence_conversation: false
+  wheezing:
+    type: bool
+    influence_conversation: false
+  noisy_breathing:
+    type: bool
+    influence_conversation: false
+  shortness_of_breath:
+    type: bool
+    influence_conversation: false
+  difficulty_breathing:
+    type: bool
+    influence_conversation: false
+  fever:
+    type: bool
+    influence_conversation: false
+  temperature:
+    type: text
+    influence_conversation: false
+  fever_duration:
+    type: text
+    influence_conversation: false
+  feeling_cold:
+    type: bool
+    influence_conversation: false
+  chills:
+    type: bool
+    influence_conversation: false
+  shivering:
+    type: bool
+    influence_conversation: false
+  lethargy:
+    type: bool
+    influence_conversation: false
+  fatigue:
+    type: bool
+    influence_conversation: false
+  weakness:
+    type: bool
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: |-
+      Hi, I am Cyberlife! I am here to help your doctor with the consultation later.
+
+      I will ask you questions about your symptoms and conditions. A report will be generated at the end and I will need your help to present it to your doctor later.
+
+      This service provides general information only. It does not give a medical diagnosis or replace an appointment with a medical professional.
+  utter_goodbye:
+  - text: Bye
+  utter_no_worries:
+  - text: No problem! 😄
+  utter_ask_continue:
+  - text: Sorry, I don't quite understand. Do you want to continue?
+  utter_ask_age:
+  - text: What is your age?
+  utter_ask_gender:
+  - text: What is your gender at birth?
+  utter_ask_confirm_allergy:
+  - text: Do you have any allergies?
+  utter_ask_allergy:
+  - text: Ok, what allergies do you have?
+  utter_symptom_prompt:
+  - text: Ok, which symptom is bothering you the most?
+  utter_additional_symptom_prompt:
+  - text: Are there any other symptoms which you may have?
+  utter_submit:
+  - text: Ok thanks
+  utter_ask_asthma:
+  - text: Do you currently or previously have asthma?
+    buttons:
+    - title: Previously had asthma
+      payload: History of asthma
+    - title: Currently have asthma
+      payload: Patient has asthma
+    - title: No asthma
+      payload: No asthma
+  utter_ask_cough_type:
+  - text: Is the cough a dry cough or is there phlegm or blood?
+    buttons:
+    - title: Dry cough
+      payload: dry
+    - title: Cough with phlegm
+      payload: phlegm
+    - title: Cough with blood
+      payload: blood
+  utter_ask_phlegm_color:
+  - text: What best describes the colour of your phlegm?
+    buttons:
+    - title: White or clear
+      payload: white / clear
+    - title: Green or yellow
+      payload: green / yellow
+    - title: Black
+      payload: black
+  utter_ask_cough_duration:
+  - text: How long have you been coughing?
+    buttons:
+    - title: Less than a day
+      payload: less than a day
+    - title: Less than a week
+      payload: less than a week
+    - title: Less than 3 weeks
+      payload: less than 3 weeks
+    - title: 3 to 8 weeks
+      payload: 3 to 8 weeks
+    - title: More than 8 weeks
+      payload: more than 8 weeks
+  utter_ask_pain_when_coughing:
+  - text: Is there pain when you cough?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_wheezing:
+  - text: Has your breathing sounded wheezy or noisy?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_shortness_of_breath:
+  - text: Any difficulty breathing or shortness of breath?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_temperature:
+  - text: What is your last recorded body temperature?
+  utter_ask_fever_duration:
+  - text: How long have you had this symptom?
+    buttons:
+    - title: Less than a day
+      payload: less than a day
+    - title: Less than 3 days
+      payload: less than 3 days
+    - title: Less than a weeks
+      payload: less than a weeks
+    - title: more than a week
+      payload: more than a week
+  utter_ask_feeling_cold:
+  - text: Have you been feeling cold for no reason?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_shivering:
+  - text: Have you been shivering intensely or uncontrollably?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_lethargy:
+  - text: Are you feeling extremely tired, lethargic or run down?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+actions:
+- action_create_report
+- utter_additional_symptom_prompt
+- utter_goodbye
+- utter_greet
+- utter_no_worries
+- utter_slot_values
+- utter_symptom_prompt
+- validate_cough_form
+- validate_fever_form
+- validate_history_taking_form
+forms:
+  history_taking_form:
+    age:
+    - type: from_text
+    gender:
+    - type: from_text
+    confirm_allergy:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    - type: from_intent
+      intent: inform_allergy
+      value: true
+  cough_form:
+    asthma:
+    - type: from_text
+    cough_type:
+    - type: from_text
+    cough_duration:
+    - type: from_text
+    pain_when_coughing:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    wheezing:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    shortness_of_breath:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+  fever_form:
+    temperature:
+    - type: from_text
+    fever_duration:
+    - type: from_text
+    feeling_cold:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    shivering:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    lethargy:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    shortness_of_breath:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false

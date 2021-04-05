@@ -1,0 +1,45 @@
+version: "2.0"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Activate cough form
+  steps:
+  - intent: give_cough_symptom
+  - action: cough_form
+  - active_loop: cough_form
+
+- rule: Activate fever form
+  steps:
+  - intent: inform_fever
+  - action: fever_form
+  - active_loop: fever_form
+
+- rule: Submit cough form
+  condition:
+  - active_loop: cough_form
+  steps:
+  - action: cough_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_additional_symptom_prompt
+  
+- rule: Submit fever form
+  condition:
+  - active_loop: fever_form
+  steps:
+  - action: fever_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_additional_symptom_prompt
+  
+- rule: Generate report when patient reports no additonal symptoms
+  steps:
+  - action: utter_additional_symptom_prompt
+  - intent: deny
+  - action: action_create_report

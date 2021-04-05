@@ -1,0 +1,228 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: thank_you
+  examples: |
+    - okay great thanks
+    - thank you
+    - sure thanks
+    - thanks bye
+    - thanks
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - goodbye!
+- intent: give_age
+  examples: |
+    - 21
+    - 32
+    - 52
+    - 42
+    - 41
+    - 43
+    - 53
+    - 45
+    - 25
+    - 29
+    - 76
+    - 24
+    - 56
+    - 46
+- intent: give_temperature
+  examples: |
+    - 37.1
+    - 37.2
+    - 37.3
+    - 37.4
+    - 37.5
+    - 37.8
+    - 38.2
+    - 38.4
+    - 38.9
+    - 39.1
+    - 39.2
+    - 39.4
+    - 38.7
+- intent: give_gender
+  examples: |
+    - male
+    - female
+- intent: give_cough_symptom
+  examples: |
+    - cough
+    - coughing
+    - coughing with phelgm
+    - coughing with blood
+    - rasp
+    - wheezing
+    - coughing for more than 3 days
+    - I have a cough
+    - I am wheezing
+    - coughing up phlegm
+    - cough last night
+    - I have chronic cough
+    - coughing a lot
+    - wheeze
+    - more than a week
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - sure
+    - ok
+    - why not
+    - ok great
+    - yes I did
+    - yeah, great
+    - pretty good
+    - fine
+    - You bet
+    - I sure did
+    - more or less
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - none
+    - absolutely not
+    - no thanks
+    - didn't do any
+    - no I didn't
+    - could have been better
+    - not great
+    - nope
+- intent: inform_allergy
+  examples: |
+    - I am allergic to [grass and tree pollen](allergy)
+    - [grass and tree pollen](allergy)
+    - [pollen](allergy)
+    - allergic to [grass](allergy)
+    - I have [hay fever](allergy)
+    - allergic to [dust](allergy)
+    - allergies to [nuts](allergy)
+    - [peanut](allergy) allergy
+    - [shellfish](allergy)
+    - allergic to [ibuprofen](allergy)
+    - [aspirin](allergy) allergy
+    - Have an allergy to [diary](allergy) products
+    - I have a [peanut](allergy) allergy
+    - yes, I have [peach allergy](allergy)
+    - yes, I am allergic to [peach](allergy)
+- intent: inform_asthma
+  examples: |
+    - I have childhood asthma
+    - I currently have asthma
+    - I have a history of asthma
+    - mild asthma
+    - I have severe asthma
+    - Patient has asthma
+    - History of asthma
+- intent: inform_fever
+  examples: |
+    - I have fever
+    - I currently have a fever
+    - I have high temperature
+    - mild fever
+    - I have high fever
+    - feeling feverish
+    - fever
+    - body temperature is high
+    - have a fever that won't go down
+    - having a fever
+- intent: inform_runny_nose
+  examples: |
+    - runny nose
+    - nose mucus keeps dripping
+    - keeps sneezing
+- intent: inform_stuffy_nose
+  examples: |
+    - blocked nose
+    - stuffy nose
+    - nasal congestion
+    - congested nose
+    - my nose has mucus stuck in it
+    - stucked nose
+    - my nose is blocked
+    - my nose is stuffy
+- intent: cough_dry
+  examples: |
+    - I have a dry cough
+    - my cough is dry
+    - dry cough
+    - it is a dry cough
+    - dry
+- intent: cough_phlegm
+  examples: |
+    - my cough contains phlegm
+    - cough with phlegm
+    - i have phlegm in my cough
+    - coughing up phlegm
+    - phlegm
+- intent: cough_blood
+  examples: |
+    - there is blood in my cough
+    - cough with blood
+    - cough up blood
+    - coughing with blood
+    - blood is coming out when i cough
+    - blood
+- intent: give_color
+  examples: |
+    - green / white
+    - yellowish green
+    - black
+    - white and clear
+    - white / clear
+    - green / yellow
+- intent: out_of_scope
+  examples: |
+    - that's not what I want to do
+    - wait stop
+    - you're no help
+    - this is no help at all
+    - how old are you
+    - I want to order a pizza
+    - tell me the weather
+    - this isn't working
+    - I already told you that
+    - don't like that
+    - I don't want to tell you that
+    - none of your business
+    - that's not right
+    - stop asking
+    - nevermind
+    - I want to do something else
+    - I changed my mind
