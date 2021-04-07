@@ -177,6 +177,8 @@ nlu:
     - stucked nose
     - my nose is blocked
     - my nose is stuffy
+    - my nose is congested
+- intent: inform
 - intent: cough_dry
   examples: |
     - I have a dry cough

@@ -108,6 +108,31 @@ slots:
   weakness:
     type: bool
     influence_conversation: false
+  stuffy_nose:
+    type: bool
+    influence_conversation: false
+  nasal_congestion:
+    type: bool
+    influence_conversation: false
+  nose_symptom_duration:
+    type: text
+    influence_conversation: false
+  runny_nose:
+    type: bool
+    influence_conversation: false
+  facial_pain:
+    type: bool
+    influence_conversation: false
+  sinus_pain:
+    type: bool
+    influence_conversation: false
+  sinus_pressure:
+    type: bool
+    influence_conversation: false
+  sinus_pain_scale:
+    type: text
+    influence_conversation: false
+  
 responses:
   utter_greet:
   - text: |-
@@ -231,6 +256,29 @@ responses:
       payload: /affirm
     - title: No
       payload: /deny
+  utter_ask_stuffy_nose:
+  - text: Is your nose blocked or stuffy?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_runny_nose:
+  - text: Do you have runny nose?
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_facial_pain:
+  - text: Do you feel any pain around your face or near your sinuses? (Your sinuses are located above the eyes and on both sides of the nose)
+    buttons:
+    - title: Yes
+      payload: /affirm
+    - title: No
+      payload: /deny
+  utter_ask_sinus_pain_scale:
+  - text: On a scale of 1-10, 10 being the worst pain you have ever experienced, how painful is it?
 actions:
 - action_create_report
 - utter_additional_symptom_prompt
@@ -242,6 +290,7 @@ actions:
 - validate_cough_form
 - validate_fever_form
 - validate_history_taking_form
+- validate_nose_form
 forms:
   history_taking_form:
     age:
@@ -319,3 +368,33 @@ forms:
     - type: from_intent
       intent: deny
       value: false
+  nose_form:
+    stuffy_nose:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    runny_nose:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    facial_pain:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    sinus_pain:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+  

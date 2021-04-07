@@ -183,7 +183,33 @@ class ValidateFeverForm(FormValidationAction):
         else:
             return {"shortness_of_breath": slot_value}
 
+class ValidateNoseForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_nose_form"
 
+    async def required_slots(
+        self,
+        slots_mapped_in_domain: List[Text],
+        dispatcher: "CollectingDispatcher",
+        tracker: "Tracker",
+        domain: "DomainDict",
+    ) -> List[Text]:
+        additional_slots = []
+        if tracker.slots.get("facial_pain"):
+            additional_slots.append("sinus_pain_scale")
+        return slots_mapped_in_domain + additional_slots
+
+    def validate_stuffy_nose(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"stuffy_nose": slot_value, "nasal_congestion": True}
+        else:
+            return {"stuffy_nose": slot_value}
 
 class CreateReport(Action):
     def name(self) -> Text:
