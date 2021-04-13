@@ -25,7 +25,7 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_symptom_prompt
-  - intent: give_cough_symptom
+  - intent: inform_cough
   - action: cough_form
   - active_loop: cough_form
   - slot_was_set:
@@ -217,7 +217,7 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_symptom_prompt
-  - intent: give_cough_symptom
+  - intent: inform_cough
   - action: cough_form
   - active_loop: cough_form
   - slot_was_set:
@@ -287,6 +287,199 @@ stories:
     - fatigue: true
   - slot_was_set:
     - weakness: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_additional_symptom_prompt
+  - intent: deny
+  - action: action_create_report
+  - intent: thank_you
+  - action: utter_no_worries
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: nose respiratory symptoms
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: history_taking_form
+  - active_loop: history_taking_form
+  - slot_was_set:
+    - requested_slot: age
+  - slot_was_set:
+    - age: '46'
+  - slot_was_set:
+    - requested_slot: gender
+  - slot_was_set:
+    - gender: male
+  - slot_was_set:
+    - requested_slot: confirm_allergy
+  - slot_was_set:
+    - confirm_allergy: false
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_symptom_prompt
+  - intent: inform_runny_nose
+  - action: action_set_runny_nose
+  - action: nose_form
+  - active_loop: nose_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_additional_symptom_prompt
+  - intent: deny 
+  - action: action_create_report
+  - intent: thank_you
+  - action: utter_no_worries
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: runny nose
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: history_taking_form
+  - active_loop: history_taking_form
+  - slot_was_set:
+    - requested_slot: age
+  - slot_was_set:
+    - age: '46'
+  - slot_was_set:
+    - requested_slot: gender
+  - slot_was_set:
+    - gender: male
+  - slot_was_set:
+    - requested_slot: confirm_allergy
+  - slot_was_set:
+    - confirm_allergy: false
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_symptom_prompt
+  - intent: inform_stuffy_nose
+  - action: action_set_stuffy_nose
+  - slot_was_set:
+    - stuffy_nose: true
+  - action: nose_form
+  - active_loop: nose_form
+  - slot_was_set:
+    - stuffy_nose: true
+  - slot_was_set:
+    - nasal_congestion: true
+  - slot_was_set:
+    - requested_slot: runny_nose
+  - slot_was_set:
+    - runny_nose: false
+  - slot_was_set:
+    - requested_slot: nose_symptom_duration
+  - slot_was_set:
+    - nose_symptom_duration: less than 3 days
+  - slot_was_set:
+    - requested_slot: facial_pain
+  - slot_was_set:
+    - facial_pain: true
+  - slot_was_set:
+    - sinus_pain: true
+  - slot_was_set:
+    - sinus_pressure: true
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_additional_symptom_prompt
+  - intent: deny
+  - action: action_create_report
+  - intent: thank_you
+  - action: utter_no_worries
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: headache
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: history_taking_form
+  - active_loop: history_taking_form
+  - slot_was_set:
+    - requested_slot: age
+  - slot_was_set:
+    - age: '28'
+  - slot_was_set:
+    - requested_slot: gender
+  - slot_was_set:
+    - gender: male
+  - slot_was_set:
+    - requested_slot: confirm_allergy
+  - slot_was_set:
+    - confirm_allergy: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_symptom_prompt
+  - intent: inform_headache
+  - action: action_set_headache
+  - slot_was_set:
+    - headache: true
+  - action: headache_form
+  - active_loop: headache_form
+  - slot_was_set:
+    - requested_slot: headache_location
+  - slot_was_set:
+    - headache_location: behind the eyes
+  - slot_was_set:
+    - requested_slot: headache_pain_scale
+  - slot_was_set:
+    - headache_pain_scale: '6'
+  - slot_was_set:
+    - requested_slot: headache_type
+  - slot_was_set:
+    - headache_type: throbbing
+  - slot_was_set:
+    - throbbing_headache: true
+  - slot_was_set:
+    - requested_slot: headache_duration
+  - slot_was_set:
+    - headache_duration: less than a weeks
+  - slot_was_set:
+    - requested_slot: head_injury
+  - slot_was_set:
+    - head_injury: false
+  - slot_was_set:
+    - requested_slot: facial_pain
+  - slot_was_set:
+    - facial_pain: false
+  - slot_was_set:
+    - requested_slot: stress
+  - slot_was_set:
+    - stress: false
+  - slot_was_set:
+    - requested_slot: dizziness
+  - slot_was_set:
+    - dizziness: false
+  - slot_was_set:
+    - requested_slot: numbness
+  - slot_was_set:
+    - numbness_location: null
+  - slot_was_set:
+    - numbness: true
+  - slot_was_set:
+    - requested_slot: numbness_location
+  - slot_was_set:
+    - numbness_location: hand
+  - slot_was_set:
+    - hand_numbness: true
+  - slot_was_set:
+    - requested_slot: neck_pain
+  - slot_was_set:
+    - numbness_location: hand
+  - slot_was_set:
+    - neck_pain: false
+  - slot_was_set:
+    - hand_numbness: true
   - slot_was_set:
     - requested_slot: null
   - active_loop: null

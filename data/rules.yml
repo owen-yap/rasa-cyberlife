@@ -8,7 +8,7 @@ rules:
 
 - rule: Activate cough form
   steps:
-  - intent: give_cough_symptom
+  - intent: inform_cough
   - action: cough_form
   - active_loop: cough_form
 
@@ -24,8 +24,6 @@ rules:
   steps:
   - action: cough_form
   - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
   - action: utter_additional_symptom_prompt
   
 - rule: Submit fever form
@@ -34,10 +32,45 @@ rules:
   steps:
   - action: fever_form
   - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
   - action: utter_additional_symptom_prompt
-  
+
+- rule: Activate stuffy nose form
+  steps:
+  - intent: inform_stuffy_nose
+  - action: action_set_stuffy_nose
+  - action: nose_form
+  - active_loop: nose_form
+
+- rule: Activate runny nose form
+  steps:
+  - intent: inform_runny_nose
+  - action: action_set_runny_nose
+  - action: nose_form
+  - active_loop: nose_form
+
+- rule: Submit nose form
+  condition:
+  - active_loop: nose_form
+  steps:
+  - action: nose_form
+  - active_loop: null
+  - action: utter_additional_symptom_prompt
+
+- rule: Activate headache nose form
+  steps:
+  - intent: inform_headache
+  - action: action_set_headache
+  - action: headache_form
+  - active_loop: headache_form
+
+- rule: Submit headache form
+  condition:
+  - active_loop: headache_form
+  steps:
+  - action: headache_form
+  - active_loop: null
+  - action: utter_additional_symptom_prompt
+
 - rule: Generate report when patient reports no additonal symptoms
   steps:
   - action: utter_additional_symptom_prompt

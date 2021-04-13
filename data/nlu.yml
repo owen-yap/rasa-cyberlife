@@ -36,6 +36,7 @@ nlu:
     - bye bye
     - see you later
     - goodbye!
+    - bye!
 - intent: give_age
   examples: |
     - 21
@@ -52,6 +53,12 @@ nlu:
     - 24
     - 56
     - 46
+    - less than 3 days
+    - 67
+    - 4
+    - 7
+    - 28
+    - 6
 - intent: give_temperature
   examples: |
     - 37.1
@@ -67,11 +74,27 @@ nlu:
     - 39.2
     - 39.4
     - 38.7
+- intent: give_body_part
+  examples: |
+    - hand
+    - left hand
+    - right hand
+    - leg
+    - calf
+    - foot
+    - my hand
+    - my foot
+    - my head
+    - ears
+    - eyes
+    - both my eyes
+    - behind the eyes
+    - forehead
 - intent: give_gender
   examples: |
     - male
     - female
-- intent: give_cough_symptom
+- intent: inform_cough
   examples: |
     - cough
     - coughing
@@ -88,6 +111,7 @@ nlu:
     - coughing a lot
     - wheeze
     - more than a week
+    - less than a weeks
 - intent: affirm
   examples: |
     - yes
@@ -107,6 +131,7 @@ nlu:
     - You bet
     - I sure did
     - more or less
+    - ye
 - intent: deny
   examples: |
     - no
@@ -167,6 +192,8 @@ nlu:
     - runny nose
     - nose mucus keeps dripping
     - keeps sneezing
+    - my nose is runny
+    - I have runny nose
 - intent: inform_stuffy_nose
   examples: |
     - blocked nose
@@ -178,7 +205,18 @@ nlu:
     - my nose is blocked
     - my nose is stuffy
     - my nose is congested
-- intent: inform
+- intent: inform_headache
+  examples: |
+    - headache
+    - I have a headache
+    - my head hurts
+    - i think i have a migraine
+    - i have migraine
+    - head pain
+    - throbbing headache
+    - tension in my head
+    - throbbing
+    - got a headache
 - intent: cough_dry
   examples: |
     - I have a dry cough
@@ -228,3 +266,4 @@ nlu:
     - nevermind
     - I want to do something else
     - I changed my mind
+    - sharp

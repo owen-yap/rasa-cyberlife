@@ -194,10 +194,7 @@ class ValidateNoseForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        additional_slots = []
-        if tracker.slots.get("facial_pain"):
-            additional_slots.append("sinus_pain_scale")
-        return slots_mapped_in_domain + additional_slots
+        return slots_mapped_in_domain
 
     def validate_stuffy_nose(
         self,
@@ -210,6 +207,165 @@ class ValidateNoseForm(FormValidationAction):
             return {"stuffy_nose": slot_value, "nasal_congestion": True}
         else:
             return {"stuffy_nose": slot_value}
+    
+    def validate_facial_pain(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"facial_pain": slot_value, "sinus_pain": slot_value, "sinus_pressure": slot_value}
+        else:
+            return {"facial_pain": slot_value}
+
+class ValidateHeadacheForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_headache_form"
+
+    async def required_slots(
+        self,
+        slots_mapped_in_domain: List[Text],
+        dispatcher: "CollectingDispatcher",
+        tracker: "Tracker",
+        domain: "DomainDict",
+    ) -> List[Text]:
+        additional_slots = ["numbness"]
+        if tracker.slots.get("numbness"):
+            additional_slots.append("numbness_location")
+            return additional_slots + slots_mapped_in_domain
+        return slots_mapped_in_domain
+
+    def validate_headache_pain_scale(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value.isdecimal() and int(slot_value) <= 10 and int(slot_value) >= 1:
+            if int(slot_value) >= 7:
+                return {"headache_pain_scale": slot_value, "severe_headache": True}
+            else:
+                return {"headache_pain_scale": slot_value}
+        else:
+            dispatcher.utter_message(text = "Sorry, I don't understand that, could you please enter a number from 1 to 10 instead?")
+            return {"headache_pain_scale": None}
+
+    def validate_headache_type(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value == "throbbing":
+            return{"headache_type": slot_value, "throbbing_headache": True}
+        else:
+            return{"headache_type": slot_value}
+    
+    def validate_headache_duration(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value == "more than a week":
+            return {"headache_duration": slot_value, "persistent_headache": True}
+        else:
+            return {"headache_duration": slot_value}
+
+    def validate_dizziness(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"dizziness": True, "lightheadedness": True}
+        else:
+            return {"dizziness": slot_value}
+
+    def extract_numbness_location(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> Dict[Text, Any]:
+        if tracker.slots.get("numbness_location") == None:
+            return {"numbness_location": tracker.latest_message.get("text")}
+        else:
+            return {"numbness_location": tracker.slots.get("numbness_location")}
+
+    def validate_numbness_location(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value == "hand":
+            return {"numbness_location": slot_value, "hand_numbness": True}
+        elif slot_value == "leg":
+            return {"numbness_location": slot_value, "leg_numbness": True}
+        elif slot_value == "foot":
+            return {"numbness_location": slot_value, "foot_numbness": True}
+        else:
+            dispatcher.utter_message(text = "Sorry, but I could not understand that. Please select either foot, leg, hand or others.")
+            return {"numbness_location": None}
+
+    def validate_neck_pain(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"neck_pain": slot_value, "stiff_neck": True}
+        else:
+            return {"neck_pain": False}
+
+    def validate_facial_pain(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"facial_pain": slot_value, "sinus_pain": slot_value, "sinus_pressure": slot_value}
+        else:
+            return {"facial_pain": slot_value}
+
+class SetRunnyNose(Action):
+    def name(self) -> Text:
+        return "action_set_runny_nose"
+
+    def run(self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        return [SlotSet("runny_nose", True)]
+
+class SetStuffyNose(Action):
+    def name(self) -> Text:
+        return "action_set_stuffy_nose"
+
+    def run(self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        return [SlotSet("stuffy_nose", True)]
+
+class SetHeadache(Action):
+    def name(self) -> Text:
+        return "action_set_headache"
+
+    def run(self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        return [SlotSet("headache", True)]
 
 class CreateReport(Action):
     def name(self) -> Text:

@@ -3,24 +3,27 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- cough_dry
-- affirm
-- inform_fever
 - goodbye
-- give_temperature
-- greet
-- nlu_fallback
-- inform_asthma
-- give_age
+- give_body_part
 - deny
-- thank_you
+- greet
+- inform_headache
+- inform_cough
 - give_gender
-- give_cough_symptom
-- give_color
-- cough_phlegm
-- inform_allergy
-- cough_blood
 - out_of_scope
+- thank_you
+- affirm
+- give_age
+- inform_stuffy_nose
+- inform_fever
+- inform_asthma
+- inform_runny_nose
+- inform_allergy
+- give_temperature
+- give_color
+- cough_dry
+- cough_phlegm
+- cough_blood
 entities:
 - allergy
 slots:
@@ -129,10 +132,86 @@ slots:
   sinus_pressure:
     type: bool
     influence_conversation: false
-  sinus_pain_scale:
+  headache:
+    type: bool
+    influence_conversation: false
+  headache_location:
+    type: categorical
+    influence_conversation: false
+    values:
+    - side of forehead
+    - back of head
+    - on left side
+    - on right side
+    - behind the eyes
+    - forehead
+    - all over
+  headache_pain_scale:
     type: text
     influence_conversation: false
-  
+  severe_headache:
+    type: text
+    influence_conversation: false
+  headache_type:
+    type: categorical
+    influence_conversation: false
+    values:
+    - throbbing
+    - sharp
+    - dull
+  throbbing_headache:
+    type: bool
+    influence_conversation: false
+  headache_duration:
+    type: categorical
+    influence_conversation: false
+    values:
+    - less than 4 hours
+    - less than a day
+    - less than 3 days
+    - less than a week
+    - more than a week
+  persistent_headache:
+    type: bool
+    influence_conversation: false
+  head_injury:
+    type: bool
+    influence_conversation: false
+  stress:
+    type: bool
+    influence_conversation: false
+  dizziness:
+    type: bool
+    influence_conversation: false
+  lightheadedness:
+    type: bool
+    influence_conversation: false
+  numbness:
+    type: bool
+    influence_conversation: false
+  numbness_location:
+    type: categorical
+    influence_conversation: false
+    values:
+    - leg
+    - foot
+    - hand
+    - others
+  leg_numbness:
+    type: bool
+    influence_conversation: false
+  foot_numbness:
+    type: bool
+    influence_conversation: false
+  hand_numbness:
+    type: bool
+    influence_conversation: false
+  neck_pain:
+    type: bool
+    influence_conversation: false
+  stiff_neck:
+    type: bool
+    influence_conversation: false
 responses:
   utter_greet:
   - text: |-
@@ -270,6 +349,17 @@ responses:
       payload: /affirm
     - title: No
       payload: /deny
+  utter_ask_nose_symptom_duration:
+  - text: How long has the symptom been persisting?
+    buttons:
+    - title: Less than a day
+      payload: less than a day
+    - title: Less than 3 days
+      payload: less than 3 days
+    - title: Less than a weeks
+      payload: less than a week
+    - title: more than a week
+      payload: more than a week
   utter_ask_facial_pain:
   - text: Do you feel any pain around your face or near your sinuses? (Your sinuses are located above the eyes and on both sides of the nose)
     buttons:
@@ -279,16 +369,77 @@ responses:
       payload: /deny
   utter_ask_sinus_pain_scale:
   - text: On a scale of 1-10, 10 being the worst pain you have ever experienced, how painful is it?
+  utter_ask_headache_location:
+  - text: Where is your headache hurting the most?
+    buttons:
+    - title: side of forehead (temples)
+      payload: side of forehead
+    - title: back of head
+      payload: back of head
+    - title: on the left side
+      payload: on left side
+    - title: on the right side
+      payload: on right side
+    - title: behind the eyes
+      payload: behind the eyes
+    - title: forehead
+      payload: forehead
+    - title: all over
+      payload: all over
+  utter_ask_headache_type:
+  - text: Is your headache one that comes and goes (throbbing), sharp, or dull?
+    buttons:
+    - title: throbbing
+      payload: throbbing
+    - title: sharp
+      payload: sharp
+    - title: dull
+      payload: dull
+  utter_ask_headache_pain_scale:
+  - text: On a scale of 1 to 10, 10 being the worst headache you can imagine, how painful is your headache?
+  utter_ask_headache_duration:
+  - text: How long have you had this headache?
+    buttons:
+    - title: Less than a day
+      payload: less than a day
+    - title: Less than 3 days
+      payload: less than 3 days
+    - title: Less than a week
+      payload: less than a weeks
+    - title: more than a week
+      payload: more than a week
+  utter_ask_head_injury:
+  - text: Have you hit your head against a hard object recently?
+  utter_ask_dizziness:
+  - text: Have you felt dizzy or lightheaded?
+  utter_ask_numbness:
+  - text: Do any parts of your body feel numb?
+  utter_ask_numbness_location:
+  - text: Which part feels numb?
+    buttons:
+    - title: leg
+      payload: leg
+    - title: foot
+      payload: foot
+    - title: hand
+      payload: hand
+  utter_ask_stress:
+  - text: Have you been under intense stress recently?
+  utter_ask_neck_pain:
+  - text: Are you feeling neck stiffness or finding it difficult to move your neck?
 actions:
 - action_create_report
+- action_set_headache
+- action_set_runny_nose
+- action_set_stuffy_nose
 - utter_additional_symptom_prompt
 - utter_goodbye
 - utter_greet
 - utter_no_worries
-- utter_slot_values
 - utter_symptom_prompt
 - validate_cough_form
 - validate_fever_form
+- validate_headache_form
 - validate_history_taking_form
 - validate_nose_form
 forms:
@@ -383,6 +534,8 @@ forms:
     - type: from_intent
       intent: deny
       value: false
+    nose_symptom_duration:
+    - type: from_text
     facial_pain:
     - type: from_intent
       intent: affirm
@@ -390,11 +543,54 @@ forms:
     - type: from_intent
       intent: deny
       value: false
-    sinus_pain:
+  headache_form:
+    headache_location:
+    - type: from_text
+    headache_pain_scale:
+    - type: from_text
+    headache_type:
+    - type: from_text
+    headache_duration:
+    - type: from_text
+    head_injury:
     - type: from_intent
       intent: affirm
       value: true
     - type: from_intent
       intent: deny
       value: false
-  
+    facial_pain:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    stress:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    dizziness:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    numbness:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    neck_pain:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
