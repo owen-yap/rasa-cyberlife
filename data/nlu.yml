@@ -59,6 +59,7 @@ nlu:
     - 7
     - 28
     - 6
+    - 30
 - intent: give_temperature
   examples: |
     - 37.1
@@ -90,28 +91,11 @@ nlu:
     - both my eyes
     - behind the eyes
     - forehead
+    - on left side
 - intent: give_gender
   examples: |
     - male
     - female
-- intent: inform_cough
-  examples: |
-    - cough
-    - coughing
-    - coughing with phelgm
-    - coughing with blood
-    - rasp
-    - wheezing
-    - coughing for more than 3 days
-    - I have a cough
-    - I am wheezing
-    - coughing up phlegm
-    - cough last night
-    - I have chronic cough
-    - coughing a lot
-    - wheeze
-    - more than a week
-    - less than a weeks
 - intent: affirm
   examples: |
     - yes
@@ -166,6 +150,47 @@ nlu:
     - I have a [peanut](allergy) allergy
     - yes, I have [peach allergy](allergy)
     - yes, I am allergic to [peach](allergy)
+- intent: coughing
+  examples: |
+    - cough
+    - coughing
+    - coughing with phelgm
+    - coughing with blood
+    - rasp
+    - wheezing
+    - coughing for more than 3 days
+    - I have a cough
+    - I am wheezing
+    - coughing up phlegm
+    - cough last night
+    - I have chronic cough
+    - coughing a lot
+    - wheeze
+    - more than a week
+    - less than a weeks
+    - less than a week
+- intent: dry_cough
+  examples: |
+    - I have a dry cough
+    - my cough is dry
+    - dry cough
+    - it is a dry cough
+    - dry
+- intent: cough_with_phlegm
+  examples: |
+    - my cough contains phlegm
+    - cough with phlegm
+    - i have phlegm in my cough
+    - coughing up phlegm
+    - phlegm
+- intent: coughing_up_blood
+  examples: |
+    - there is blood in my cough
+    - cough with blood
+    - cough up blood
+    - coughing with blood
+    - blood is coming out when i cough
+    - blood
 - intent: inform_asthma
   examples: |
     - I have childhood asthma
@@ -175,7 +200,7 @@ nlu:
     - I have severe asthma
     - Patient has asthma
     - History of asthma
-- intent: inform_fever
+- intent: fever
   examples: |
     - I have fever
     - I currently have a fever
@@ -187,14 +212,15 @@ nlu:
     - body temperature is high
     - have a fever that won't go down
     - having a fever
-- intent: inform_runny_nose
+    - I am having a bad fever
+- intent: runny_nose
   examples: |
     - runny nose
     - nose mucus keeps dripping
     - keeps sneezing
     - my nose is runny
     - I have runny nose
-- intent: inform_stuffy_nose
+- intent: stuffy_nose
   examples: |
     - blocked nose
     - stuffy nose
@@ -205,7 +231,7 @@ nlu:
     - my nose is blocked
     - my nose is stuffy
     - my nose is congested
-- intent: inform_headache
+- intent: headache
   examples: |
     - headache
     - I have a headache
@@ -217,28 +243,126 @@ nlu:
     - tension in my head
     - throbbing
     - got a headache
-- intent: cough_dry
+- intent: inform_eye_symptom
   examples: |
-    - I have a dry cough
-    - my cough is dry
-    - dry cough
-    - it is a dry cough
-    - dry
-- intent: cough_phlegm
+    - there is a problem with my eye
+    - something is wrong with my eye
+    - my eye looks off
+    - something is wrong with my vision
+    - there is something off about my vision
+    - something off about my eye
+    - i am facing issues with my eye
+    - eye issues
+    - eye problem
+    - i have conjunctivitis
+    - eye is infected
+    - may have glaucoma
+    - i think i have an eye allergic reaction
+- intent: eye_redness
   examples: |
-    - my cough contains phlegm
-    - cough with phlegm
-    - i have phlegm in my cough
-    - coughing up phlegm
-    - phlegm
-- intent: cough_blood
+    - My eye is red
+    - the white part of my eye is red
+    - eye looks red
+    - eye redness
+    - blood vessels in my eye expanded
+    - my eye looks very red
+    - i have pink eyes
+    - pink eyes
+    - bloodshot eyes
+- intent: eye_pain
   examples: |
-    - there is blood in my cough
-    - cough with blood
-    - cough up blood
-    - coughing with blood
-    - blood is coming out when i cough
-    - blood
+    - my eye hurts
+    - it hurts when i touch my eyes
+    - i feel pain in my eyes
+    - my eyes are very painful
+    - eye pain
+    - painful to look at things
+    - eye is painful
+    - eye is sore
+    - eye aches
+    - eye discomfort
+    - eye feels very uncomfortable
+    - eye is throbbing
+- intent: eye_injury
+  examples: |
+    - i injured my eye
+    - i hurt my eye
+    - i harmed my eye
+    - eye trauma
+    - eye is injured
+    - i accidentally poked my eye
+    - my eye got poked
+    - injured my eye during a game
+    - there is trauma to my eye
+    - i hurt my eye while playing
+- intent: eye_discharge
+  examples: |
+    - there is liquid coming out of my eyes
+    - i have eye discharge
+    - there is pus coming out of my eye
+    - yellow pus comign out from my eyes
+    - green liquid coming out of my eyes
+    - my eye is bleeding
+    - wierd liquid flowing out of my eyes
+    - watery eyes
+    - liquid eyes
+    - lots of water around my eye
+- intent: blurred_vision
+  examples: |
+    - my vision is blurry
+    - I cannot see clearly
+    - i have cloudy vision
+    - i am unable to see properly
+    - i have a very hazy vision
+    - blurry vision
+    - things look blur
+    - i suddenly have very blurry vision
+- intent: double_vision
+  examples: |
+    - i am seeing two of the same objects
+    - i have double vision
+    - double vision
+    - i am seeing two of the same images
+    - seeing 2 images
+    - there are double of everything i see
+- intent: sensitivity_to_light
+  examples: |
+    - it hurts when i try to look at bright objects
+    - it hurts when i open my eyes when there is light
+    - light is hurting my eyes
+    - finding it difficult to see in lit rooms
+    - i suddenly have light sensitivity
+    - sensitive to light
+- intent: photopsia
+  examples: |
+    - there are flashes in my vision
+    - i am seeing bright patches of light randomly
+    - patches of light appearing suddenly
+    - white spots appearing in my vision
+    - seeing random flickering
+    - viewing flickering lights
+    - seeing light
+- intent: vision_loss
+  examples: |
+    - I am losing my vision
+    - suddenly cannot see anything
+    - cannot see
+    - all i see is black
+    - my vision is gradually being lost
+    - slowly losing my vision
+    - losing my ability to see
+    - suffering from vision loss
+    - vision decay
+- intent: floaters
+  examples: |
+    - i am seeing small dark shapes
+    - i have floaters
+    - there are jelly things floating in my vision
+    - seeing a lot of jelly-like things
+    - seeing squiggly lines in my vision
+    - lots of gel-like substance in my vision
+    - seeing gel in my vision
+    - small little things appearing in my vision
 - intent: give_color
   examples: |
     - green / white
@@ -266,4 +390,3 @@ nlu:
     - nevermind
     - I want to do something else
     - I changed my mind
-    - sharp

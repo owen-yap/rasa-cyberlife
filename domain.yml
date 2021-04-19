@@ -3,27 +3,37 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- goodbye
+- headache
 - give_body_part
+- goodbye
+- affirm
+- give_gender
 - deny
 - greet
-- inform_headache
-- inform_cough
-- give_gender
-- out_of_scope
-- thank_you
-- affirm
-- give_age
-- inform_stuffy_nose
-- inform_fever
-- inform_asthma
-- inform_runny_nose
-- inform_allergy
+- fever
 - give_temperature
+- give_age
+- thank_you
+- coughing
+- stuffy_nose
+- inform_allergy
+- dry_cough
+- cough_with_phlegm
+- coughing_up_blood
+- inform_asthma
+- runny_nose
+- inform_eye_symptom
+- eye_redness
+- eye_pain
+- eye_injury
+- eye_discharge
+- blurred_vision
+- double_vision
+- sensitivity_to_light
+- photopsia
+- vision_loss
+- floaters
 - give_color
-- cough_dry
-- cough_phlegm
-- cough_blood
 entities:
 - allergy
 slots:
@@ -211,6 +221,69 @@ slots:
     influence_conversation: false
   stiff_neck:
     type: bool
+    influence_conversation: false
+  eye_surgery:
+    type: bool
+    influence_conversation: false
+  diabetes:
+    type: bool
+    influence_conversation: false
+  eye_symptom_location:
+    type: categorical
+    influence_conversation: true
+    values:
+    - left eye
+    - right eye
+    - both eyes
+  eye_symptom_duration:
+    type: categorical
+    influence_conversation: true
+    values:
+    - less than a day
+    - less than a week
+    - less than 3 weeks
+    - more than 3 weeks
+  eye_redness:
+    type: bool
+    influence_conversation: false
+  eye_pain:
+    type: bool
+    influence_conversation: false
+  eye_pain_scale:
+    type: bool
+    influence_conversation: false
+  eye_injury:
+    type: bool
+    influence_conversation: false
+  eye_discharge:
+    type: bool
+    influence_conversation: false
+  eye_discharge_color:
+    type: text
+    influence_conversation: false
+  blurred_vision:
+    type: bool
+    influence_conversation: false
+  double_vision:
+    type: bool
+    influence_conversation: false
+  sensitivity_to_light:
+    type: bool
+    influence_conversation: false
+  photopsia:
+    type: bool
+    influence_conversation: false
+  photopsia_location:
+    type: text
+    influence_conversation: false
+  vision_loss:
+    type: bool
+    influence_conversation: false
+  floaters:
+    type: bool
+    influence_conversation: false
+  contact_lens:
+    type: text
     influence_conversation: false
 responses:
   utter_greet:
@@ -427,17 +500,84 @@ responses:
   - text: Have you been under intense stress recently?
   utter_ask_neck_pain:
   - text: Are you feeling neck stiffness or finding it difficult to move your neck?
+  utter_ask_eye_surgery:
+  - text: Have you had any eye surgery or eye laser treatment done within the last 3 months, or had retinal detachment surgery before?
+    buttons:
+    - title: Eye surgery / treatment done within last 3 months
+      payload: Eye surgery / treatment done within last 3 months
+    - title: Hsd retinal detachment surgery before
+      payload: Had retinal detachment surgery before
+    - title: No eye surgery / treatment done
+      payload: No eye surgery / treatment done
+  utter_ask_diabetes:
+  - text: Do you have diabetes?
+  utter_ask_eye_symptom_location:
+  - text: Which eye is affected? Left, right or both?
+    buttons:
+    - title: Left eye
+      payload: left eye
+    - title: Right eye
+      payload: right eye
+    - title: Both eyes
+      payload: both eyes
+  utter_ask_eye_symptom_duration:
+  - text: How long has it been since the symptoms in your eye started?
+    buttons:
+    - title: less than a day
+      payload: less than a day
+    - title: less than a week
+      payload: less than a week
+    - title: less than 3 weeks
+      payload: more than 3 weeks
+  utter_ask_eye_redness:
+  - text: Is the white part of your eye red?
+  utter_ask_eye_pain_scale:
+  - text: On a scale of 1 to 10, 10 being the worst pain you can imagine, how painful is the affected eye?
+  utter_ask_eye_injury:
+  - text: Have you injured your eye recently?
+  utter_ask_eye_discharge:
+  - text: Is there any discharge / pus coming out from your eye?
+  utter_ask_eye_discharge_color:
+  - text: Ok, what color is the discharge?
+    buttons:
+    - title: clear / watery / white
+      payload: clear / watery / white
+    - title: yellow / green / gray
+      payload: yellow / green / gray
+    - title: blood
+      payload: blood
+  utter_ask_blurred_vision:
+  - text: Since the symptom started, has your vision gotten blurry?
+  utter_ask_double_vision:
+  - text: Ok, then have you had any double vision?
+  utter_ask_sensitivity_to_light:
+  - text: Are you finding it difficult to look at bright lights because it causes pain to your eyes?
+  utter_ask_photopsis:
+  - text: Have you noticed any sudden flashes of light in your vision?
+  utter_ask_photopsis_location:
+  - text: Ok, where is the flashes of light occuring? In the centre or at the sides?
+    buttons:
+    - title: At the sides
+      payload: sides
+    - title: Centre
+      payload: centre
+  utter_ask_vision_loss:
+  - text: Is there any sudden loss of vision?
+  utter_ask_floaters:
+  - text: Do you spot many floaters in your eye?
+    image: https://d3b6u46udi9ohd.cloudfront.net/wp-content/uploads/2019/09/16063927/Eye-floaters-feature.png
+  utter_ask_contact_lens:
+  - text: Have you used contact lenses recently?
 actions:
 - action_create_report
-- action_set_headache
-- action_set_runny_nose
-- action_set_stuffy_nose
+- action_set_symptom
 - utter_additional_symptom_prompt
 - utter_goodbye
 - utter_greet
 - utter_no_worries
 - utter_symptom_prompt
 - validate_cough_form
+- validate_eye_form
 - validate_fever_form
 - validate_headache_form
 - validate_history_taking_form
@@ -588,6 +728,92 @@ forms:
       intent: deny
       value: false
     neck_pain:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+  eye_form:
+    eye_surgery:
+    - type: from_text
+    diabetes:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    eye_symptom_location:
+    - type: from_text
+    eye_redness:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    eye_injury:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    eye_symptom_duration:
+    - type: from_text
+    eye_pain_scale:
+    - type: from_text
+    eye_discharge:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    blurred_vision:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    double_vision:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    sensitivity_to_light:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    photopsis:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    vision_loss:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    floaters:
+    - type: from_intent
+      intent: affirm
+      value: true
+    - type: from_intent
+      intent: deny
+      value: false
+    contact_lens:
     - type: from_intent
       intent: affirm
       value: true

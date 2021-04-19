@@ -133,7 +133,7 @@ class ValidateFeverForm(FormValidationAction):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        return {"temperature": slot_value + " °C", "fever": True}
+        return {"temperature": slot_value + " °C"}
 
     def validate_feeling_cold(
         self,
@@ -337,35 +337,50 @@ class ValidateHeadacheForm(FormValidationAction):
         else:
             return {"facial_pain": slot_value}
 
-class SetRunnyNose(Action):
+class ValidateEyeForm(FormValidationAction):
     def name(self) -> Text:
-        return "action_set_runny_nose"
+        return "validate_eye_form"
 
-    def run(self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        return [SlotSet("runny_nose", True)]
+    async def required_slots(
+        self,
+        slots_mapped_in_domain: List[Text],
+        dispatcher: "CollectingDispatcher",
+        tracker: "Tracker",
+        domain: "DomainDict",
+    ) -> List[Text]:
+        discharge_symptoms = ["eye_discharge"]
+        photopsia_symptoms = ["photopsia"]
+        if tracker.slots.get("eye_discharge"):
+            discharge_symptoms.append("eye_discharge_color")
+            return discharge_symptoms + slots_mapped_in_domain
+        if tracker.slots.get("photopsia"):
+            photopsia_symptoms.append("photopsia_location")
+            return photopsia_symptoms + slots_mapped_in_domain
+        return slots_mapped_in_domain
 
-class SetStuffyNose(Action):
+class SetSymptom(Action): 
+
     def name(self) -> Text:
-        return "action_set_stuffy_nose"
 
-    def run(self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        return [SlotSet("stuffy_nose", True)]
+        return "action_set_symptom"
 
-class SetHeadache(Action):
-    def name(self) -> Text:
-        return "action_set_headache"
+    async def run(
+        self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        symptom = tracker.get_intent_of_latest_message()
+        all_slots = tracker.slots
+        symptoms = []
+        for s in all_slots:
+            symptoms.append(s)
+        
+        if symptom in symptoms:
+            if symptom == "dry_cough" or symptom == "cough_with_phlegm" or symptom == "coughing_up_blood":
+                return [SlotSet("coughing", True), SlotSet(symptom, True)]
+            else:
+                return [SlotSet(symptom, True)]
+        else:
+            return []
 
-    def run(self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        return [SlotSet("headache", True)]
 
 class CreateReport(Action):
     def name(self) -> Text:

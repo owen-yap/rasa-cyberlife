@@ -25,7 +25,8 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_symptom_prompt
-  - intent: inform_cough
+  - intent: coughing
+  - action: action_set_symptom
   - action: cough_form
   - active_loop: cough_form
   - slot_was_set:
@@ -78,8 +79,6 @@ stories:
     - shortness_of_breath: false
   - slot_was_set:
     - requested_slot: null
-  - slot_was_set:
-    - requested_slot: null
   - active_loop: null
   - action: utter_additional_symptom_prompt
   - intent: deny 
@@ -89,7 +88,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: Cough with phlegm and no allergy
+- story: headache
   steps:
   - intent: greet
   - action: utter_greet
@@ -109,13 +108,12 @@ stories:
     - confirm_allergy: false
   - slot_was_set:
     - requested_slot: null
-  - slot_was_set:
-    - requested_slot: null
   - active_loop: null
   - action: utter_symptom_prompt
-  - intent: inform_fever
-  - action: fever_form
-  - active_loop: fever_form
+  - intent: headache
+  - action: action_set_symptom
+  - action: headache_form
+  - active_loop: headache_form
   - active_loop: null
   - action: utter_additional_symptom_prompt
   - intent: deny 
@@ -125,7 +123,7 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
-- story: fever with no allergy
+- story: fever, blocked nose and headache
   steps:
   - intent: greet
   - action: utter_greet
@@ -134,7 +132,7 @@ stories:
   - slot_was_set:
     - requested_slot: age
   - slot_was_set:
-    - age: '46'
+    - age: '30'
   - slot_was_set:
     - requested_slot: gender
   - slot_was_set:
@@ -149,15 +147,16 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_symptom_prompt
-  - intent: inform_fever
+  - intent: fever
+  - action: action_set_symptom
+  - slot_was_set:
+    - fever: true
   - action: fever_form
   - active_loop: fever_form
   - slot_was_set:
     - requested_slot: temperature
   - slot_was_set:
-    - temperature: 38.7 °C
-  - slot_was_set:
-    - fever: true
+    - temperature: 38.4 °C
   - slot_was_set:
     - requested_slot: fever_duration
   - slot_was_set:
@@ -171,9 +170,7 @@ stories:
   - slot_was_set:
     - requested_slot: shivering
   - slot_was_set:
-    - shivering: true
-  - slot_was_set:
-    - chills: true
+    - shivering: false
   - slot_was_set:
     - requested_slot: lethargy
   - slot_was_set:
@@ -186,183 +183,8 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: utter_additional_symptom_prompt
-  - intent: deny 
-  - action: action_create_report
-  - intent: thank_you
-  - action: utter_no_worries
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: fever + cough
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: history_taking_form
-  - active_loop: history_taking_form
-  - slot_was_set:
-    - requested_slot: age
-  - slot_was_set:
-    - age: '25'
-  - slot_was_set:
-    - requested_slot: gender
-  - slot_was_set:
-    - gender: male
-  - slot_was_set:
-    - requested_slot: confirm_allergy
-  - slot_was_set:
-    - confirm_allergy: false
-  - slot_was_set:
-    - requested_slot: null
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_symptom_prompt
-  - intent: inform_cough
-  - action: cough_form
-  - active_loop: cough_form
-  - slot_was_set:
-    - requested_slot: cough_type
-  - slot_was_set:
-    - cough_type: dry
-  - slot_was_set:
-    - dry_cough: true
-  - slot_was_set:
-    - requested_slot: asthma
-  - slot_was_set:
-    - asthma: Patient has asthma
-  - slot_was_set:
-    - coughing: true
-  - slot_was_set:
-    - requested_slot: cough_duration
-  - slot_was_set:
-    - cough_duration: less than 3 weeks
-  - slot_was_set:
-    - requested_slot: pain_when_coughing
-  - slot_was_set:
-    - pain_when_coughing: true
-  - slot_was_set:
-    - requested_slot: wheezing
-  - slot_was_set:
-    - wheezing: false
-  - slot_was_set:
-    - requested_slot: shortness_of_breath
-  - slot_was_set:
-    - shortness_of_breath: false
-  - slot_was_set:
-    - requested_slot: null
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
-  - intent: inform_fever
-  - action: fever_form
-  - active_loop: fever_form
-  - slot_was_set:
-    - shortness_of_breath: false
-  - slot_was_set:
-    - requested_slot: temperature
-  - slot_was_set:
-    - temperature: 38.2 °C
-  - slot_was_set:
-    - fever: true
-  - slot_was_set:
-    - requested_slot: fever_duration
-  - slot_was_set:
-    - fever_duration: more than a week
-  - slot_was_set:
-    - requested_slot: feeling_cold
-  - slot_was_set:
-    - feeling_cold: true
-  - slot_was_set:
-    - chills: true
-  - slot_was_set:
-    - requested_slot: shivering
-  - slot_was_set:
-    - shivering: false
-  - slot_was_set:
-    - requested_slot: lethargy
-  - slot_was_set:
-    - lethargy: true
-  - slot_was_set:
-    - fatigue: true
-  - slot_was_set:
-    - weakness: true
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
-  - intent: deny
-  - action: action_create_report
-  - intent: thank_you
-  - action: utter_no_worries
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: nose respiratory symptoms
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: history_taking_form
-  - active_loop: history_taking_form
-  - slot_was_set:
-    - requested_slot: age
-  - slot_was_set:
-    - age: '46'
-  - slot_was_set:
-    - requested_slot: gender
-  - slot_was_set:
-    - gender: male
-  - slot_was_set:
-    - requested_slot: confirm_allergy
-  - slot_was_set:
-    - confirm_allergy: false
-  - slot_was_set:
-    - requested_slot: null
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_symptom_prompt
-  - intent: inform_runny_nose
-  - action: action_set_runny_nose
-  - action: nose_form
-  - active_loop: nose_form
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
-  - intent: deny 
-  - action: action_create_report
-  - intent: thank_you
-  - action: utter_no_worries
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: runny nose
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: history_taking_form
-  - active_loop: history_taking_form
-  - slot_was_set:
-    - requested_slot: age
-  - slot_was_set:
-    - age: '46'
-  - slot_was_set:
-    - requested_slot: gender
-  - slot_was_set:
-    - gender: male
-  - slot_was_set:
-    - requested_slot: confirm_allergy
-  - slot_was_set:
-    - confirm_allergy: false
-  - slot_was_set:
-    - requested_slot: null
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_symptom_prompt
-  - intent: inform_stuffy_nose
-  - action: action_set_stuffy_nose
+  - intent: stuffy_nose
+  - action: action_set_symptom
   - slot_was_set:
     - stuffy_nose: true
   - action: nose_form
@@ -374,62 +196,31 @@ stories:
   - slot_was_set:
     - requested_slot: runny_nose
   - slot_was_set:
-    - runny_nose: false
+    - runny_nose: true
   - slot_was_set:
     - requested_slot: nose_symptom_duration
   - slot_was_set:
-    - nose_symptom_duration: less than 3 days
+    - nose_symptom_duration: less than a week
   - slot_was_set:
     - requested_slot: facial_pain
   - slot_was_set:
-    - facial_pain: true
-  - slot_was_set:
-    - sinus_pain: true
-  - slot_was_set:
-    - sinus_pressure: true
+    - facial_pain: false
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
   - action: utter_additional_symptom_prompt
-  - intent: deny
-  - action: action_create_report
-  - intent: thank_you
-  - action: utter_no_worries
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: headache
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: history_taking_form
-  - active_loop: history_taking_form
-  - slot_was_set:
-    - requested_slot: age
-  - slot_was_set:
-    - age: '28'
-  - slot_was_set:
-    - requested_slot: gender
-  - slot_was_set:
-    - gender: male
-  - slot_was_set:
-    - requested_slot: confirm_allergy
-  - slot_was_set:
-    - confirm_allergy: false
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_symptom_prompt
-  - intent: inform_headache
-  - action: action_set_headache
+  - intent: headache
+  - action: action_set_symptom
   - slot_was_set:
     - headache: true
   - action: headache_form
   - active_loop: headache_form
   - slot_was_set:
+    - facial_pain: false
+  - slot_was_set:
     - requested_slot: headache_location
   - slot_was_set:
-    - headache_location: behind the eyes
+    - headache_location: on left side
   - slot_was_set:
     - requested_slot: headache_pain_scale
   - slot_was_set:
@@ -443,15 +234,11 @@ stories:
   - slot_was_set:
     - requested_slot: headache_duration
   - slot_was_set:
-    - headache_duration: less than a weeks
+    - headache_duration: less than 3 days
   - slot_was_set:
     - requested_slot: head_injury
   - slot_was_set:
     - head_injury: false
-  - slot_was_set:
-    - requested_slot: facial_pain
-  - slot_was_set:
-    - facial_pain: false
   - slot_was_set:
     - requested_slot: stress
   - slot_was_set:
@@ -463,23 +250,11 @@ stories:
   - slot_was_set:
     - requested_slot: numbness
   - slot_was_set:
-    - numbness_location: null
-  - slot_was_set:
-    - numbness: true
-  - slot_was_set:
-    - requested_slot: numbness_location
-  - slot_was_set:
-    - numbness_location: hand
-  - slot_was_set:
-    - hand_numbness: true
+    - numbness: false
   - slot_was_set:
     - requested_slot: neck_pain
   - slot_was_set:
-    - numbness_location: hand
-  - slot_was_set:
     - neck_pain: false
-  - slot_was_set:
-    - hand_numbness: true
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
