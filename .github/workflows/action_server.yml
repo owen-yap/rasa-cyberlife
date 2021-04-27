@@ -6,7 +6,7 @@ on:
     - 'actions/**'
 
 jobs:
-  build_and_deploy:
+  build:
     runs-on: ubuntu-latest
     name: Build Action Server image and upgrade Rasa X deployment
     steps:
@@ -14,15 +14,14 @@ jobs:
       uses: actions/checkout@v2
 
     - id: action_server
-      name: Build an action server with a custom actions
-      uses: RasaHQ/action-server-gha@main
-      # Full list of parameters: https://github.com/RasaHQ/action-server-gha/tree/master#input-arguments
+      name: Build an action server
+      uses: RasaHQ/rasa-action-server-gha@main
       with:
         docker_image_name: 'owen11/rasa-cyberlife'
+        # More details on how to use GitHub secrets:
+        # https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
         docker_registry_login: ${{ secrets.DOCKER_HUB_LOGIN }}
         docker_registry_password: ${{ secrets.DOCKER_HUB_PASSWORD }}
         # More details about github context:
         # https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context
-        #
-        # github.sha - The commit SHA that triggered the workflow run
         docker_image_tag: ${{ github.sha }}

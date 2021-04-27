@@ -417,7 +417,6 @@ class SetSymptom(Action):
         else:
             return []
 
-
 class CreateReport(Action):
     def name(self) -> Text:
         return "action_create_report"
