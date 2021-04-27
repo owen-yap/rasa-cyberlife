@@ -23,7 +23,6 @@ class ValidateHistoryTakingForm(FormValidationAction):
 
         return slots_mapped_in_domain + additional_slots
 
-
 class ValidateCoughForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_cough_form"
