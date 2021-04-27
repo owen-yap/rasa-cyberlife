@@ -52,7 +52,7 @@ stories:
   - slot_was_set:
     - phlegm_color: green / yellow
   - slot_was_set:
-    - cough_duration: more than 8 weeks
+    - cough_duration: 1-2 days
   - slot_was_set:
     - chronic_cough: true
   - slot_was_set:
@@ -79,41 +79,6 @@ stories:
     - shortness_of_breath: false
   - slot_was_set:
     - requested_slot: null
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
-  - intent: deny 
-  - action: action_create_report
-  - intent: thank_you
-  - action: utter_no_worries
-  - intent: goodbye
-  - action: utter_goodbye
-
-- story: headache
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: history_taking_form
-  - active_loop: history_taking_form
-  - slot_was_set:
-    - requested_slot: age
-  - slot_was_set:
-    - age: '24'
-  - slot_was_set:
-    - requested_slot: gender
-  - slot_was_set:
-    - gender: male
-  - slot_was_set:
-    - requested_slot: confirm_allergy
-  - slot_was_set:
-    - confirm_allergy: false
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_symptom_prompt
-  - intent: headache
-  - action: action_set_symptom
-  - action: headache_form
-  - active_loop: headache_form
   - active_loop: null
   - action: utter_additional_symptom_prompt
   - intent: deny 
@@ -160,7 +125,7 @@ stories:
   - slot_was_set:
     - requested_slot: fever_duration
   - slot_was_set:
-    - fever_duration: less than 3 days
+    - fever_duration: 1-2 days
   - slot_was_set:
     - requested_slot: feeling_cold
   - slot_was_set:
@@ -200,7 +165,7 @@ stories:
   - slot_was_set:
     - requested_slot: nose_symptom_duration
   - slot_was_set:
-    - nose_symptom_duration: less than a week
+    - nose_symptom_duration: 1-2 days
   - slot_was_set:
     - requested_slot: facial_pain
   - slot_was_set:
@@ -224,7 +189,7 @@ stories:
   - slot_was_set:
     - requested_slot: headache_pain_scale
   - slot_was_set:
-    - headache_pain_scale: '6'
+    - headache_pain_scale: mild
   - slot_was_set:
     - requested_slot: headache_type
   - slot_was_set:
@@ -234,7 +199,7 @@ stories:
   - slot_was_set:
     - requested_slot: headache_duration
   - slot_was_set:
-    - headache_duration: less than 3 days
+    - headache_duration: 1 week
   - slot_was_set:
     - requested_slot: head_injury
   - slot_was_set:
@@ -265,3 +230,102 @@ stories:
   - action: utter_no_worries
   - intent: goodbye
   - action: utter_goodbye
+
+- story: happy path (eye)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: history_taking_form
+  - active_loop: history_taking_form
+  - slot_was_set:
+    - requested_slot: age
+  - slot_was_set:
+    - age: '29'
+  - slot_was_set:
+    - requested_slot: gender
+  - slot_was_set:
+    - gender: male
+  - slot_was_set:
+    - requested_slot: confirm_allergy
+  - slot_was_set:
+    - confirm_allergy: false
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_symptom_prompt
+  - intent: photopsia
+  - action: action_set_symptom
+  - slot_was_set:
+    - photopsia: true
+  - action: eye_form
+  - active_loop: eye_form
+  - slot_was_set:
+    - photopsia: true
+  - slot_was_set:
+    - requested_slot: eye_surgery
+  - slot_was_set:
+    - eye_surgery: No eye surgery / treatment done
+  - slot_was_set:
+    - requested_slot: diabetes
+  - slot_was_set:
+    - diabetes: false
+  - slot_was_set:
+    - requested_slot: eye_symptom_location
+  - slot_was_set:
+    - eye_symptom_location: both eyes
+  - slot_was_set:
+    - requested_slot: eye_redness
+  - slot_was_set:
+    - eye_redness: true
+  - slot_was_set:
+    - requested_slot: eye_injury
+  - slot_was_set:
+    - eye_injury: false
+  - slot_was_set:
+    - requested_slot: eye_symptom_duration
+  - slot_was_set:
+    - eye_symptom_duration: 1 week
+  - slot_was_set:
+    - requested_slot: eye_pain_scale
+  - slot_was_set:
+    - eye_pain_scale: /mild
+  - slot_was_set:
+    - requested_slot: eye_discharge
+  - slot_was_set:
+    - eye_discharge: true
+  - slot_was_set:
+    - requested_slot: blurred_vision
+  - slot_was_set:
+    - blurred_vision: false
+  - slot_was_set:
+    - requested_slot: double_vision
+  - slot_was_set:
+    - double_vision: false
+  - slot_was_set:
+    - requested_slot: sensitivity_to_light
+  - slot_was_set:
+    - sensitivity_to_light: true
+  - slot_was_set:
+    - requested_slot: photopsia_location
+  - slot_was_set:
+    - photopsia_location: centre
+  - slot_was_set:
+    - requested_slot: vision_loss
+  - slot_was_set:
+    - vision_loss: true
+  - slot_was_set:
+    - requested_slot: floaters
+  - slot_was_set:
+    - floaters: false
+  - slot_was_set:
+    - requested_slot: contact_lens
+  - slot_was_set:
+    - contact_lens: false
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_additional_symptom_prompt
+  - intent: deny
+  - action: action_create_report

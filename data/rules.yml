@@ -138,6 +138,97 @@ rules:
   - action: eye_form
   - active_loop: eye_form
 
+- rule: Activate abdominal form (abdominal pain)
+  steps:
+  - intent: abdominal_pain
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (abdominal_tenderness)
+  steps:
+  - intent: abdominal_tenderness
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (abdominal_distension)
+  steps:
+  - intent: abdominal_distension
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (stomach_cramps)
+  steps:
+  - intent: stomach_cramps
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (diarrhea)
+  steps:
+  - intent: diarrhea
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (constipation)
+  steps:
+  - intent: constipation
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (flank_pain)
+  steps:
+  - intent: flank_pain
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (blood_in_stool)
+  steps:
+  - intent: blood_in_stool
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (dark_urine)
+  steps:
+  - intent: dark_urine
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (blood_in_urine)
+  steps:
+  - intent: blood_in_urine
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (pain_during_urination)
+  steps:
+  - intent: pain_during_urination
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (nausea)
+  steps:
+  - intent: nausea
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
+- rule: Activate abdominal form (vomiting)
+  steps:
+  - intent: vomiting
+  - action: action_set_symptom
+  - action: abdominal_pain_form
+  - active_loop: abdominal_pain_form
+
 - rule: Submit nose form
   condition:
   - active_loop: nose_form
@@ -175,6 +266,14 @@ rules:
   - active_loop: eye_form
   steps:
   - action: eye_form
+  - active_loop: null
+  - action: utter_additional_symptom_prompt
+
+- rule: Submit abdominal pain form
+  condition:
+  - active_loop: abdominal_pain_form
+  steps:
+  - action: abdominal_pain_form
   - active_loop: null
   - action: utter_additional_symptom_prompt
 

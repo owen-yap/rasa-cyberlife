@@ -35,11 +35,11 @@ class ValidateCoughForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        additional_slots = ["cough_type"]
-        if tracker.slots.get("cough_with_phlegm"):
-            additional_slots.append("phlegm_color")
+        all_slots = slots_mapped_in_domain
+        if tracker.slots.get("cough_type") != "phlegm":
+            all_slots.remove("phlegm_color")
         
-        return additional_slots + slots_mapped_in_domain
+        return all_slots
 
     def validate_asthma(
         self,
@@ -48,8 +48,11 @@ class ValidateCoughForm(FormValidationAction):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-
-        return{"coughing": True, "asthma": slot_value}
+        if tracker.get_intent_of_latest_message() == "inform_asthma":
+            return{"asthma": slot_value}
+        else:
+            dispatcher.utter_message(text = "Sorry, I do not quite understand.")
+            return{"asthma": None}
 
     def validate_cough_type(
         self,
@@ -68,15 +71,6 @@ class ValidateCoughForm(FormValidationAction):
         else:
             return {"cough_type": None}
 
-    def extract_phlegm_color(
-        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-    ) -> Dict[Text, Any]:
-        if tracker.slots.get("phlegm_color") == None:
-            phlegm_color = tracker.latest_message.get("text")
-            return {"phlegm_color": phlegm_color}
-        else:
-            return {"phlegm_color": tracker.slots.get("phlegm_color")}
-
     def validate_cough_duration(
         self,
         slot_value: Any,
@@ -84,7 +78,7 @@ class ValidateCoughForm(FormValidationAction):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "more than 8 weeks":
+        if slot_value == "more than 3 weeks":
             return {"cough_duration": slot_value, "chronic_cough": True, "persistent_cough": True}
         else:
             return {"cough_duration": slot_value}
@@ -231,27 +225,10 @@ class ValidateHeadacheForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        additional_slots = ["numbness"]
-        if tracker.slots.get("numbness"):
-            additional_slots.append("numbness_location")
-            return additional_slots + slots_mapped_in_domain
-        return slots_mapped_in_domain
-
-    def validate_headache_pain_scale(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        if slot_value.isdecimal() and int(slot_value) <= 10 and int(slot_value) >= 1:
-            if int(slot_value) >= 7:
-                return {"headache_pain_scale": slot_value, "severe_headache": True}
-            else:
-                return {"headache_pain_scale": slot_value}
-        else:
-            dispatcher.utter_message(text = "Sorry, I don't understand that, could you please enter a number from 1 to 10 instead?")
-            return {"headache_pain_scale": None}
+        all_slots = slots_mapped_in_domain
+        if tracker.slots.get("numbness") != True:
+            all_slots.remove("numbness_location")
+        return all_slots
 
     def validate_headache_type(
         self,
@@ -289,13 +266,6 @@ class ValidateHeadacheForm(FormValidationAction):
         else:
             return {"dizziness": slot_value}
 
-    def extract_numbness_location(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-    ) -> Dict[Text, Any]:
-        if tracker.slots.get("numbness_location") == None:
-            return {"numbness_location": tracker.latest_message.get("text")}
-        else:
-            return {"numbness_location": tracker.slots.get("numbness_location")}
-
     def validate_numbness_location(
         self,
         slot_value: Any,
@@ -309,6 +279,8 @@ class ValidateHeadacheForm(FormValidationAction):
             return {"numbness_location": slot_value, "leg_numbness": True}
         elif slot_value == "foot":
             return {"numbness_location": slot_value, "foot_numbness": True}
+        elif slot_value == "others":
+            return {"numbness_location": "Enquire further"}
         else:
             dispatcher.utter_message(text = "Sorry, but I could not understand that. Please select either foot, leg, hand or others.")
             return {"numbness_location": None}
@@ -348,20 +320,85 @@ class ValidateEyeForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        discharge_symptoms = ["eye_discharge"]
-        photopsia_symptoms = ["photopsia"]
-        if tracker.slots.get("eye_discharge"):
-            discharge_symptoms.append("eye_discharge_color")
-            return discharge_symptoms + slots_mapped_in_domain
-        if tracker.slots.get("photopsia"):
-            photopsia_symptoms.append("photopsia_location")
-            return photopsia_symptoms + slots_mapped_in_domain
-        return slots_mapped_in_domain
+        all_slots = slots_mapped_in_domain
+        if tracker.slots.get("photopsia") == False:
+            all_slots.remove("photopsia_location")
+        
+        return all_slots
 
-class SetSymptom(Action): 
+    def validate_photopsia_location(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value == "sides":
+            return {"photopsia_location": slot_value}
+        elif slot_value == "centre":
+            return {"photopsia_location": slot_value}
+        else:
+            dispatcher.utter_message(text = "Sorry, I do not quite understand")
+            return {"photopsia_location": None}
+
+class ValidateAbdominalPainForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_abdominal_pain_form"
+
+    async def required_slots(
+        self,
+        slots_mapped_in_domain: List[Text],
+        dispatcher: "CollectingDispatcher",
+        tracker: "Tracker",
+        domain: "DomainDict",
+    ) -> List[Text]:
+        all_slots = slots_mapped_in_domain
+        if tracker.slots.get("abdominal_pain") == False:
+            all_slots.remove("abdominal_pain_location")
+            all_slots.remove("abdominal_pain_scale")
+        if tracker.slots.get("nausea") == False:
+            all_slots.remove("vomiting")
+        return all_slots
+
+    def validate_stomach_cramps(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"stomach_cramps": slot_value, "cramping": slot_value}
+        else:
+            return {"stomach_cramps": slot_value}
+
+    def validate_loss_of_appetite(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"loss_of_appetite": slot_value, "poor_appetite": slot_value}
+        else:
+            return {"loss_of_appetite": slot_value}
+
+    def validate_blood_in_stool(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value:
+            return {"blood_in_stool": slot_value, "dark_stool_from_disgested_blood": slot_value}
+        else:
+            return {"blood_in_stool": slot_value}
+        
+class SetSymptom(Action):
 
     def name(self) -> Text:
-
         return "action_set_symptom"
 
     async def run(
@@ -390,16 +427,115 @@ class CreateReport(Action):
            dispatcher: CollectingDispatcher,
            tracker: Tracker,
            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        history = ["age", "gender", "allergy", "asthma", "eye_surgery", "diabetes"]
+        symptoms_to_present = [
+            "coughing",
+            "cough_type",
+            "phlegm_color",
+            "cough_duration",
+            "pain_when_coughing",
+            "persistent_cough",
+            "wheezing",
+            "shortness_of_breath",
+            "fever",
+            "temperature",
+            "fever_duration",
+            "feeling_cold",
+            "shivering",
+            "lethargy",
+            "stuffy_nose",
+            "runny_nose",
+            "nasal_congestion",
+            "nose_symptom_duration",
+            "facial_pain",
+            "headache",
+            "headache_location",
+            "headache_pain_scale",
+            "headache_type",
+            "headache_duration",
+            "head_injury",
+            "stress",
+            "dizziness",
+            "numbness",
+            "numbness_location",
+            "neck_pain",
+            "eye_symptom_location",
+            "eye_symptom_duration",
+            "eye_redness",
+            "eye_pain",
+            "eye_pain_scale",
+            "eye_injury",
+            "eye_discharge",
+            "blurred_vision",
+            "double_vision",
+            "sensitivity_to_light",
+            "photopsia",
+            "photopsia_location",
+            "vision_loss",
+            "floaters",
+            "contact_lens",
+            "abdominal_pain",
+            "abdominal_pain_location",
+            "abdominal_symptom_duration",
+            "abdominal_pain_scale",
+            "abdominal_tenderness",
+            "abdominal_distension",
+            "stomach_cramps",
+            "diarrhea",
+            "constipation",
+            "loss_of_appetite",
+            "flank_pain",
+            "blood_in_stool",
+            "blood_in_urine",
+            "dark_urine",
+            "pain_during_urination",
+            "nausea",
+            "vomiting",
+            "yellow_skin_and_eyes"
+            ]
         all_slots = tracker.slots
         report_slots = {}
+        hist = []
+        present = []
+        absent = []
         for s in all_slots:
-            if all_slots[s] == False or all_slots[s] == None:
+            if all_slots[s] == None:
                 continue
+            elif all_slots[s] == False:
+                if s in symptoms_to_present:
+                    absent.append(s.replace("_", " "))
             else:
-                report_slots[s] = all_slots[s]
+                if s in history and all_slots[s] == True:
+                    w = "{}: {}".format(s.replace("_", " "),"Yes")
+                    hist.append(w)
+                elif s in history and all_slots[s] == False:
+                    w = "{}: {}".format(s.replace("_", " "),"No")
+                    hist.append(w)
+                elif s in history:
+                    w = "{}: {}".format(s.replace("_", " "),all_slots[s])
+                    hist.append(w)
+                else:
+                    if s in symptoms_to_present:
+                        report_slots[s] = all_slots[s]
+        
+
         for symptom in report_slots:
-            if report_slots[symptom] == True:
-                report_slots[symptom] = "Yes"
-            t = symptom.replace("_", " ") + ": " + report_slots[symptom]
-            dispatcher.utter_message(text = t) 
+            if symptom[-8:] == "duration":
+                dur = 2*" " + "- Time since onset: " + report_slots[symptom]
+                present.append(dur)
+            elif symptom[-5:] == "scale":
+                scale = 2*" " + "- Intensity: " + report_slots[symptom]
+                present.append(scale)
+            elif symptom[-8:] == "location":
+                loc = 2*" " + "- Location: " + report_slots[symptom]
+                present.append(loc)
+            elif report_slots[symptom] == True:
+                present.append(symptom.replace("_", " "))
+            else:
+                w = "{}: {}".format(symptom.replace("_", " "),report_slots[symptom])
+                present.append(w)
+
+        report = hist + ["\n\nPresent:"] + present + ["\n\nAbsent:"] + absent
+        print(report)
+        dispatcher.utter_message(text = "\n".join(report))
         return []

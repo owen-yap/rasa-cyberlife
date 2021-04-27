@@ -37,6 +37,7 @@ nlu:
     - see you later
     - goodbye!
     - bye!
+    - centre
 - intent: give_age
   examples: |
     - 21
@@ -53,13 +54,14 @@ nlu:
     - 24
     - 56
     - 46
-    - less than 3 days
     - 67
     - 4
     - 7
     - 28
     - 6
     - 30
+    - 3
+    - 20
 - intent: give_temperature
   examples: |
     - 37.1
@@ -92,10 +94,25 @@ nlu:
     - behind the eyes
     - forehead
     - on left side
+    - both eyes
+    - sides
 - intent: give_gender
   examples: |
     - male
     - female
+- intent: give_duration
+  examples: |
+    - more than a week
+    - more than 3 weeks
+    - 1-2 days
+    - 3-5 days
+    - close to a week
+    - couple of hours
+    - a few hours
+    - 10 days ago
+    - 3 days ago
+    - a little over 4 days
+    - 1 week
 - intent: affirm
   examples: |
     - yes
@@ -133,6 +150,7 @@ nlu:
     - could have been better
     - not great
     - nope
+    - No eye surgery / treatment done
 - intent: inform_allergy
   examples: |
     - I am allergic to [grass and tree pollen](allergy)
@@ -150,6 +168,23 @@ nlu:
     - I have a [peanut](allergy) allergy
     - yes, I have [peach allergy](allergy)
     - yes, I am allergic to [peach](allergy)
+    - allergic to [eggs](allergy)
+    - allergic to [mould](allergy)
+    - allergic to [dustmites](allergy)
+    - allergic to [pollarax](allergy)
+    - allergic to [paracetemol](allergy)
+    - allergic to [amoxicillin](allergy)
+    - allergic to [ampicillin](allergy)
+    - allergic to [penicillin](allergy)
+    - allergic to [tetracycline](allergy)
+    - allergic to [aspirin](allergy)
+    - allergic to [naproxen](allergy)
+    - allergic to [cetuximab](allergy)
+    - allergic to [rituximab](allergy)
+    - allergic to [carbamazepine](allergy)
+    - allergic to [lamotrigine](allergy)
+    - allergic to [atracurium](allergy)
+    - allergic to [acidic fruits](allergy)
 - intent: coughing
   examples: |
     - cough
@@ -166,9 +201,6 @@ nlu:
     - I have chronic cough
     - coughing a lot
     - wheeze
-    - more than a week
-    - less than a weeks
-    - less than a week
 - intent: dry_cough
   examples: |
     - I have a dry cough
@@ -317,6 +349,7 @@ nlu:
     - blurry vision
     - things look blur
     - i suddenly have very blurry vision
+    - eye blur
 - intent: double_vision
   examples: |
     - i am seeing two of the same objects
@@ -342,6 +375,9 @@ nlu:
     - seeing random flickering
     - viewing flickering lights
     - seeing light
+    - I have photopsia
+    - photopsia
+    - i am seeing flashes in my eyes
 - intent: vision_loss
   examples: |
     - I am losing my vision
@@ -363,6 +399,151 @@ nlu:
     - lots of gel-like substance in my vision
     - seeing gel in my vision
     - small little things appearing in my vision
+- intent: abdominal_pain
+  examples: |
+    - i have abdominal pain
+    - abdominal pain
+    - pain in the abdomen
+    - stomach pain
+    - stomachache
+    - tummy is painful
+    - pain in the tummy
+    - bellyache
+    - upset stomach
+    - dysepepsia
+    - suffering from indigestion
+    - indigestion
+    - abdomen is aching
+- intent: abdominal_tenderness
+  examples: |
+    - it hurts when i press on my stomach
+    - my abdomen is tender
+    - stomach is tender
+    - there is pain when i apply pressure to my stomach
+    - pain when i touch my abdomen
+- intent: abdominal_distension
+  examples: |
+    - abdominal distension
+    - I feel bloated
+    - my stomach feels bloated
+    - distended stomach
+    - distension
+    - feeling full
+    - abdomen feels full
+    - feels like there is a lot fo fluids in my abdomen
+    - a lot of water in stomach
+    - stomach feels full
+    - belly feels swollen
+    - stomach is swollen
+    - stomach is big
+    - huge stomach
+    - stuffed feeling
+    - stomach feels stuffed
+    - stuffed stomach
+- intent: stomach_cramps
+  examples: |
+    - tight feeling in stomach
+    - cramping in abdomen
+    - stomach cramps
+    - cramping in stomach
+    - cramps in the belly
+- intent: diarrhea
+  examples: |
+    - I have watery stools
+    - when i pass motion, my shit is watery
+    - watery shit
+    - diarrhea
+    - i have diarrhea
+    - going to the toilet a lot
+    - passing motion very often
+- intent: constipation
+  examples: |
+    - i have constipation
+    - constipated
+    - cannot shit
+    - cannot pass motion
+    - hard stools
+    - shit is stuck
+    - dry bowel movements
+    - bowel is stuck
+- intent: flank_pain
+  examples: |
+    - my flanks hurt
+    - the sides of my stomach hurt
+    - left side of my abdomen is painful
+    - right side of stomach is painful
+    - flank pain
+- intent: blood_in_stool
+  examples: |
+    - there is blood in my shit
+    - shit looks red
+    - reddish stools
+    - blood in stools
+    - blood comes out when i pass motion
+    - stools are red in color
+    - stools are unusually dark
+- intent: dark_urine
+  examples: |
+    - my urine is unusually dark
+    - dark urine
+    - black urine
+    - brown urine
+    - urine is very dark
+- intent: blood_in_urine
+  examples: |
+    - there is blood in my urine
+    - blood in urine
+    - urine is reddish in color
+    - red urine
+    - blood in my piss
+    - blood comes out when i piss
+    - there is blood when i urinate
+- intent: pain_during_urination
+  examples: |
+    - it hurts when i pee
+    - there is pain when i urinate
+    - hurts when i piss
+    - peeing is painful
+    - pain during urination
+- intent: nausea
+  examples: |
+    - i feel nauseous
+    - nausea
+    - i want to throw up
+- intent: vomiting
+  examples: |
+    - vomited
+    - i vomited
+    - throwing up
+    - i threw up
+    - vomited all my food out
+    - vomit water
+- intent: mild_pain
+  examples: |
+    - pain is mild
+    - mild
+    - does not affect daily activities
+    - pain is minimal
+    - minimal pain
+    - does not hurt a lot
+    - hurts very little
+    - little pain
+- intent: moderate_pain
+  examples: |
+    - pain is average
+    - moderate pain
+    - decent pain
+    - moderate
+    - interferes with daily activities
+- intent: severe_pain
+  examples: |
+    - worst pain ever
+    - extremely painful
+    - most pain i have experienced
+    - hurts a lot
+    - severe pain
+    - severe
+    - very painful
 - intent: give_color
   examples: |
     - green / white
