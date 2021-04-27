@@ -517,7 +517,6 @@ class CreateReport(Action):
                     if s in symptoms_to_present:
                         report_slots[s] = all_slots[s]
         
-
         for symptom in report_slots:
             if symptom[-8:] == "duration":
                 dur = 2*" " + "- Time since onset: " + report_slots[symptom]
