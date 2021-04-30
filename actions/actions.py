@@ -533,6 +533,5 @@ class CreateReport(Action):
                 present.append(w)
 
         report = hist + ["Present:\\"] + present + ["Absent:\\"] + absent
-        print(report)
         dispatcher.utter_message(text = "\n".join(report))
         return []
