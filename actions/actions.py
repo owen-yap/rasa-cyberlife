@@ -915,3 +915,4 @@ class CreateReport(Action):
                     diagnosis[key] = d[key]
         
         return sorted(diagnosis, key=diagnosis.get, reverse=True)[:5]
+
