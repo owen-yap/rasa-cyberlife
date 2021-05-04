@@ -851,13 +851,25 @@ class CreateReport(Action):
             'facial paralysis',
             'cavity'
             ]
+        def get_diagnosis(symptoms):
+            cyberlife_db = Neo4j("neo4j+s://ec6b6187.databases.neo4j.io:7687", "neo4j", "03u6rStifaqB7A-aOVXqttceAMzs-LuD7P19eK_l_yQ")
+            diagnosis = {}
+            for s in symptoms:
+                d = cyberlife_db.retrieve_disease_prob(s)
+                for key in d:
+                    if key in diagnosis:
+                        diagnosis[key] = diagnosis[key] + d[key]
+                    else:
+                        diagnosis[key] = d[key]
+            
+            return sorted(diagnosis, key=diagnosis.get, reverse=True)[:3]
         all_slots = tracker.slots
         report_slots = {}
         hist = []
         present = []
         absent = []
         symptoms_to_diagnose = []
-        top5 = ["\nPossible Causes:"]
+        top3 = ["\n\nPossible Causes:"]
         for s in all_slots:
             if all_slots[s] == None:
                 continue
@@ -880,13 +892,13 @@ class CreateReport(Action):
         
         for symptom in report_slots:
             if symptom[-8:] == "duration":
-                dur = "- Time since onset: " + report_slots[symptom]
+                dur = "  Time since onset: " + report_slots[symptom]
                 present.append(dur)
             elif symptom[-5:] == "scale":
-                scale = "- Intensity: " + report_slots[symptom]
+                scale = "  Intensity: " + report_slots[symptom]
                 present.append(scale)
             elif symptom[-8:] == "location":
-                loc = "- Location: " + report_slots[symptom]
+                loc = "  Location: " + report_slots[symptom]
                 present.append(loc)
             elif report_slots[symptom] == True:
                 present.append(symptom.replace("_", " "))
@@ -897,22 +909,11 @@ class CreateReport(Action):
             if symptom.replace("_", " ") in symptoms_in_database:
                 symptoms_to_diagnose.append(symptom.replace("_", " "))
         
-        top5 = top5 + get_diagnosis(symptoms_to_diagnose)
-        report = hist + ["\nPresent:"] + present + ["\nAbsent:"] + absent + top5
+        top3 = top3 + get_diagnosis(symptoms_to_diagnose)
+        report = hist + ["\n\nPresent:"] + present + ["\n\nAbsent:"] + absent + top3
         dispatcher.utter_message(text = "\n".join(report))
         return []
 
-    @staticmethod
-    def get_diagnosis(symptoms):
-        cyberlife_db = Neo4j("neo4j+s://ec6b6187.databases.neo4j.io:7687", "neo4j", "03u6rStifaqB7A-aOVXqttceAMzs-LuD7P19eK_l_yQ")
-        diagnosis = {}
-        for s in symptoms:
-            d = cyberlife_db.retrieve_disease_prob(s)
-            for key in d:
-                if key in diagnosis:
-                    diagnosis[key] = diagnosis[key] + d[key]
-                else:
-                    diagnosis[key] = d[key]
-        
-        return sorted(diagnosis, key=diagnosis.get, reverse=True)[:5]
+
+    
 
