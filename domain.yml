@@ -505,9 +505,9 @@ responses:
   - text: Is there pain when you cough?
     buttons:
     - title: Yes
-      payload: /affirm
+      payload: "/affirm"
     - title: No
-      payload: /deny
+      payload: "/deny"
   utter_ask_wheezing:
   - text: Has your breathing sounded wheezy or noisy?
     buttons:

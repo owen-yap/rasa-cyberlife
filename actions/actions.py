@@ -2,6 +2,9 @@ from typing import Any, Text, Dict, List
 from rasa_sdk.events import SlotSet
 from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
+from neo4j import GraphDatabase as gd
+import pandas as pd
+import numpy as np
 
 class ValidateHistoryTakingForm(FormValidationAction):
 
@@ -417,6 +420,31 @@ class SetSymptom(Action):
         else:
             return []
 
+class Neo4j:
+    def __init__(self, uri, user, password):
+        self.driver = gd.driver(uri, auth=(user, password))
+        
+    def close(self):
+        self.driver.close()
+
+    def retrieve_disease_prob(self, symptom):
+        with self.driver.session() as session:
+            value = session.write_transaction(self._get_disease, symptom)
+            return value
+
+    @staticmethod
+    def _get_disease(tx, symptom):
+        diseases = {}
+        match = "(d:Disease)-[r]-(s:Symptom {{name: '{}'}})".format(symptom)
+        query = "MATCH {} RETURN d.name AS disease, r.probability AS prob".format(match)
+        
+        result = tx.run(query)
+        for record in result:
+            diseases[record["disease"]] = record["prob"]
+            
+        return diseases
+
+
 class CreateReport(Action):
     def name(self) -> Text:
         return "action_create_report"
@@ -491,11 +519,345 @@ class CreateReport(Action):
             "vomiting",
             "yellow_skin_and_eyes"
             ]
+        symptoms_in_database = [
+            'hoarseness',
+            'restless legs syndrome',
+            'enlarged neck lymph nodes',
+            'physical deformity',
+            'erectile dysfunction',
+            'vision loss',
+            'abdominal discomfort',
+            'skin lesion',
+            'anger',
+            'pain',
+            'muscle weakness',
+            'urinary retention',
+            'heavy or prolonged periods',
+            'scar',
+            'fluid in the lungs',
+            'neck swelling',
+            'severe headache',
+            'chills',
+            'memory loss',
+            'foot pain',
+            'racing thoughts',
+            'slow heart rate',
+            'itchy eyes',
+            'pain during urination',
+            'elbow pain',
+            'sleepiness',
+            'abdominal tenderness',
+            'ear pain',
+            'abdominal pain',
+            'pain in upper-right abdomen',
+            'shakiness',
+            'skin irritation',
+            'peeling skin',
+            'gagging',
+            'ache',
+            'scarring within the bile ducts',
+            'discomfort',
+            'sweating',
+            'flank pain',
+            'arm pain',
+            'dull pain',
+            'dark urine',
+            'seizures',
+            'headache',
+            'hearing voices',
+            'wandering and getting lost',
+            'weakness of one side of the body',
+            'plaque',
+            'oral thrush',
+            'slow bodily movement',
+            'raised area of skin',
+            'hopelessness',
+            'weakness',
+            'clumsiness',
+            'bowel obstruction',
+            'rash on the face',
+            'knee pain',
+            'lower abdominal pain',
+            'wrist pain',
+            'regurgitation',
+            'episodes of no breathing',
+            'persistent cough',
+            'heel pain',
+            'limping',
+            'leg numbness',
+            'malnutrition',
+            'shoulder pain',
+            'manic episode',
+            'sensitivity to sound',
+            'severe anxiety',
+            'falling',
+            'asymmetry',
+            'swollen knee',
+            'neck pain',
+            'hunger',
+            'difficulty swallowing',
+            'forgetfulness',
+            'abnormality walking',
+            'feeling cold',
+            'drooling',
+            'wheezing',
+            'sensitivity to light',
+            'delusion',
+            'aggression',
+            'bruising',
+            'heat therapy',
+            'ice pack',
+            'jaw pain',
+            'chest pain worsened by breathing',
+            'decreased range of motion',
+            'flushing',
+            'slurred speech',
+            'hand swelling',
+            'skin rash',
+            'rectal pain',
+            'failure to thrive',
+            'heartburn',
+            'arm discomfort',
+            'stomach cramps',
+            'difficulty speaking',
+            'coma',
+            'mild pain',
+            'discomfort in upper abdomen',
+            'itching',
+            'severe pain',
+            'hand tremor',
+            'irregular menstruation',
+            'chronic back pain',
+            'brief visual or sensory abnormality',
+            'head congestion',
+            'drooping of upper eyelid',
+            'sharp pain',
+            'paranoia',
+            'phlegm',
+            'fluid in the abdomen',
+            'pins and needles',
+            'hip pain',
+            'incontinence',
+            'fatigue',
+            'stiff neck',
+            'impaired voice',
+            'racing heartbeat',
+            'shortness of breath',
+            'radiating pain',
+            'swelling under the skin',
+            'unequal pupils',
+            'pimple',
+            'facial swelling',
+            'eye pain',
+            'blurred vision',
+            'pain in right lower abdomen',
+            'facial pain',
+            'swollen feet',
+            'fever',
+            'inability to feel pleasure',
+            'sinus pain',
+            'dehydration',
+            'weight loss',
+            'persistent headache',
+            'guilt',
+            'thoughts of suicide',
+            'kidney failure',
+            'eye redness',
+            'bleeding from anus',
+            'tongue swelling',
+            'pelvic pain',
+            'stinging sensation',
+            'cyst',
+            'difficulty with bodily movement',
+            'face rash',
+            'leg pain',
+            'shivering',
+            'dark stool from digested blood',
+            'diarrhea',
+            'low oxygen in the body',
+            'poor appetite',
+            'lesion',
+            'noisy breathing',
+            'chest tightness',
+            'agitation',
+            'ringing in the ears',
+            'paralysis',
+            'amnesia',
+            'partial loss of vision',
+            'yellow skin and eyes',
+            'finger pain',
+            'screaming',
+            'cloudy urine',
+            'fear of loud sounds',
+            'muscle spasms',
+            'eye discharge',
+            'swelling of the surface of the eye',
+            'acute episodes',
+            'lower extremity pain',
+            'lump',
+            'blister',
+            'vomiting',
+            'blood in urine',
+            'hallucination',
+            'unsteady gait',
+            'fainting',
+            'restlessness',
+            'back pain',
+            'joint pain',
+            'dizziness',
+            'upper abdominal pain',
+            'leg pain during exercise',
+            'painful swallowing',
+            'coughing up blood',
+            'feeling tired',
+            'confusion in the evening hours',
+            'sneezing',
+            'laryngitis',
+            'indigestion',
+            'dryness',
+            'bleeding',
+            'high fever',
+            'watery eyes',
+            'swollen joint',
+            'fast breathing',
+            'double vision',
+            'swollen veins in the lower esophagus',
+            'nightmares',
+            'muscle twitches',
+            'tremor at rest',
+            'substance abuse',
+            'lump on the skin or joint',
+            'disorganized behavior',
+            'infection',
+            'watery diarrhea',
+            'muscle pain',
+            'collapse',
+            'unsteadiness',
+            'visual hallucinations',
+            'abdominal cramping from gallstones',
+            'increased thirst',
+            'frequent urge to urinate',
+            'foot numbness',
+            'fear',
+            'frequent urination',
+            'hand pain',
+            'swollen tonsils',
+            'lightheadedness',
+            'lethargy',
+            'vision disorder',
+            'throbbing pain',
+            'vaginal pain',
+            'mild cough',
+            'cough with phlegm',
+            'intermittent pain',
+            'runny nose',
+            'nasal congestion',
+            'pain worse at rest',
+            'coughing',
+            'red spots',
+            'loss of interest',
+            'anxiety',
+            'discharge from penis',
+            'eye irritation',
+            'slowness in activity and thought',
+            'difficulty breathing',
+            'panic attack',
+            'swollen lymph nodes',
+            'leaked fluid out of blood vessels or an organ',
+            'sadness',
+            'red rashes',
+            'scab',
+            'dry skin',
+            'belching',
+            'toe pain',
+            'difficulty walking',
+            'dry cough',
+            'blotchy rash',
+            'cramping',
+            'chest discomfort',
+            'crying',
+            'impulsivity',
+            'mood swings',
+            'chest pressure',
+            'low body temperature',
+            'spotting',
+            'elevated alkaline phosphatase',
+            'sinus pressure',
+            'trembling',
+            'mental confusion',
+            'inflammation of ear',
+            'foul smelling urine',
+            'pain in lower abdomen',
+            'shortness of breath while lying down',
+            'vomiting blood',
+            'intermittent abdominal pain',
+            'swelling in extremities',
+            'bone loss',
+            'nerve pain',
+            'throbbing headache',
+            'ankle pain',
+            'disorientation',
+            'low blood pressure',
+            'problems with coordination',
+            'irritation of the tonsils',
+            'weight gain',
+            'thirst',
+            'pain in upper abdomen',
+            'loss of appetite',
+            'rapid involuntary eye movement',
+            'blood in stool',
+            'fast heart rate',
+            'vertigo',
+            'tremor',
+            'tenderness',
+            'difficulty concentrating',
+            'excess thirst',
+            'nausea',
+            'tongue numbness',
+            'rib pain',
+            'respiratory distress',
+            'depression',
+            'burning sensation',
+            'delirium',
+            'insomnia',
+            'vaginal discharge',
+            'swelling',
+            'stiffness',
+            'side pain',
+            'seeing spots',
+            'abdominal distension',
+            'numbness',
+            'sore throat',
+            'vaginal bleeding',
+            'chronic cough',
+            'difficulty raising the foot',
+            'flapping tremor',
+            'redness',
+            'dry mouth',
+            'constipation',
+            'hand numbness',
+            'pain when coughing',
+            'groin pain',
+            'snoring',
+            'confusion',
+            'iron deficiency',
+            'calf pain',
+            'testicle pain',
+            'leaking of urine',
+            'malaise',
+            'night sweats',
+            'excess urination',
+            'stuffy nose',
+            'facial paralysis',
+            'cavity'
+            ]
         all_slots = tracker.slots
         report_slots = {}
         hist = []
         present = []
         absent = []
+        symptoms_to_diagnose = []
+        top5 = ["\nPossible Causes:"]
         for s in all_slots:
             if all_slots[s] == None:
                 continue
@@ -532,6 +894,24 @@ class CreateReport(Action):
                 w = "{}: {}".format(symptom.replace("_", " "),report_slots[symptom])
                 present.append(w)
 
-        report = hist + ["Present:\\"] + present + ["Absent:\\"] + absent
+            if symptom.replace("_", " ") in symptoms_in_database:
+                symptoms_to_diagnose.append(symptom.replace("_", " "))
+        
+        top5 = top5 + get_diagnosis(symptoms_to_diagnose)
+        report = hist + ["\nPresent:"] + present + ["\nAbsent:"] + absent + top5
         dispatcher.utter_message(text = "\n".join(report))
         return []
+
+    @staticmethod
+    def get_diagnosis(symptoms):
+        cyberlife_db = Neo4j("neo4j+s://ec6b6187.databases.neo4j.io:7687", "neo4j", "03u6rStifaqB7A-aOVXqttceAMzs-LuD7P19eK_l_yQ")
+        diagnosis = {}
+        for s in symptoms:
+            d = cyberlife_db.retrieve_disease_prob(s)
+            for key in d:
+                if key in diagnosis:
+                    diagnosis[key] = diagnosis[key] + d[key]
+                else:
+                    diagnosis[key] = d[key]
+        
+        return sorted(diagnosis, key=diagnosis.get, reverse=True)[:5]
