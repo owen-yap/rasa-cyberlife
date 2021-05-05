@@ -910,7 +910,7 @@ class CreateReport(Action):
                 symptoms_to_diagnose.append(symptom.replace("_", " "))
         
         top3 = top3 + get_diagnosis(symptoms_to_diagnose)
-        report = hist + ["-"] + ["Present:"] + present + ["-"] + ["Absent:"] + absent + ["-"] + top3
+        report = hist + ["Present:"] + present + ["Absent:"] + absent + top3
         dispatcher.utter_message(text = "\n".join(report))
         print("\n".join(report))
         return []
