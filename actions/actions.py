@@ -869,7 +869,7 @@ class CreateReport(Action):
         present = []
         absent = []
         symptoms_to_diagnose = []
-        top3 = ["\n\nPossible Causes:"]
+        top3 = ["Possible Causes:"]
         for s in all_slots:
             if all_slots[s] == None:
                 continue
@@ -910,9 +910,6 @@ class CreateReport(Action):
                 symptoms_to_diagnose.append(symptom.replace("_", " "))
         
         top3 = top3 + get_diagnosis(symptoms_to_diagnose)
-        dispatcher.utter_message(text = "Patient: \n" + "\n".join(hist))
-        dispatcher.utter_message(text = "Symptoms Present: \n" + "\n".join(present))
-        dispatcher.utter_message(text = "Symptoms Absent: \n" + "\n".join(absent))
-        dispatcher.utter_message(text = "Possible Causes: \n" + "\n".join(top3))
+        report = hist + [" "] + ["Present:"] + present + [" "] + ["Absent:"] + absent + [" "] + top3
         return []
 
