@@ -911,5 +911,6 @@ class CreateReport(Action):
         
         top3 = top3 + get_diagnosis(symptoms_to_diagnose)
         report = hist + [" "] + ["Present:"] + present + [" "] + ["Absent:"] + absent + [" "] + top3
+        dispatcher.utter_message(text = "\n".join(report))
         return []
 
