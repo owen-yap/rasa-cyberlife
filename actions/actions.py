@@ -892,13 +892,13 @@ class CreateReport(Action):
         
         for symptom in report_slots:
             if symptom[-8:] == "duration":
-                dur = "  Time since onset: " + report_slots[symptom]
+                dur = "\t- Time since onset: " + report_slots[symptom]
                 present.append(dur)
             elif symptom[-5:] == "scale":
-                scale = "  Intensity: " + report_slots[symptom]
+                scale = "\t- Intensity: " + report_slots[symptom]
                 present.append(scale)
             elif symptom[-8:] == "location":
-                loc = "  Location: " + report_slots[symptom]
+                loc = "\t- Location: " + report_slots[symptom]
                 present.append(loc)
             elif report_slots[symptom] == True:
                 present.append(symptom.replace("_", " "))
@@ -910,7 +910,7 @@ class CreateReport(Action):
                 symptoms_to_diagnose.append(symptom.replace("_", " "))
         
         top3 = top3 + get_diagnosis(symptoms_to_diagnose)
-        report = hist + ["\n\nPresent:"] + present + ["\n\nAbsent:"] + absent + top3
+        report = hist + ["\n \nPresent:"] + present + ["\n \nAbsent:"] + absent + top3
         dispatcher.utter_message(text = "\n".join(report))
         return []
 
