@@ -913,3 +913,4 @@ class CreateReport(Action):
         report = hist + ["\n\nPresent:"] + present + ["\n\nAbsent:"] + absent + top3
         dispatcher.utter_message(text = "\n".join(report))
         return []
+
