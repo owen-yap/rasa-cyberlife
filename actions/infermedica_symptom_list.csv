@@ -1,0 +1,1318 @@
+symptom_name,symptom_id
+mouth ulcers,s_1
+vaginal sexual intercourse in recent months,s_2
+activity related to sex despite negative consequences,s_3
+apathy,s_4
+appetite for salty foods,s_6
+female infertility,s_7
+diarrhea,s_8
+pale skin,s_9
+pale and brittle nails,s_10
+joint pain hip,s_11
+abdominal pain,s_13
+abdominal pain exacerbating on an empty stomach,s_14
+abdominal pain exacerbating during coughing or movement,s_15
+abdominal pain postprandial,s_16
+abdominal pain premenstrual,s_17
+gum pain,s_19
+pharyngeal pain,s_20
+headache,s_21
+headache unilateral,s_22
+headache pressing,s_23
+headache generalized,s_24
+headache pulsating,s_25
+pain in crotch,s_28
+chest pain exacerbating with deep breath or cough,s_30
+chest pain continues after rest,s_31
+painful intercourse,s_32
+painful ejaculation,s_33
+pain in crotch sudden,s_34
+chest pain during exertion,s_35
+chest pain radiating to the neck,s_36
+chest pain radiating between shoulder blades,s_37
+back pain lumbar radiates to back of the thigh,s_38
+pain while urinating,s_39
+joint pain severe after trauma,s_41
+skin pain severe,s_43
+joint pain,s_44
+earache,s_47
+chest pain subsides during rest,s_48
+chest pain,s_50
+chest pain diffuse,s_51
+pain in scrotum,s_52
+back pain lumbar,s_53
+pain near eye socket,s_54
+toothache after contact with cold sweet or hot food,s_55
+toothache when chewing,s_56
+abdominal pain reduced by defecation or relieving flatulence,s_57
+dysmenorrhea,s_59
+pain in glans penis,s_60
+vaginal discharge with unpleasant odor,s_64
+halitosis,s_65
+snoring,s_67
+dysphonia,s_68
+preoccupation with food,s_69
+black stools,s_71
+red and stinging conjunctivae,s_72
+red stretch marks on abdomen hips or thighs,s_73
+sexual activity more often or with more partners than intended,s_74
+frequent urination large quantities,s_75
+fine downy hair,s_77
+joint pain hallux,s_79
+irritability when unable to engage in activity related to sex,s_80
+chills,s_81
+tremors subside after drinking alcohol,s_84
+head tremors,s_85
+tremors in one hand,s_86
+tremors both hands,s_87
+dyspnea,s_88
+dyspnea lasting 1 day to 4 weeks,s_90
+dyspnea lasting less than 1 hour,s_92
+smoking large quantity of cigarettes,s_93
+deep filling of treated tooth,s_97
+fever,s_98
+fever between 37 and 38,s_99
+fever between 38 and 40,s_100
+papule or nodule smaller than 1 cm in diameter,s_101
+cough,s_102
+cough lasting less than three weeks,s_103
+cough productive,s_104
+cough dry,s_105
+cough lasting more than eight weeks,s_106
+nasal catarrh,s_107
+deepening of periodontal pockets,s_108
+drinking alcohol to ease hangover,s_109
+palpitations,s_110
+bleeding gums,s_111
+blood in stool,s_112
+blood in urine,s_113
+bleeding from anus,s_115
+hemoptysis,s_116
+calf muscle spasms,s_117
+cold sensitivity,s_118
+anxiety,s_120
+hair loss,s_121
+excessive tear production,s_122
+problems with everyday tasks such as washing eating dressing,s_123
+scotoma,s_124
+paresthesia both feet,s_125
+paresthesia around the mouth,s_126
+obsessions,s_127
+excess hair growth,s_132
+difficulty not smoking first cigarette of the day,s_134
+sneezing attacks,s_136
+binge-eating attacks,s_137
+recurrent tonsils inflammation,s_139
+recurrent gastric ulcers,s_142
+nervousness or weepiness,s_143
+agitation,s_145
+forgetting names of close friends and family,s_146
+history of anemia,s_147
+paresis,s_148
+unilateral facial paresis,s_149
+inability to stop drinking alcohol,s_150
+bleeding after intercourse,s_152
+urinary incontinence,s_153
+low self-esteem,s_155
+nausea,s_156
+fear of obesity,s_157
+heavy or prolonged menstrual periods,s_158
+back pain exacerbated by physical exertion,s_159
+symptoms regularly appear a few days before menstrual period,s_161
+symptoms appear after taking painkillers or a change in diet,s_162
+depressed mood,s_169
+edema knee joint,s_170
+edema ankle joint,s_171
+swollen gums,s_172
+edema one lower limb,s_173
+edema joint,s_174
+edema both lower limbs,s_175
+edema scrotum,s_176
+swollen cheek,s_177
+erythema limb hot to the touch,s_179
+hypopigmentation of the skin,s_180
+constant need for sex,s_181
+nocturia,s_182
+urination while coughing or laughing or during physical exertion,s_183
+oliguria,s_185
+restricted mobility problem bending over,s_186
+seizures with loss of consciousness,s_189
+loss of consciousness with urination or defecation,s_190
+head drop,s_191
+blepharoptosis,s_192
+ulceration on nipple,s_194
+current cigarette smoking,s_195
+cigarette smoking during illness,s_196
+drinking large quantities of alcohol,s_198
+drinking large quantities of alcohol at one time,s_199
+burning tongue,s_200
+stinging eyes and feeling of sand under eyelids,s_201
+erythema migrans,s_202
+dental plaque,s_203
+forward-leaning posture,s_204
+feeling of guilt,s_205
+feeling of guilt or shame after drinking alcohol,s_206
+diplopia,s_207
+decreased hearing,s_208
+miscarriage,s_212
+spending a lot of time on sex-related activity,s_213
+sweating of forehead on painful side,s_214
+frequent urination,s_215
+excessive sweating,s_216
+sweating night,s_217
+enlarged breasts,s_219
+enlarged lymph nodes,s_220
+surface of lesion on genitals resembling cauliflower,s_221
+inability to stop flow of urine,s_223
+premature graying,s_225
+weight gain,s_226
+tachypnea,s_227
+loose teeth,s_228
+erythema,s_229
+erythema facial butterfly-shaped,s_230
+toothache strong reaction to heat,s_231
+pain in lower limb calf severe while walking,s_232
+toothache severe,s_233
+easy bruising,s_234
+eyelid twitching,s_235
+decreased libido,s_236
+weight loss without loss of appetite,s_237
+slower gait,s_238
+dermatological changes,s_241
+using methods to lose weight: vomiting starvation diets,s_243
+fear of object situation action,s_244
+dermatological changes scabs,s_245
+dry mouth,s_247
+itching around anus,s_249
+pruritus most intense at night,s_250
+pruritus aggravated by change in temperature sweating or wearing wool,s_251
+itchy throat or nose,s_252
+genital itch,s_253
+pruritus,s_254
+itching in ear,s_255
+trismus,s_256
+stiffness of spine in the morning,s_257
+morning stiffness of hand joints,s_258
+spine or joint stiffness subsiding after exercise,s_259
+tachycardia,s_261
+phimosis,s_263
+difficulty refraining from smoking cigarettes where not permitted,s_265
+difficulty biting and chewing,s_266
+difficulty determining which tooth hurts,s_267
+paresis upper limbs,s_268
+difficulty acquiring new information,s_269
+creaking joints during movement,s_270
+smooth face without wrinkles,s_271
+enamel lesions caries,s_272
+heavy legs at the end of the day,s_273
+feeling hot,s_274
+clogged ear,s_276
+increased abdominal girth,s_277
+feeling pressure or pulsation inside the tooth,s_279
+hot flashes,s_280
+physical injury to self or others after drinking alcohol,s_281
+diminished appetite,s_284
+weight loss,s_285
+loss of interest in activities previously enjoyed lasting at least two weeks,s_287
+close family or friends pointing out excessive drinking,s_288
+malocclusions,s_289
+visible and palpable enlarged vein of limb chest or abdomen,s_290
+ear canal swelling,s_291
+discharge from ear,s_297
+abdominal mass,s_299
+nodule located in breast,s_300
+discharge under foreskin,s_301
+discharge from periodontal pockets,s_302
+compulsive behavior,s_303
+vomiting,s_305
+hematemesis,s_306
+smoking most cigarettes in the morning,s_308
+bloating,s_309
+increased thirst,s_310
+increased appetite,s_311
+sensory loss in one limb,s_313
+impaired memory,s_316
+impaired balance while walking,s_317
+sleep disorder,s_319
+impaired vision,s_320
+gum erythema,s_322
+erythema of skin overlying a joint,s_323
+erythema limb,s_325
+neglecting obligations such as work study or family to pursue sex or think about sex,s_326
+need to smoke cigarette when waking up,s_327
+abnormal vaginal discharge,s_328
+constipation,s_329
+regurgitation,s_330
+nasal congestion,s_331
+jaundice,s_332
+jaundice during increased stress,s_334
+jaundice following intense physical exertion,s_335
+jaundice during infectious disease,s_336
+heartburn,s_338
+toothache reduced after cold foods or drinks,s_339
+illusion of surroundings being bigger or smaller than they actually are,s_341
+wrinkling or dimpling of skin on breast,s_342
+retraction or indentation of nipple,s_343
+change in handwriting,s_345
+change in colour of a tooth,s_346
+behavioural changes personality,s_348
+dermatological changes forming a line,s_350
+ulcerations or abscesses near the anus,s_351
+dermatological changes at the point of contact with buttons fasteners or cosmetics,s_352
+decreased breast size,s_357
+intermittent urine flow,s_358
+joint deformation non-traumatic,s_359
+microstomia,s_360
+increase in sexual experiences or sensations needed to attain desired effect,s_361
+oily skin,s_362
+edema neck,s_363
+discharge from urethra,s_369
+dizziness,s_370
+overwork,s_371
+honey-coloured crust on the skin,s_373
+skin phototype i or ii,s_376
+numerous nevi,s_377
+asymmetry of a skin mole or birthmark,s_380
+skin mole or birthmark with irregular border,s_381
+mole or birthmark with diameter greater than 6 mm,s_382
+suspicious mole or birthmark,s_383
+red macules with silver-white flaky scales,s_384
+dry cracked skin bleeding occasionally,s_385
+thickened nails with pits or grooves,s_386
+pustule,s_388
+open comedones,s_389
+dermatological changes localization near sebaceous glands,s_390
+urticaria,s_393
+dermatological changes entire skin,s_398
+dermatological changes preceded by pain or itching,s_400
+dermatological changes recurring during infections or menstrual period,s_402
+dermatological changes rough and irregular surface,s_404
+tinnitus,s_407
+cold feet and toes,s_408
+reduced body temperature,s_410
+diarrhea foamy,s_412
+menstrual period more than three weeks late,s_415
+rash,s_417
+stiff neck,s_418
+feeling overweight despite low weight,s_419
+lying about eating hiding food,s_420
+increased libido,s_421
+deepening of voice,s_422
+sense of self-worth dependent on weight,s_423
+facial pain unilateral,s_424
+facial pain stabbing,s_425
+facial pain triggered by eating touching or brushing teeth,s_426
+facial pain periodic,s_427
+clicking or cracking sounds in the jaw joint when opening or closing the mouth,s_429
+pain in temporomandibular joint during movement,s_430
+drooping mouth corner,s_432
+erythema foreskin or head of the penis,s_433
+feeling of incomplete evacuation,s_435
+anorectal pain,s_436
+cyanosis,s_437
+abdominal pain radiating to right shoulder or shoulder blade,s_471
+wheezing audible,s_474
+pain increases when touching ear area,s_476
+aphonia,s_477
+facial pain,s_478
+nystagmus,s_479
+enlargement of hands feet or face,s_480
+dermatological changes eyelid,s_483
+eyelid lesion red lump with yellow tip,s_484
+eyelid lesion painful,s_485
+eyelid lesion red and warm,s_486
+eye discharge thick and clear,s_487
+eyes sensitive to light,s_488
+dry discharge on eyelids,s_489
+red eye,s_492
+eye pain,s_493
+visual field narrowing,s_494
+anisocoria,s_497
+distance misjudgment,s_501
+muscle cramps,s_503
+foamy urine,s_504
+frequent infections,s_505
+insect bite,s_506
+feeling of resignation,s_507
+anhedonia,s_508
+odynophagia,s_509
+urethral discharge when pressing the penis,s_510
+globus sensation,s_513
+derealization,s_514
+fear of dying,s_516
+paresthesia,s_518
+nasal polyps,s_524
+foul-smelling stools,s_525
+cough productive with yellow or green sputum,s_526
+recent alcohol consumption,s_528
+parotid swelling,s_529
+sudden increase in blood pressure,s_530
+frequent infections upper respiratory tract,s_531
+frequent infections lower respiratory tract,s_532
+hypotension,s_533
+bradycardia,s_534
+decreased pupillary light reflex,s_535
+mydriasis,s_536
+miosis,s_537
+tremors,s_538
+seizures without loss of consciousness,s_539
+irritability,s_540
+orthostatic hypotension,s_541
+dry skin,s_542
+hypertension over 140 mmhg,s_543
+telangiectasias,s_545
+galactorrhea,s_547
+lens clouding,s_550
+toothache,s_551
+cyanosis fingers,s_553
+pain in fingers or hand,s_554
+tingling fingers,s_555
+cold hands or fingers,s_556
+erythema hand,s_557
+symptoms exacerbated by low temperature,s_558
+belching,s_561
+edema pitting,s_562
+dyspnea orthopnea,s_563
+loss of muscle mass hands,s_564
+murphy's sign,s_567
+self-disgust after binge eating,s_568
+pale or clay-coloured stools,s_569
+hypopyon,s_570
+spasticity,s_571
+reduced degree of facial expression,s_572
+joint stiffness,s_575
+joint pain aggravated during cold damp weather,s_576
+pain in one foot,s_578
+pain in lower limb,s_579
+pain in upper limb,s_580
+joint pain knee,s_581
+anxiety attack,s_582
+general anxiety,s_583
+change in shape of a skin mole or birthmark,s_584
+change in colour of a skin mole or birthmark,s_585
+gynecomastia,s_586
+alcohol tolerance,s_588
+ceasing or limiting alcohol consumption,s_589
+tremors tongue,s_590
+eyelid tremors,s_591
+prolonged bleeding time,s_593
+petechiae,s_594
+abscess,s_598
+tremors worsen after caffeine intake,s_601
+symptoms do not occur during sleep,s_602
+nail clubbing,s_603
+headache lancinating,s_604
+headache series over a period of time,s_605
+eye flashes,s_606
+tongue erythema,s_607
+angular cheilitis,s_608
+breast pain or tenderness unilateral,s_609
+coated tonsils,s_610
+dark urine,s_611
+bone pain,s_612
+xanthelasma,s_613
+itching after a hot shower or bath,s_614
+edema face,s_616
+hairy leukoplakia,s_618
+impaired memory finding objects of everyday use,s_619
+loss of muscle mass,s_622
+edema ankles,s_623
+headache exacerbating by tilting head forward,s_625
+feeling of helplessness,s_629
+vulvovaginal itching,s_630
+impaired concentration,s_631
+feeling of hopelessness,s_632
+elevated mood,s_633
+decreased need for sleep,s_634
+contentiousness,s_635
+financial recklessness,s_636
+quickening of thoughts and speech,s_637
+grandiosity,s_639
+tenesmus,s_640
+bowel incontinence,s_641
+mucous secretion in stool,s_642
+mood swings,s_646
+simple visual paradelusions,s_647
+simple auditory paradelusions,s_648
+psychomotor retardation,s_649
+muscle weakness,s_650
+ataxia,s_651
+deep tendon reflexes decreased,s_652
+pupil dilation variation,s_653
+skin and blood vessel inflammation,s_654
+lengthening of reaction time,s_658
+social isolation,s_659
+fits of anger,s_660
+decreased motivation,s_661
+cough productive in the morning,s_662
+back pain lumbar radiating to the groin,s_663
+koplik's spots,s_664
+measles rash,s_665
+leopard-like spots on the skin,s_666
+unilateral enophthalmos,s_668
+anhidrosis face unilateral,s_669
+cough productive with pink frothy sputum,s_670
+neck vein distention,s_671
+ulcer on skin,s_672
+tongue enlargement,s_673
+delusions of persecution,s_675
+delusions of reference,s_676
+delusions of grandeur,s_677
+nihilistic delusions,s_678
+hypochondriacal delusions,s_679
+delusions of influence,s_680
+hallucinations visual,s_681
+hallucinations auditory,s_682
+hallucinations gustatory,s_683
+hallucinations olfactory,s_684
+hallucinations tactile,s_685
+hallucinations,s_686
+obsessions fears,s_687
+obsessions images,s_688
+urination in small amounts,s_689
+urinary urgency,s_690
+trouble beginning urination,s_691
+red and swollen oral mucosa,s_692
+dermatological changes located in the mouth,s_694
+urinary retention,s_696
+decreased skin turgor,s_697
+sunken eyeballs,s_698
+edema dependent on the body position,s_699
+edema,s_700
+edema daytime,s_701
+re-experiencing the psychological trauma in recurring flashbacks,s_705
+re-experiencing the psychological trauma in nightmares,s_706
+re-experiencing traumatic event,s_707
+re-experiencing the psychological trauma through physiological reactivity,s_708
+avoiding thoughts feelings or conversations related to traumatic experience,s_709
+avoiding actions places or people that bring back memories of trauma,s_710
+inability to remember important aspects of a traumatic experience,s_711
+sneezing,s_715
+impaired social functioning,s_716
+avoiding public appearances,s_717
+avoiding eating or drinking in public,s_718
+avoiding eating in someone's presence,s_719
+avoiding talking to authority figures,s_720
+fear of public appearances,s_721
+panic attacks in public appearances,s_722
+excessive fear in public situations,s_723
+excessive worry about the health of a child,s_725
+difficulty bonding with infant,s_727
+thoughts of harming one's own child,s_728
+thoughts of wanting to kill one's own child,s_729
+diurnal mood variation,s_730
+disorganized behavior,s_731
+pain in lower limb calf severe while walking intermittent claudication,s_732
+erectile dysfunction,s_733
+claudication in upper leg,s_734
+weak pulse in legs,s_735
+muscle weakness legs,s_743
+muscle weakness ascending,s_744
+loss or impairment of proprioception,s_746
+loss of temperature sensation impaired temperature sensation,s_747
+ocular motility disorder,s_750
+gottron's papules,s_756
+holster sign,s_757
+redness on shoulders and nape of neck,s_758
+v-shaped redness on chest,s_759
+hyperkeratosis on hands,s_760
+purpuric rash,s_762
+livedo reticularis,s_763
+muscle weakness large proximal muscles,s_766
+muscle weakness standing up or climbing stairs,s_767
+delusion of guilt or sin,s_768
+bizarre delusion,s_769
+poor personal hygiene,s_770
+blunted affect,s_771
+flat affect,s_772
+social maladjustment,s_773
+delusion of impoverishment,s_774
+waking up early,s_776
+prolonged nighttime sleep,s_777
+lack of boundaries in interpersonal relations,s_778
+making rash or impulsive decisions,s_779
+religious delusion,s_780
+urticaria triggered by scratching,s_789
+urticaria triggered by prolonged pressure on the skin,s_790
+urticaria triggered by cold,s_791
+urticaria triggered by heat,s_793
+urticaria triggered by sunlight,s_794
+pencil-thin stools,s_795
+headache exacerbating in the morning,s_799
+vomiting projectile,s_801
+papilledema,s_803
+cardiomegaly,s_811
+hemianopsia bitemporalis,s_814
+risky alcohol consumption,s_816
+alcohol craving,s_817
+alcohol withdrawal syndrome,s_818
+drinking alcohol despite awareness of harmful effects,s_819
+neglecting family work or hobbies due to alcohol,s_820
+nonstop drinking alcohol for several days,s_822
+drunk driving,s_823
+violating social norms after drinking alcohol,s_824
+impaired memory alcohol-related amnesia,s_825
+drinking alcohol at work,s_827
+drinking alcohol alone,s_828
+secret drinking,s_829
+impaired memory short term,s_830
+confabulation,s_831
+agnosia,s_833
+seasonal pattern of depressive symptoms,s_835
+schizophasia,s_836
+alogia,s_837
+paralogical thinking,s_838
+delusions of thought insertion thought withdrawal thought broadcasting,s_839
+hearing voices commenting,s_840
+hearing voices arguing,s_841
+behavioural changes ignoring consequences and social norms,s_842
+organic cause,s_844
+auscultative wheezes over the thorax,s_856
+auscultative fine crackles over the thorax,s_857
+trousseau sign of latent tetany,s_866
+chvostek's sign,s_867
+orbicularis oris muscle spasm,s_868
+clubfoot,s_869
+deep tendon reflexes increased,s_878
+stimulants use (amphetamine cocaine),s_880
+agoraphobia,s_884
+phobia,s_915
+depressed mood persistent,s_916
+insomnia,s_917
+decreased hearing variable intensity and duration,s_935
+dizziness vertigo,s_936
+tinnitus low frequency,s_937
+homonymous hemianopsia,s_957
+sensory loss involving the face,s_959
+dysphagia,s_962
+lateropulsion,s_964
+neck pain unilateral,s_965
+decreased visual acuity,s_967
+diminished eye motility in the same direction,s_968
+headache occipital,s_970
+paresthesia face,s_971
+sensory loss in both arms,s_972
+paresthesia both upper limbs,s_973
+drop attack,s_974
+pyramidal signs,s_989
+frontal release signs,s_990
+increased masseter reflex,s_991
+tongue muscle atrophy,s_995
+cervical dystonia,s_996
+paresis hemiparesis,s_1005
+lack of initiative motivation or drive,s_1006
+disinhibition,s_1007
+apraxia,s_1010
+bilateral limb apraxia,s_1011
+agraphia,s_1012
+buccofacial or orofacial apraxia,s_1013
+perseveration,s_1018
+allelomimetic behaviour allomimetic behaviour,s_1019
+diminished superficial reflexes,s_1021
+hemiplegia,s_1022
+babinski sign,s_1023
+loss of vision in a superior quadrant,s_1027
+auditory verbal agnosia,s_1028
+verbal learning disability,s_1031
+amusia,s_1032
+visual agnosia,s_1034
+diminished fear responses,s_1035
+splenomegaly,s_1045
+tooth loss,s_1050
+hepatomegaly,s_1051
+enlarged kidneys,s_1052
+lhermitte's sign,s_1054
+retrobulbar neuritis,s_1055
+trigeminal neuralgia,s_1056
+enlarged salivary glands,s_1057
+paresthesia both lower limbs,s_1063
+paresthesia in both upper limbs glove distribution,s_1066
+sudden face flushing,s_1067
+paresthesias symmetrical,s_1068
+paresthesia ascending,s_1069
+loss of sense of vibration in distal parts of extremities,s_1070
+epicritic sensation loss or impairment in fingertips,s_1071
+absence of deep reflexes,s_1072
+bilateral absence of achilles tendon reflex,s_1073
+trophic changes,s_1074
+trophic ulcer,s_1076
+trophic ulcer on the plantar side of the foot,s_1078
+flaccid paresis,s_1079
+flaccid paresis symmetrical,s_1080
+symmetrical flaccid paresis in lower limbs (mainly feet),s_1081
+symmetrical flaccid paresis in upper limbs (mainly hands),s_1082
+interosseous muscles atrophy hands,s_1083
+interosseous muscles atrophy feet,s_1084
+toenail dystrophy,s_1085
+neural tenderness,s_1086
+fear of going insane,s_1087
+fear of losing control,s_1088
+prostate enlargement,s_1089
+glassy eyes,s_1090
+chemosis,s_1091
+positive prick or patch skin allergy test,s_1092
+positive allergy challenge,s_1093
+clearing the throat,s_1094
+impaired smell,s_1095
+taste disorders,s_1096
+swelling of nasal mucosa,s_1097
+swollen blue or bluish-gray nasal mucosa,s_1098
+swelling of nasal concha,s_1099
+transverse furrow on the nose,s_1100
+pharyngeal swelling bilateral,s_1102
+enlargement of the lymphoid tissue in the pharynx,s_1103
+mouth breathing,s_1104
+cyanosis under the eyes,s_1105
+dennie-morgan fold,s_1106
+opacified tympanic membrane,s_1107
+high-arched palate,s_1108
+discharge in tympanic cavity,s_1109
+overbite,s_1110
+adenoid face,s_1111
+pain in both lower limbs stocking distribution,s_1112
+terry's nails,s_1114
+loss of body hair,s_1115
+ascites,s_1116
+atrophy or diminishing of both testicles,s_1117
+bladder sphincter dysfunction,s_1119
+atonic bladder,s_1120
+anhidrosis,s_1123
+erythema palmar,s_1125
+suicidal thoughts,s_1139
+suicidal thoughts with plan and steps taken,s_1140
+russell's sign,s_1141
+myalgia,s_1142
+swelling of temporal artery,s_1144
+redness in temporal region,s_1145
+impaired vision on side with painful temple,s_1146
+oculomotor nerve palsy,s_1147
+numbness of tongue,s_1148
+hypersensitivity to sound,s_1150
+taste disorder in anterior two-thirds of tongue,s_1153
+difficulty completely closing one eye,s_1154
+weak eye clenching,s_1155
+facial muscle paresis,s_1156
+drooping lower eyelid,s_1158
+hypesthesia of half of the face,s_1159
+pretibial myxedema,s_1162
+exophthalmos,s_1163
+burning skin,s_1165
+enamel hypoplasia,s_1166
+nail dystrophy,s_1167
+calcification of the tympanic membrane,s_1168
+splenic agenesis,s_1169
+hemarthrosis,s_1170
+darier's sign,s_1171
+fever periodic,s_1172
+lump in scrotum,s_1173
+feeling of weight in scrotum,s_1175
+chest pain worsens on palpation,s_1178
+pain behind ear,s_1180
+redness behind the ear,s_1181
+swelling in the mastoid region,s_1182
+winterbottom's sign,s_1183
+coating on tongue,s_1184
+dyspnea with flare-ups and remissions,s_1185
+fever with flare-ups and remissions,s_1186
+back pain recurrent,s_1189
+back pain,s_1190
+dermatological changes with flare-ups and remissions,s_1191
+back pain severe,s_1192
+headache severe,s_1193
+facial pain severe,s_1194
+abdominal pain severe,s_1195
+chest pain severe,s_1197
+back pain sudden,s_1198
+chest pain sudden,s_1200
+joint pain sudden,s_1201
+abdominal pain exacerbating during deep breath,s_1202
+facial pain longer than a couple of hours,s_1203
+back pain lasting several hours,s_1205
+back pain improves with rest,s_1206
+abdominal pain exacerbating after caffeine consumption,s_1207
+skin pallor sudden,s_1209
+mucosal pallor,s_1210
+conjunctival pallor,s_1212
+mucosal pallor sudden,s_1213
+conjunctival pallor sudden,s_1214
+waist-hip ratio (whr) over 1.0 in men,s_1218
+waist-hip ratio (whr) over 0.85 in women,s_1219
+genu varum,s_1226
+impaired lateral eye motion,s_1227
+convergent strabismus,s_1228
+diplopia with horizontal image dispersion,s_1229
+head tilt in order to avoid diplopia,s_1230
+diplopia with vertical or oblique image dispersion,s_1231
+diplopia while looking down and medially,s_1232
+ocular bulb rotation medially and upward,s_1234
+diplopia while looking in any direction,s_1235
+divergent strabismus,s_1236
+ocular bulb rotation laterally and downward,s_1237
+pupil or pupils unreactive to accomodation,s_1238
+impaired upward eye motion,s_1239
+impaired medial eye motion,s_1240
+impaired downward eye motion,s_1241
+soft lump in inguinal region,s_1242
+soft lump in inguinal region enlarging during increase in abdominal pressure,s_1243
+soft lump in inguinal region decreasing while supine,s_1244
+soft lump in inguinal region reducible,s_1245
+hard lump in inguinal region,s_1246
+hard lump in inguinal region irreducible,s_1247
+hard lump in inguinal region dark or bluish discoloration,s_1248
+hard lump in inguinal region tender,s_1249
+pain in groin during coughing sneezing laughing or physical exercises,s_1250
+gordon's sign,s_1254
+rossolimo's sign,s_1255
+oppenheim's sign,s_1256
+bing's sign,s_1257
+chaddock's sign,s_1258
+schaeffer's sign,s_1259
+stransky's sign,s_1260
+mendel-bekhterev sign,s_1261
+tromner's sign,s_1262
+gonda-allen sign,s_1263
+tremors intention,s_1264
+dissociated sensory loss,s_1265
+corneal reflex weak or absent,s_1268
+aponeurotic reflex,s_1269
+sterling's sign,s_1270
+jacobsohn sign,s_1271
+allen-cleckley sign,s_1272
+cornell's sign,s_1273
+moniz sign,s_1274
+strumpell's sign,s_1275
+decreased tongue motility,s_1277
+increased palatine reflex,s_1278
+increased pharyngeal reflex,s_1279
+weak or absent pharyngeal reflex,s_1280
+clasp-knife spasticity,s_1281
+lead-pipe rigidity,s_1282
+cogwheel muscle rigidity,s_1283
+sagging of the palate ipsilateral to suspected nerve damage,s_1285
+uvula deviation towards unaffected side,s_1287
+ovarian enlargement,s_1289
+excessive uterine enlargement in comparison to assumed duration of pregnancy,s_1290
+bilateral muscle paralysis,s_1291
+abdominal mass after pregnancy or the removal of a molar pregnancy,s_1293
+hiccups,s_1295
+paralysis limb,s_1296
+motor retardation,s_1297
+dystonia,s_1298
+inability to move mandible sideways,s_1300
+red macules,s_1301
+goldflam's sign,s_1302
+nasal speech,s_1303
+excessive saliva production,s_1304
+numbness of part of ear,s_1305
+brown nail discoloration,s_1310
+edema finger,s_1311
+perionychial pain,s_1312
+pain in one finger,s_1313
+erythema finger,s_1314
+pus under the skin of the finger,s_1315
+auscultative rhonchi over the thorax,s_1316
+dyspnea paroxysmal nocturnal,s_1317
+vesicular exanthema of mouth or ear,s_1318
+axillary or inguinal freckles,s_1322
+presence of neurofibromas,s_1323
+lisch nodules,s_1324
+colour vision deficiency,s_1328
+optic nerve disc pallor,s_1329
+café au lait macules,s_1330
+weakness exacerbates after exercise,s_1332
+damage to 2 separate areas of innervation,s_1338
+westphal's sign,s_1340
+scrotal transillumination,s_1342
+retinal hemorrhage,s_1344
+confusion after trauma,s_1345
+hard retinal exudates,s_1346
+soft retinal exudates,s_1347
+weak peripheral pulses,s_1348
+headache forehead,s_1349
+vomiting more often in the morning,s_1365
+pharyngeal erythema,s_1367
+abdominal pain sharp and stabbing,s_1369
+amenorrhea secondary for at least 12 months,s_1370
+palatine petechiae,s_1371
+diarrhea rice water,s_1376
+rose spots on lower chest and abdomen,s_1377
+levine's sign,s_1378
+pill-rolling tremor,s_1379
+pericardial friction rub,s_1380
+sternal rub,s_1381
+pain caused by firm pressure on tibia,s_1382
+intense non-committal relationships,s_1383
+impulsive behavior,s_1384
+inability to complete tasks,s_1385
+bleeding into muscles,s_1386
+abdominal pain epigastric,s_1387
+neck asymmetry,s_1388
+pharyngeal swelling unilateral,s_1390
+abdominal tenderness right upper quadrant,s_1392
+painful defecation,s_1393
+loss of the lingual papillae,s_1394
+decreased intensity of breath sounds right basilar lung zones,s_1395
+pleural friction rub,s_1396
+priapism,s_1397
+vitreous hemorrhage,s_1398
+shafer's sign,s_1399
+abdominal tenderness suprapubic,s_1400
+weiss ring,s_1402
+marcus gunn pupil,s_1403
+lower intraocular pressure i.e. > 4-5mmhg in affected eye compared to unaffected eye,s_1404
+local elevation of retina,s_1405
+local grey discolouration of retina,s_1406
+local dark retinal blood vessels that lie in folds,s_1407
+local retinal undulation,s_1408
+demarcation of retinal detachment (pigmented or nonpigmented),s_1409
+optic disc neovascularization,s_1410
+iris neovascularization,s_1411
+retinal microaneurysms,s_1412
+cystoid macular edema,s_1413
+retinal swelling,s_1414
+retinal neovascularization elsewhere,s_1415
+intraretinal microvascular abnormalities,s_1416
+dark-red spots in optic disc vessels,s_1417
+retinal artery occlusions,s_1418
+abnormal foveal avascular zone,s_1419
+tremors flapping,s_1421
+nipple discharge,s_1422
+facial muscle spasms,s_1425
+spasms in upper extremities,s_1426
+nosebleeds,s_1429
+joint pain wrist,s_1430
+edema wrist joint,s_1431
+dyspepsia,s_1432
+edema lip,s_1433
+steatorrhea,s_1434
+facial pain paranasal sinus,s_1436
+pleural effusion,s_1437
+irregular menstruations,s_1440
+edema periorbital,s_1442
+edema upper limb,s_1447
+paresthesia one upper limb,s_1449
+kussmaul breathing,s_1451
+pain in both upper limbs,s_1452
+pain in both lower limbs,s_1453
+tremors kinetic,s_1454
+tremors resting,s_1455
+chorea,s_1456
+amenorrhea secondary,s_1457
+amenorrhea primary,s_1458
+shallow breathing,s_1462
+edema one hand,s_1464
+temporary blindness,s_1465
+tinnitus pulsatile,s_1466
+strawberry tongue,s_1467
+erythema facial,s_1468
+erythema and scaling on large portion of body,s_1469
+skin desquamation,s_1470
+postnasal drip,s_1471
+kayser–fleischer ring,s_1472
+skull lesions,s_1474
+myringitis,s_1476
+dizziness head rotation,s_1479
+breast pain or tenderness bilateral,s_1480
+hyperalgesia,s_1481
+neck pain,s_1483
+decreased hearing progressive hearing loss,s_1484
+paraspinal muscle tenderness,s_1486
+increased expiratory phase,s_1488
+scleral icterus,s_1492
+rebound tenderness,s_1494
+sinuses tender to palpation,s_1496
+erythematous tonsils,s_1498
+achilles tendon hyperreflexia,s_1502
+chest pain substernal,s_1509
+abdominal tenderness,s_1514
+abdominal pain right upper quadrant,s_1528
+abdominal pain right lower quadrant,s_1531
+abdominal pain periumbilical,s_1532
+rhinitis triggered by environment,s_1533
+tonsil stones,s_1534
+headache chronic,s_1535
+spine asymmetry,s_1536
+decreased hearing sudden hearing loss,s_1538
+loss of consciousness,s_1543
+scarlet fever rash,s_1544
+cheyne-stokes respiration,s_1546
+fatigue more than six months,s_1547
+pseudomembrane in throat or nose,s_1548
+inability to pass flatus,s_1551
+bowel sounds hyperactive high-pitched,s_1552
+bowel sounds decreased,s_1553
+dance's sign,s_1555
+abdominal pain diffuse,s_1557
+abdominal guarding,s_1558
+xanthoma,s_1561
+stridor,s_1562
+itching of eyes,s_1563
+feeling of rectal fullness,s_1565
+vaginal discharge white and clumpy,s_1569
+gastric symptoms after eating or drinking foods containing lactose,s_1570
+dermatological changes painful,s_1571
+difficulty achieving orgasm,s_1574
+carotid bruit,s_1576
+discharge from ear bloody,s_1577
+chest pain worsens on palpation of costochondral joints,s_1580
+edema costochondral junctions,s_1581
+unilateral vulval swelling,s_1586
+feeling detached from your body,s_1587
+abdominal tenderness left upper quadrant,s_1589
+abdominal pain left upper quadrant,s_1591
+abdominal pain pelvic,s_1598
+chest pain stabbing,s_1601
+dermatological changes located in genital area chancre,s_1602
+delayed speech or language development,s_1603
+nose pain,s_1605
+joint pain during knee movement,s_1610
+dandruff,s_1616
+pruritus scalp,s_1617
+lower limb tenderness,s_1618
+pain in lower limb calf,s_1620
+joint pain ankle,s_1621
+lower limb tenderness calf,s_1622
+joint pain during ankle movement,s_1623
+dyspnea lasting more than 4 weeks,s_1625
+joint pain elbow,s_1632
+joint pain during elbow movement,s_1634
+edema elbow joint,s_1635
+joint pain during wrist movement,s_1636
+joint pain thumb,s_1639
+joint pain during thumb movement,s_1641
+foot pain back of the foot during single-leg heel raise,s_1645
+annular skin lesions,s_1647
+skin thickening,s_1650
+edema hip joint,s_1652
+joint pain shoulder,s_1654
+edema shoulder joint,s_1655
+joint pain tenderness,s_1656
+broken hair,s_1671
+white oral plaques,s_1673
+skin pain,s_1674
+corn or callus,s_1676
+dermatological changes hyperpigmentation of the skin,s_1680
+rhinophyma,s_1682
+burning skin face,s_1684
+telangiectasias face,s_1685
+kernig's sign,s_1689
+brudzinski's sign,s_1690
+dermatological changes exacerbated by alcohol consumption,s_1692
+decreased intensity of breath sounds,s_1693
+interpersonal relationship difficulties,s_1695
+echolalia,s_1696
+restricted interests,s_1697
+lack of eye contact,s_1698
+restricted range of joint motion,s_1713
+pathologic fractures,s_1715
+janeway lesion,s_1718
+osler nodes,s_1719
+cardiac murmurs,s_1720
+nystagmus horizontal,s_1721
+lower limb pallor,s_1725
+abdominal pain left lower quadrant,s_1729
+dix-hallpike maneuver rotatory nystagmus,s_1731
+rovsing's sign,s_1732
+lymph node pain,s_1733
+romberg's sign,s_1738
+knee instability,s_1745
+dermatological changes aggravated by stress,s_1761
+headache exacerbated by increased stress,s_1762
+chest pain exacerbated by stress,s_1763
+tremors stress-related,s_1765
+myalgia exacerbated by stress,s_1766
+gastrointestinal complaints stress-related,s_1767
+mental disturbances exacerbated by stress,s_1768
+back pain thoracic,s_1772
+dysphagia oropharyngeal,s_1776
+dysphagia esophageal,s_1779
+headache mild,s_1780
+headache moderate,s_1781
+abdominal pain mild,s_1782
+abdominal pain moderate,s_1783
+white nail discoloration,s_1788
+yellow nail discoloration,s_1789
+thickened nails,s_1790
+erythema scalp,s_1791
+visible head lice on scalp,s_1792
+lice eggs or nits on hair shafts,s_1793
+white patch on cornea,s_1796
+difference in size of testicles,s_1798
+forearm pain,s_1799
+past appendectomy,s_1800
+past cholecystectomy,s_1801
+abdominal pain burning or gnawing,s_1802
+bulla,s_1803
+dermatological changes vesicle,s_1804
+joint pain during shoulder movement,s_1805
+blisters,s_1807
+dermatological changes located on the face,s_1808
+dermatological changes located in the genital area,s_1810
+vaginal dryness,s_1811
+nasal congestion chronic,s_1812
+impaired vision recent onset,s_1818
+impaired vision in one eye,s_1819
+fever temperature not measured,s_1820
+joint pain during hip movement,s_1823
+pharyngeal pain unilateral,s_1826
+vulvovaginal pain,s_1829
+skin mass greater than 1 cm in diameter,s_1830
+skin mass,s_1831
+toe pain,s_1833
+body aches,s_1835
+abdominal pain lasting less than two days,s_1840
+abdominal pain lasting more than two weeks,s_1842
+abdominal pain sudden onset,s_1843
+abdominal pain gradual onset,s_1844
+abdominal pain radiating to left shoulder or shoulder blade,s_1845
+abdominal pain radiating to lower or middle part of the back,s_1846
+abdominal pain recurrent,s_1847
+abdominal pain colicky,s_1848
+diarrhea lasting more than 14 days,s_1850
+abdominal pain migrating to the right lower quadrant,s_1851
+abdominal pain lasting 2 to 7 days,s_1852
+abdominal pain lasting 8 to 14 days,s_1853
+abdominal pain left side,s_1854
+abdominal pain right side,s_1855
+abdominal tenderness right lower quadrant,s_1856
+cough lasting three to eight weeks,s_1858
+abdominal pain midcycle,s_1859
+abdominal pain crampy,s_1860
+headache worst headache in life,s_1864
+headache chronic attack lasting five minutes to four hours,s_1868
+headache chronic attack lasting 4 to 72 hours,s_1870
+vulvovaginal burning,s_1875
+hypomenorrhea,s_1876
+oligomenorrhea,s_1877
+pain in the back of the leg above the heel,s_1878
+hypersensitivity to smells,s_1891
+pain in lower limb thigh,s_1893
+tingling fingers first three digits,s_1899
+tingling fingers fourth and fifth digits,s_1900
+headache chronic attack lasting three to seven days,s_1901
+restricted passive range of joint motion,s_1903
+headache sudden onset,s_1905
+headache chronic attack lasting up to five minutes,s_1907
+foot drop,s_1909
+wrist drop,s_1910
+headache temporal region,s_1911
+headache recent,s_1912
+purpuric rash palpable,s_1915
+buttocks pain,s_1918
+dermatological changes exacerbated by sunlight exposure,s_1921
+heel drop test,s_1922
+dermatological changes feet,s_1923
+cough paroxysmal,s_1924
+chest pain pressure,s_1925
+cold and clammy skin,s_1926
+limping due to pain,s_1927
+abdominal pain unbearable,s_1929
+pain in lower limb severe,s_1930
+skin mass bleeding,s_1931
+paresthesia sudden onset,s_1932
+hypertension over 180 mmhg,s_1933
+complete vision loss recent,s_1934
+pain in upper limb severe,s_1935
+worms in stool,s_1937
+sunburn,s_1943
+vomiting every time after meal,s_1949
+chest pain recurrent,s_1952
+erythema around eyes,s_1955
+destructive thoughts towards other people or things,s_1957
+dysphonia over 2 weeks,s_1958
+bruise after trauma,s_1960
+jaw pain,s_1961
+active wound bleeding,s_1973
+diarrhea more than 6 stools a day,s_1979
+wound,s_1980
+wound infection,s_1981
+dermatological changes hands,s_1982
+eyelid lesion itching,s_1983
+cough nocturnal,s_1985
+electrical burn,s_1989
+dermatological changes scattered,s_1992
+discharge from ear purulent,s_1994
+edema feet,s_1995
+edema nose,s_1996
+edema toe,s_1997
+erythema vulva,s_1999
+fever greater than 40,s_2000
+paresthesia one lower limb,s_2001
+palpitations over 5 minutes,s_2002
+erythema toe,s_2003
+palpitations recurrent,s_2004
+nail pain,s_2005
+chest pain exacerbating when lying down,s_2006
+regular uterine contractions,s_2008
+fetal membranes rupture,s_2010
+nosebleed single episode,s_2016
+nosebleeds recurrent,s_2017
+chest pain lasting less than 30 minutes,s_2018
+chest pain lasting between 30 minutes and 8 hours,s_2019
+chest pain lasting over 8 hours,s_2022
+dizziness recurrent,s_2023
+gambling pathological,s_2024
+lying to hide the extent of your gambling,s_2029
+gambling,s_2032
+pruritus foot,s_2033
+consciousness disturbances,s_2034
+third-degree burn,s_2039
+burn involving face hands feet genitalia or major joints,s_2040
+halos around lights,s_2041
+penile itching,s_2043
+seizures,s_2045
+bedwetting,s_2048
+chest pain exacerbated by chest wall movement,s_2051
+male infertility,s_2052
+vomiting bilious,s_2055
+vomiting less than 7 days,s_2056
+vomiting 7 days or more,s_2057
+dermatological changes scalp,s_2059
+dermatological changes trunk,s_2060
+upper limb pallor,s_2068
+bone pain lasting less than a week,s_2070
+bone pain lasting longer than a week,s_2071
+consciousness disturbances acute,s_2072
+consciousness disturbances chronic,s_2073
+chest pain radiating to left upper limb,s_2074
+dyspnea acute after trauma,s_2075
+respiratory distress after trauma,s_2076
+major bleeding,s_2077
+minor uncontrollable bleeding,s_2078
+recent injury without bleeding,s_2079
+neurological deficit since less than 24 hours,s_2080
+severe pain after trauma,s_2081
+vascular compromise,s_2082
+neurological deficit since more than 24 hours,s_2083
+periorbital ecchymosis,s_2084
+back pain worsens on palpation,s_2085
+inability to bear weight after trauma,s_2086
+joint deformation post-traumatic,s_2087
+physical injury symptom,s_2088
+serious injury respiratory difficulty severe bleeding new neurological problem,s_2089
+pain in both hands,s_2091
+pain in both feet,s_2092
+edema both hands,s_2093
+dry eyes,s_2094
+chest pain burning,s_2096
+delusions,s_2098
+fatigue,s_2100
+edema foot,s_2103
+cognitive disturbances,s_2108
+coma,s_2109
+dermatological changes female genital area,s_2110
+dermatological changes male genital area,s_2111
+pleuritic chest pain after trauma,s_2112
+vaginal bleeding in pregnancy,s_2115
+vaginal bleeding in pregnancy light,s_2116
+vaginal bleeding in pregnancy heavy,s_2117
+dizziness unbearable,s_2118
+painless wound,s_2119
+acid reflux,s_2121
+fetal membranes rupture purulent or malodorous amniotic fluid,s_2125
+diarrhea lasting less than 48 hours,s_2126
+vaginal bleeding negative or unknown pregnancy status,s_2130
+chest retractions,s_2134
+eye discharge,s_2141
+weight faltering,s_2142
+learning disability,s_2152
+nasal catarrh mucoid,s_2153
+nasal catarrh purulent,s_2154
+constipation chronic,s_2162
+twisted neck,s_2163
+consumption of expired food or drink,s_2164
+wheezing acute,s_2166
+normal body temperature,s_2168
+normal heart rate,s_2169
+anicteric presentation,s_2170
+normal lung sounds on auscultation,s_2171
+no signs of upper respiratory infection,s_2172
+neck pain during head movement,s_2173
+normal vital signs,s_2174
+possible rabies exposure,s_2175
+dyspnea lasting 1 to 24 hours,s_2176
+bone deformation non-traumatic,s_2180
+bone deformation post-traumatic,s_2181
+flank pain,s_2182
+vaginal bleeding in pregnancy painless,s_2183
+female genital burn,s_2186
+male genital burn,s_2187
+headache recent lasting less than 1 hour,s_2189
+headache recent lasting for more than 1 hour and less than 1 day,s_2190
+headache recent lasting more than 1 day,s_2191
+diarrhea lasting 2 to 14 days,s_2194
+cold feet and toes unilateral,s_2196
+diplopia lasting up to 24 hours,s_2200
+diplopia lasting more than 24 hours,s_2201
+dyspnea after a few minutes of walking,s_2203
+dyspnea on exertion,s_2204
+dyspnea at rest,s_2205
+paraphimosis,s_2206
+edema penis,s_2207
+ulcer not healing within 6 weeks,s_2208
+recurrent seizures,s_2209
+urticaria lasting more than six weeks,s_2211
+purulent vaginal discharge,s_2212
+self-injurious thoughts or behaviours,s_2213
+chemical burn,s_2214
+wound lip,s_2222
+nasal congestion worsening after brief improvement,s_2226
+self-injurious behaviour recent,s_2228
+self-injurious behaviour recent minor,s_2229
+self-injurious behaviour recent major,s_2230
+dyspnea unknown severity,s_2231
+breast asymmetry in size or shape,s_2234
+umbilical discharge,s_2241
+eye pain unbearable,s_2242
+genital injury in male,s_2245
+genital injury in female,s_2246
+enlarged front of the neck,s_2247
+enlarged cervical lymph nodes,s_2248
+unknown heart rate,s_2251
+abdominal tenderness left lower quadrant,s_2252
+flat foot,s_2253
+direct care to covid-19 case,s_2254
+close contact with covid-19 case,s_2256
+other type of contact with covid-19 case,s_2257
+no contact with covid-19 case,s_2258
+calf hypertrophy,s_2261
+gowers' sign,s_2262
+dermatological changes upper extremities excluding hands,s_2266
+dermatological changes lower extremities excluding feet,s_2267
+cough alternating productivity,s_2268
+gastric symptoms after eating foods containing gluten,s_2271
+blood pressure normal or prehypertension,s_2272
+blood pressure not measured,s_2273
+abdominal pain localised,s_2275
+bleeding from anus light,s_2276
+bleeding from anus heavy,s_2277
+ataxia acute,s_2278
+ataxia subacute,s_2279
+ataxia chronic,s_2280
+abdominal pain unspecified location,s_2281
+pale skin only fingers,s_2282
+bruxism,s_2283
+back pain nocturnal,s_2284
+skin mass natal cleft,s_2285
+abdominal pain unknown character,s_2288
+excessive fear of separation,s_2289
+speech and language impairment rapid onset,s_2290
+subungual splinter hemorrhages,s_2291
+enlarged axillary lymph nodes,s_2292
+choking,s_2296
+joint pain mechanical,s_2298
+joint pain inflammatory,s_2299
+swallowed foreign body,s_2300
+edema unspecified location,s_2301
+loss of consciousness transient,s_2302
+loss of consciousness persistent,s_2303
+paresthesia upper limbs,s_2304
+tremors unspecified location,s_2305
+paresthesia lower limbs,s_2306
+nasal congestion acute,s_2307
+nasal congestion subacute,s_2308
+lump in popliteal region,s_2309
+abdominal pain no exacerbation factor,s_2311
+back pain lumbar unknown radiating direction,s_2314
+paresthesia one foot,s_2315
+diarrhea unknown character,s_2316

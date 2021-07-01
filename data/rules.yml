@@ -1,284 +1,280 @@
 version: "2.0"
 
 rules:
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- rule: Activate cough form (coughing)
-  steps:
-  - intent: coughing
-  - action: action_set_symptom
-  - action: cough_form
-  - active_loop: cough_form
+  - rule: Activate abdominal form (abdominal pain)
+    steps:
+      - intent: abdominal_pain
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
 
-- rule: Activate cough form (dry cough)
-  steps:
-  - intent: dry_cough
-  - action: action_set_symptom
-  - action: cough_form
-  - active_loop: cough_form
+  - rule: Activate abdominal form (bloating)
+    steps:
+      - intent: bloating
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
 
-- rule: Activate cough form (cough_with_phlegm)
-  steps:
-  - intent: cough_with_phlegm
-  - action: action_set_symptom
-  - action: cough_form
-  - active_loop: cough_form
+  - rule: Activate abdominal form (diarrhea)
+    steps:
+      - intent: diarrhea
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
+  
+  - rule: Activate abdominal form (vomiting)
+    steps:
+      - intent: vomiting
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
 
-- rule: Activate cough form (coughing_up_blood)
-  steps:
-  - intent: coughing_up_blood
-  - action: action_set_symptom
-  - action: cough_form
-  - active_loop: cough_form
+  - rule: Activate abdominal form (constipation)
+    steps:
+      - intent: constipation
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
 
-- rule: Activate fever form
-  steps:
-  - intent: fever
-  - action: action_set_symptom
-  - action: fever_form
-  - active_loop: fever_form
+  - rule: Activate abdominal form (flank_pain)
+    steps:
+      - intent: flank_pain
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
 
-- rule: Activate stuffy nose form
-  steps:
-  - intent: stuffy_nose
-  - action: action_set_symptom
-  - action: nose_form
-  - active_loop: nose_form
+  - rule: Activate urti form (coughing)
+    steps:
+      - intent: cough
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
 
-- rule: Activate runny nose form
-  steps:
-  - intent: runny_nose
-  - action: action_set_symptom
-  - action: nose_form
-  - active_loop: nose_form
+  - rule: Activate urti form (fever)
+    steps:
+      - intent: fever
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
 
-- rule: Activate headache form
-  steps:
-  - intent: headache
-  - action: action_set_symptom
-  - action: headache_form
-  - active_loop: headache_form
+  - rule: Activate urti form (nasal_catarrh)
+    steps:
+      - intent: nasal_catarrh
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
 
-- rule: Activate eye form
-  steps:
-  - intent: inform_eye_symptom
-  - action: eye_form
-  - active_loop: eye_form
+  - rule: Activate urti form (nasal_congestion)
+    steps:
+      - intent: nasal_catarrh
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+
+  - rule: Activate urti form (facial_pain)
+    steps:
+      - intent: facial_pain
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+
+  - rule: Activate urti form (pharyngeal_pain)
+    steps:
+      - intent: pharyngeal_pain
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+
+  - rule: Activate urti form (dyspnea)
+    steps:
+      - intent: dyspnea
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+
+  - rule: Activate urti form (chest_pain)
+    steps:
+      - intent: chest_pain
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+
+  - rule: Activate urti form (headache)
+    steps:
+      - intent: headache
+      - action: action_set_symptom
+      - action: headache_form
+      - active_loop: urti_form
+
+  - rule: Activate skin form (dermatological_changes)
+    steps:
+      - intent: dermatological_changes
+      - action: action_set_symptom
+      - action: skin_form
+      - active_loop: skin_form
+  
+  - rule: Activate joint pain form (joint_pain)
+    steps:
+      - intent: joint_pain
+      - action: action_set_symptom
+      - action: joint_form
+      - active_loop: joint_form
+  
+  - rule: Activate ear form (earache)
+    steps:
+      - intent: earache
+      - action: action_set_symptom
+      - action: ear_form
+      - active_loop: ear_form
+
+  - rule: Activate ear form (clogged_ear)
+    steps:
+      - intent: clogged_ear
+      - action: action_set_symptom
+      - action: ear_form
+      - active_loop: ear_form
  
-- rule: Activate eye form (eye_redness)
-  steps:
-  - intent: eye_redness
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
+  - rule: Activate ear form (decreased_hearing)
+    steps:
+      - intent: decreased_hearing
+      - action: action_set_symptom
+      - action: ear_form
+      - active_loop: ear_form
 
-- rule: Activate eye form (eye_pain)
-  steps:
-  - intent: eye_pain
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
+  - rule: Activate ear form (numbness_of_part_of_ear)
+    steps:
+      - intent: numbness_of_part_of_ear
+      - action: action_set_symptom
+      - action: ear_form
+      - active_loop: ear_form
 
-- rule: Activate eye form (eye_injury)
-  steps:
-  - intent: eye_injury
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
+  - rule: Activate ear form (ear_canal_swelling)
+    steps:
+      - intent: numbness_of_part_of_ear
+      - action: action_set_symptom
+      - action: ear_form
+      - active_loop: ear_form
 
-- rule: Activate eye form (eye_discharge)
-  steps:
-  - intent: eye_discharge
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
+  - rule: Activate back pain form (back_pain)
+    steps:
+      - intent: back_pain
+      - action: action_set_symptom
+      - action: back_pain_form
+      - active_loop: back_pain_form
+
+  - rule: Activate breast form (pain_in_breast)
+    steps:
+      - intent: pain_in_breast
+      - action: action_set_symptom
+      - action: breast_pain_form
+      - active_loop: breast_pain_form
+
+  - rule: Activate eye form (eye_pain)
+    steps:
+      - intent: eye_pain
+      - action: action_set_symptom
+      - action: eye_form
+      - active_loop: eye_form
   
-- rule: Activate eye form (blurred_vision)
-  steps:
-  - intent: blurred_vision
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
-
-- rule: Activate eye form (double_vision)
-  steps:
-  - intent: double_vision
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
-
-- rule: Activate eye form (sensitivity_to_light)
-  steps:
-  - intent: sensitivity_to_light
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
-
-- rule: Activate eye form (photopsia)
-  steps:
-  - intent: photopsia
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
-
-- rule: Activate eye form (vision_loss)
-  steps:
-  - intent: vision_loss
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
-
-- rule: Activate eye form (floaters)
-  steps:
-  - intent: floaters
-  - action: action_set_symptom
-  - action: eye_form
-  - active_loop: eye_form
-
-- rule: Activate abdominal form (abdominal pain)
-  steps:
-  - intent: abdominal_pain
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (abdominal_tenderness)
-  steps:
-  - intent: abdominal_tenderness
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (abdominal_distension)
-  steps:
-  - intent: abdominal_distension
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (stomach_cramps)
-  steps:
-  - intent: stomach_cramps
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (diarrhea)
-  steps:
-  - intent: diarrhea
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (constipation)
-  steps:
-  - intent: constipation
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (flank_pain)
-  steps:
-  - intent: flank_pain
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (blood_in_stool)
-  steps:
-  - intent: blood_in_stool
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (dark_urine)
-  steps:
-  - intent: dark_urine
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (blood_in_urine)
-  steps:
-  - intent: blood_in_urine
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (pain_during_urination)
-  steps:
-  - intent: pain_during_urination
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (nausea)
-  steps:
-  - intent: nausea
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Activate abdominal form (vomiting)
-  steps:
-  - intent: vomiting
-  - action: action_set_symptom
-  - action: abdominal_pain_form
-  - active_loop: abdominal_pain_form
-
-- rule: Submit nose form
-  condition:
-  - active_loop: nose_form
-  steps:
-  - action: nose_form
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
+  - rule: Activate eye form (red_eye)
+    steps:
+      - intent: red_eye
+      - action: action_set_symptom
+      - action: eye_form
+      - active_loop: eye_form
   
-- rule: Submit fever form
-  condition:
-  - active_loop: fever_form
-  steps:
-  - action: fever_form
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
+  - rule: Activate eye form (itching_of_eyes)
+    steps:
+      - intent: itching_of_eyes
+      - action: action_set_symptom
+      - action: eye_form
+      - active_loop: eye_form
 
-- rule: Submit headache form
-  condition:
-  - active_loop: headache_form
-  steps:
-  - action: headache_form
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
+  - rule: Activate eye form (impaired_vision)
+    steps:
+      - intent: impaired_vision
+      - action: action_set_symptom
+      - action: eye_form
+      - active_loop: eye_form
 
-- rule: Submit cough form
-  condition:
-  - active_loop: cough_form
-  steps:
-  - action: cough_form
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
+  - rule: Activate eye form (diplopia)
+    steps:
+      - intent: diplopia
+      - action: action_set_symptom
+      - action: eye_form
+      - active_loop: eye_form
 
-- rule: Submit eye form
-  condition:
-  - active_loop: eye_form
-  steps:
-  - action: eye_form
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
+  - rule: Submit urti form
+    condition:
+      - active_loop: urti_form
+    steps:
+      - action: urti_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
 
-- rule: Submit abdominal pain form
-  condition:
-  - active_loop: abdominal_pain_form
-  steps:
-  - action: abdominal_pain_form
-  - active_loop: null
-  - action: utter_additional_symptom_prompt
+  - rule: Submit abdominal_pain form
+    condition:
+      - active_loop: abdominal_pain_form
+    steps:
+      - action: abdominal_pain_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
 
-- rule: Generate report when patient reports no additonal symptoms
-  steps:
-  - action: utter_additional_symptom_prompt
-  - intent: deny
-  - action: action_create_report
+  - rule: Submit headache form
+    condition:
+      - active_loop: headache_form
+    steps:
+      - action: headache_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
+
+  - rule: Submit skin form
+    condition:
+      - active_loop: skin_form
+    steps:
+      - action: skin_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
+
+  - rule: Submit ear form
+    condition:
+      - active_loop: ear_form
+    steps:
+      - action: ear_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
+
+  - rule: Submit joint form
+    condition:
+      - active_loop: joint_form
+    steps:
+      - action: joint_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
+
+  - rule: Submit breast_pain form
+    condition:
+      - active_loop: breast_pain_form
+    steps:
+      - action: breast_pain_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
+
+  - rule: Submit eye form
+    condition:
+      - active_loop: eye_form
+    steps:
+      - action: eye_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
+
+  - rule: Generate report when patient reports no additonal symptoms
+    steps:
+      - action: utter_additional_symptom_prompt
+      - intent: deny
+      - action: action_create_report
