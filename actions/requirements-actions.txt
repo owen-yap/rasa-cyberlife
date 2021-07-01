@@ -1,4 +1,4 @@
 numpy==1.19.2
 pandas==1.2.3
 infermedica-api==1.0.0
-rasa_sdk==2.5.0
+rasa_sdk==2.7.0
