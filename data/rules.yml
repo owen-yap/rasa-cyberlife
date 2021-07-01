@@ -241,6 +241,14 @@ rules:
       - active_loop: null
       - action: utter_additional_symptom_prompt
 
+  - rule: Submit back form
+    condition:
+      - active_loop: back_pain_form
+    steps:
+      - action: back_pain_form
+      - active_loop: null
+      - action: utter_additional_symptom_prompt
+
   - rule: Submit ear form
     condition:
       - active_loop: ear_form

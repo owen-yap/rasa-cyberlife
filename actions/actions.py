@@ -240,6 +240,35 @@ class ValidateAbdominalPainForm(FormValidationAction):
             dispatcher.utter_message(text = "Please select one of the following options")
             return {"abdominal_pain_exacerbation": None}
 
+    def validate_temperature(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+
+        def check_float(potential_float):
+            try:
+                float(potential_float)
+                return True
+            except ValueError:
+                return False
+        
+        if slot_value.isnumeric() or check_float(slot_value):
+            temp = float(slot_value)
+            if temp <= 38 and temp >=37:
+                return {"temperature": slot_value, "fever_between_37_and_38": True}
+            elif temp > 38 and temp <= 40:
+                return {"temperature": slot_value, "fever_between_38_and_40": True}
+            elif temp > 40:
+                return {"temperature": slot_value, "fever_greater_than_40": True}
+            else:
+                return {"temperature": slot_value}
+        else:   
+            dispatcher.utter_message(text = "Please enter in a number")
+            return {"temperature": None}
+
     def validate_diarrhea_duration(
         self,
         slot_value: Any,
@@ -316,36 +345,65 @@ class ValidateUrtiForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+            "fever",
+            "temperature",
+            "cough",
+            "cough_duration",
+            "cough_productive",
+            "hemoptysis",
+            "cough_productive_color",
+            "cough_nocturnal",
+            "cough_paroxysmal",
+            "nasal_catarrh",
+            "nasal_congestion",
+            "nasal_congestion_chronic",
+            "facial_pain",
+            "facial_pain_paranasal_sinus",
+            "facial_pain_longer_than_a_couple_of_hours",
+            "pharyngeal_pain",
+            "dyspnea",
+            "dyspnea_severity",
+            "dyspnea_duration",
+            "dyspnea_orthopnea",
+            "chest_pain",
+            "chest_pain_type",
+            "chest_pain_duration",
+            "chest_pain_exacerbated_by_stress",
+            "chest_pain_during_exertion",
+            "chest_pain_exacerbating_with_deep_breath_or_cough",
+            "chest_pain_exacerbating_when_lying_down",
+            "chest_pain_radiating"
+        ]
         if tracker.slots.get("fever") == False:
-            all_slots.remove("temperature")
+            slot_order.remove("temperature")
         if tracker.slots.get("cough") == False:
-            all_slots.remove("cough_duration")
-            all_slots.remove("cough_productive")
-            all_slots.remove("hemoptysis")
-            all_slots.remove("cough_productive_color")
-            all_slots.remove("cough_nocturnal")
-            all_slots.remove("cough_paroxysmal")
+            slot_order.remove("cough_duration")
+            slot_order.remove("cough_productive")
+            slot_order.remove("hemoptysis")
+            slot_order.remove("cough_productive_color")
+            slot_order.remove("cough_nocturnal")
+            slot_order.remove("cough_paroxysmal")
         if tracker.slots.get("cough_productive") == False:
-            all_slots.remove("cough_productive_color")
+            slot_order.remove("cough_productive_color")
         if tracker.slots.get("nasal_congestion") == False:
-            all_slots.remove("nasal_congestion_chronic")
+            slot_order.remove("nasal_congestion_chronic")
         if tracker.slots.get("facial_pain") == False:
-            all_slots.remove("facial_pain_paranasal_sinus")
-            all_slots.remove("facial_pain_longer_than_a_couple_of_hours")
+            slot_order.remove("facial_pain_paranasal_sinus")
+            slot_order.remove("facial_pain_longer_than_a_couple_of_hours")
         if tracker.slots.get("dyspnea") == False:
-            all_slots.remove("dyspnea_severity")
-            all_slots.remove("dyspnea_duration")
-            all_slots.remove("dyspnea_orthopnea")
+            slot_order.remove("dyspnea_severity")
+            slot_order.remove("dyspnea_duration")
+            slot_order.remove("dyspnea_orthopnea")
         if tracker.slots.get("chest_pain") == False:
-            all_slots.remove("chest_pain_type")
-            all_slots.remove("chest_pain_duration")
-            all_slots.remove("chest_pain_exacerbated_by_stress")
-            all_slots.remove("chest_pain_during_exertion")
-            all_slots.remove("chest_pain_exacerbating_with_deep_breath_or_cough")
-            all_slots.remove("chest_pain_exacerbating_when_lying_down")
-            all_slots.remove("chest_pain_radiating")
-        return all_slots
+            slot_order.remove("chest_pain_type")
+            slot_order.remove("chest_pain_duration")
+            slot_order.remove("chest_pain_exacerbated_by_stress")
+            slot_order.remove("chest_pain_during_exertion")
+            slot_order.remove("chest_pain_exacerbating_with_deep_breath_or_cough")
+            slot_order.remove("chest_pain_exacerbating_when_lying_down")
+            slot_order.remove("chest_pain_radiating")
+        return slot_order
         
     def validate_temperature(
         self,
@@ -542,10 +600,24 @@ class ValidateBackPainForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+            "back_pain",
+            "back_pain_location",
+            "back_pain_exacerbated_by_physical_exertion",
+            "back_pain_scale",
+            "back_pain_lumbar_radiates_to_back_of_the_thigh",
+            "back_pain_lumbar_radiating_to_the_groin",
+            "flank_pain",
+            "back_pain_sudden",
+            "back_pain_lasting_several_hours",
+            "back_pain_improves_with_rest",
+            "back_pain_recurrent"
+        ]
         if tracker.slots.get("back_pain_lumbar") == False:
-            all_slots.remove("back_pain_lumbar_radiates_to_back_of_the_thigh")
-            all_slots.remove("back_pain_lumbar_radiating_to_the_groin")
+            slot_order.remove("back_pain_lumbar_radiates_to_back_of_the_thigh")
+            slot_order.remove("back_pain_lumbar_radiating_to_the_groin")
+
+        return slot_order
 
     def validate_back_pain_location(
         self,
@@ -815,9 +887,6 @@ class ValidateHeadacheForm(FormValidationAction):
         elif slot_value == "Coffee/Tea consumption":
             return{"tremors_worsen":slot_value,"tremors_worsen_after_caffeine_intake":True }
 
-
-
-
 class ValidateSkinForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_skin_form"
@@ -828,44 +897,76 @@ class ValidateSkinForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+            "dermatological_changes",
+            "erythema",
+            "pruritus",
+            "dermatological_flare_ups_reason",
+            "dermatological_changes_entire_skin",
+            "dermatological_changes_upper_lower_extremities",
+            "dermatological_changes_location",
+            "pigmentation",
+            "dermatological_changes_painful",
+            "skin_pain_severe",
+            "dermatological_changes_localization_near_sebaceous_glands",
+            "dermatological_changes_located_in_genital_area_chancre",
+            "erythema_foreskin_or_head_of_the_penis",
+            "erythema_vulva",
+            "dermatological_changes_preceded_by_pain_or_itching",
+            "dermatological_changes_recurring_during_infections_or_menstrual_period",
+            "dermatological_changes_rough_and_irregular_surface",
+            "dermatological_changes_scabs",
+            "erythema_and_scaling_on_large_portion_of_body",
+            "erythema_facial_butterfly_shaped",
+            "erythema_limb_hot_to_the_touch",
+            "pruritus_aggravated_by_change_in_temperature_sweating_or_wearing_wool",
+            "pruritus_most_intense_at_night",
+            "leopard_like_spots_on_the_skin",
+            "skin_and_blood_vessel_inflammation",
+            "skin_desquamation",
+            "skin_mass",
+            "skin_mass_greater_than_1_cm_in_diameter",
+            "skin_mass_bleeding",
+            "skin_mole_or_birthmark_with_irregular_border",
+            "skin_thickening"
+        ]
 
         if tracker.slots.get("dermatological_changes_entire_skin") == True:
-            all_slots.remove("dermatological_changes_upper_lower_extremities")
-            all_slots.remove("dermatological_changes_location")
+            slot_order.remove("dermatological_changes_upper_lower_extremities")
+            slot_order.remove("dermatological_changes_location")
 
         if tracker.slots.get("dermatological_changes_scalp") != True:
-            all_slots.remove("dermatological_changes_localization_near_sebaceous_glands")
+            slot_order.remove("dermatological_changes_localization_near_sebaceous_glands")
 
         if tracker.slots.get("dermatological_changes_located_in_the_genital_area") != True:
-            all_slots.remove("erythema_foreskin_or_head_of_the_penis")
-            all_slots.remove("dermatological_changes_located_in_genital_area_chancre")
-            all_slots.remove("erythema_vulva")
+            slot_order.remove("erythema_foreskin_or_head_of_the_penis")
+            slot_order.remove("dermatological_changes_located_in_genital_area_chancre")
+            slot_order.remove("erythema_vulva")
         if tracker.slots.get("dermatological_changes_located_in_the_genital_area") == True and tracker.slots.get("gender") == "male":
-            all_slots.remove("erythema_vulva")
+            slot_order.remove("erythema_vulva")
         if tracker.slots.get("dermatological_changes_located_in_the_genital_area") == True and tracker.slots.get("gender") == "female":
-            all_slots.remove("erythema_foreskin_or_head_of_the_penis")
+            slot_order.remove("erythema_foreskin_or_head_of_the_penis")
         if tracker.slots.get("gender") == "male":
-            all_slots.remove("dermatological_changes_recurring_during_infections_or_menstrual_period")
+            slot_order.remove("dermatological_changes_recurring_during_infections_or_menstrual_period")
         if tracker.slots.get("dermatological_changes_located_on_the_face") != True:
-            all_slots.remove("erythema_facial_butterfly_shaped")
+            slot_order.remove("erythema_facial_butterfly_shaped")
         if tracker.slots.get("dermatological_changes_located_on_the_limb") != True:
-            all_slots.remove("erythema_limb_hot_to_the_touch")
+            slot_order.remove("erythema_limb_hot_to_the_touch")
 
         if tracker.slots.get("pruritus") == False:
-            all_slots.remove("pruritus_aggravated_by_change_in_temperature_sweating_or_wearing_wool") 
-            all_slots.remove("pruritus_most_intense_at_night")
+            slot_order.remove("pruritus_aggravated_by_change_in_temperature_sweating_or_wearing_wool") 
+            slot_order.remove("pruritus_most_intense_at_night")
 
         if tracker.slots.get("skin_mass") == False:
-            all_slots.remove("skin_mass_bleeding")
-            all_slots.remove("skin_mass_greater_than_1_cm_in_diameter")
+            slot_order.remove("skin_mass_bleeding")
+            slot_order.remove("skin_mass_greater_than_1_cm_in_diameter")
 
         if tracker.slots.get("dermatological_changes_painful") ==  False:
-            all_slots.remove("skin_pain_severe")
+            slot_order.remove("skin_pain_severe")
         if tracker.slots.get("dermatological_changes_upper_lower_extremities") != "None":
-            all_slots.remove("dermatological_changes_location")
+            slot_order.remove("dermatological_changes_location")
 
-        return all_slots
+        return slot_order
 
     def validate_dermatological_flare_ups_reason(
         self,
@@ -1188,16 +1289,29 @@ class ValidateEarForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+            "earache",
+            "clogged_ear",
+            "decreased_hearing",
+            "decreased_hearing_reason",
+            "discharge_from_ear",
+            "discharge_from_ear_type",
+            "ear_canal_swelling",
+            "itching_in_ear",
+            "numbness_of_part_of_ear",
+            "pain_behind_ear",
+            "pain_increases_when_touching_ear_area",
+            "redness_behind_the_ear",
+        ]
         if tracker.slots.get("decreased_hearing") == False:
-            all_slots.remove("decreased_hearing_reason")
+            slot_order.remove("decreased_hearing_reason")
         if tracker.slots.get("discharge_from_ear") == False:
-            all_slots.remove("discharge_from_ear_type")
+            slot_order.remove("discharge_from_ear_type")
         if tracker.slots.get("earache") == False:
-            all_slots.remove("pain_increases_when_touching_ear_area")
-            all_slots.remove("pain_behind_ear")
+            slot_order.remove("pain_increases_when_touching_ear_area")
+            slot_order.remove("pain_behind_ear")
             
-        return all_slots
+        return slot_order
 
     def validate_decreased_hearing_reason(
         self,
