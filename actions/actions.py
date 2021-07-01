@@ -38,33 +38,66 @@ class ValidateAbdominalPainForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+            "abdominal_pain",
+            "abdominal_pain_type",
+            "abdominal_pain_location",
+            "abdominal_pain_duration",
+            "abdominal_pain_onset",
+            "abdominal_pain_scale",
+            "abdominal_tenderness",
+            "abdominal_tenderness_location",
+            "abdominal_pain_postprandial",
+            "abdominal_pain_premenstrual",
+            "abdominal_pain_exacerbation",
+            "bloating",
+            "abdominal_mass",
+            "fever",
+            "temperature",
+            "diarrhea",
+            "diarrhea_duration",
+            "constipation",
+            "nausea",
+            "vomiting",
+            "vomiting_duration",
+            "vomiting_every_time_after_meal",
+            "vomiting_more_often_in_the_morning",
+            "diminished_appetite",
+            "stools",
+            "painful_defecation",
+            "bleeding_from_anus",
+            "bleeding_from_anus_scale",
+            "blood_in_urine",
+            "pain_while_urinating"
+        ]
         if tracker.slots.get("abdominal_pain") == False:
-            all_slots.remove("abdominal_pain_location")
-            all_slots.remove("abdominal_pain_type")
-            all_slots.remove("abdominal_pain_duration")
-            all_slots.remove("abdominal_pain_onset")
-            all_slots.remove("abdominal_pain_scale")
-            all_slots.remove("abdominal_pain_tenderness")
-            all_slots.remove("abdominal_pain_tenderness_location")
-            all_slots.remove("abdominal_pain_postprandial")
-            all_slots.remove("abdominal_pain_premenstrual")
+            slot_order.remove("abdominal_pain_type")
+            slot_order.remove("abdominal_pain_location")
+            slot_order.remove("abdominal_pain_duration")
+            slot_order.remove("abdominal_pain_onset")
+            slot_order.remove("abdominal_pain_scale")
+            slot_order.remove("abdominal_tenderness")
+            slot_order.remove("abdominal_tenderness_location")
+            slot_order.remove("abdominal_pain_postprandial")
+            slot_order.remove("abdominal_pain_premenstrual")
+        if tracker.slots.get("abdominal_tenderness") == False:
+            slot_order.remove("abdominal_tenderness_location")
         if tracker.slots.get("gender") == "male":
-            if "abdominal_pain_premenstrual" in all_slots:
-                all_slots.remove("abdominal_pain_premenstrual")
+            if "abdominal_pain_premenstrual" in slot_order:
+                slot_order.remove("abdominal_pain_premenstrual")
         if tracker.slots.get("fever") == False:
-            all_slots.remove("temperature")
+            slot_order.remove("temperature")
         if tracker.slots.get("diarrhea") == False:
-            all_slots.remove("diarrhea_duration")
+            slot_order.remove("diarrhea_duration")
         if tracker.slots.get("vomiting") == False:
-            all_slots.remove("vomiting_duration")
-            all_slots.remove("vomiting_every_time_after_meal")
-            all_slots.remove("vomiting_more_often_in_the_morning")
+            slot_order.remove("vomiting_duration")
+            slot_order.remove("vomiting_every_time_after_meal")
+            slot_order.remove("vomiting_more_often_in_the_morning")
         if tracker.slots.get("stools") == "Normal":
-            all_slots.remove("painful_defecation")
-            all_slots.remove("bleeding_from_anus")
-            all_slots.remove("bleeding_from_anus_scale")
-        return all_slots
+            slot_order.remove("painful_defecation")
+            slot_order.remove("bleeding_from_anus")
+            slot_order.remove("bleeding_from_anus_scale")
+        return slot_order
 
     def validate_abdominal_pain_type(
         self,

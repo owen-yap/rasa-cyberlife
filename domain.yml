@@ -2666,180 +2666,182 @@ actions:
 
 forms:
   history_taking_form:
-    age:
-      - type: from_text
-    gender:
-      - type: from_text
-    confirm_allergy:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-      - type: from_intent
-        intent: inform_allergy
-        value: true
+    required_slots:
+      age:
+        - type: from_text
+      gender:
+        - type: from_text
+      confirm_allergy:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+        - type: from_intent
+          intent: inform_allergy
+          value: true
 
   abdominal_pain_form:
-    abdominal_pain:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    abdominal_pain_type:
-      - type: from_text
-    abdominal_pain_location:
-      - type: from_text
-    abdominal_pain_duration:
-      - type: from_text
-    abdominal_pain_onset:
-      - type: from_text
-    abdominal_pain_scale:
-      - type: from_intent
-        intent: mild_pain
-        value: mild
-      - type: from_intent
-        intent: moderate_pain
-        value: moderate
-      - type: from_intent
-        intent: severe_pain
-        value: severe
-    abdominal_tenderness:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    abdominal_tenderness_location:
-      - type: from_text
-    abdominal_pain_postprandial:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    bloating:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    abdominal_pain_premenstrual:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    abdominal_pain_exacerbation:
-      - type: from_text
-    abdominal_mass:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    fever:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    temperature:
-      - type: from_text
-    diarrhea:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    diarrhea_duration:
-      - type: from_text
-    constipation:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    nausea:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    vomiting:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    vomiting_duration:
-      - type: from_text
-    vomiting_every_time_after_meal:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    vomiting_more_often_in_the_morning:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    diminished_appetite:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    stools:
-      - type: from_text
-    painful_defecation:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    bleeding_from_anus:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    bleeding_from_anus_scale:
-      - type: from_text
-    blood_in_urine:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    pain_while_urinating:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
+    required_slots:
+      abdominal_pain:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      abdominal_pain_type:
+        - type: from_text
+      abdominal_pain_location:
+        - type: from_text
+      abdominal_pain_duration:
+        - type: from_text
+      abdominal_pain_onset:
+        - type: from_text
+      abdominal_pain_scale:
+        - type: from_intent
+          intent: mild_pain
+          value: mild
+        - type: from_intent
+          intent: moderate_pain
+          value: moderate
+        - type: from_intent
+          intent: severe_pain
+          value: severe
+      abdominal_tenderness:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      abdominal_tenderness_location:
+        - type: from_text
+      abdominal_pain_postprandial:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      bloating:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      abdominal_pain_premenstrual:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      abdominal_pain_exacerbation:
+        - type: from_text
+      abdominal_mass:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      fever:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      temperature:
+        - type: from_text
+      diarrhea:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      diarrhea_duration:
+        - type: from_text
+      constipation:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      nausea:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      vomiting:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      vomiting_duration:
+        - type: from_text
+      vomiting_every_time_after_meal:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      vomiting_more_often_in_the_morning:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      diminished_appetite:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      stools:
+        - type: from_text
+      painful_defecation:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      bleeding_from_anus:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      bleeding_from_anus_scale:
+        - type: from_text
+      blood_in_urine:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      pain_while_urinating:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
   urti_form:
     fever:
       - type: from_intent
