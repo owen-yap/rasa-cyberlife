@@ -570,7 +570,7 @@ class ValidateUrtiForm(FormValidationAction):
             dispatcher.utter_message(text = "Please select one of the options provided.")
             return {"chest_pain_duration": None}
 
-    def validate_chest_pain_location(
+    def validate_chest_pain_radiating(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -578,16 +578,16 @@ class ValidateUrtiForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         if slot_value == "spreading to left upper limb":
-            return {"chest_pain_location": slot_value, "chest_pain_radiating_to_left_upper_limb": True}
+            return {"chest_pain_radiating": slot_value, "chest_pain_radiating_to_left_upper_limb": True}
         elif slot_value == "spreading to neck":
-            return {"chest_pain_location": slot_value, "chest_pain_radiating_to_the_neck": True}
+            return {"chest_pain_radiating": slot_value, "chest_pain_radiating_to_the_neck": True}
         elif slot_value == "spreading to shoulders":
-            return {"chest_pain_location": slot_value, "chest_pain_radiating_between_shoulder_blades": True}
+            return {"chest_pain_radiating": slot_value, "chest_pain_radiating_between_shoulder_blades": True}
         elif slot_value == "not spreading":
-            return {"chest_pain_location": slot_value}
+            return {"chest_pain_radiating": "Not Spreading"}
         else:
             dispatcher.utter_message(text = "Please select one of the options provided.")
-            return {"chest_pain_location": None}
+            return {"chest_pain_radiating": None}
 
 class ValidateBackPainForm(FormValidationAction):
     def name(self) -> Text:
@@ -709,116 +709,142 @@ class ValidateHeadacheForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+           "headache",
+           "headache_chronic",
+           "chronic_headache_duration",
+           "recent_headache_duration",
+           "headache_type",
+           "headache_exacerbating_by_tilting_head_forward",
+           "headache_exacerbating_in_the_morning",
+           "headache_location",
+           "headache_pain_level",
+           "headache_occipital",
+           "headache_unilateral",
+           "headache_sudden_onset",
+           "dizziness",
+           "dizziness_head_rotation",
+           "dizziness_vertigo",
+           "impaired_balance_while_walking",
+           "orthostatic_hypotension",
+           "fever",
+           "temperature",
+           "nasal_catarrh",
+           "facial_pain",
+           "facial_pain_paranasal_sinus",
+           "impaired_memory",
+           "impaired_memory_finding_objects_of_everyday_use",
+           "impaired_memory_short_term",
+           "tinnitus",
+           "neck_pain",
+           "stiff_neck",
+           "neck_pain_unilateral",
+           "redness_on_shoulders_and_nape_of_neck",
+           "pain_near_eye_socket",
+           "tremors",
+       ]
+        if tracker.slots.get("headache") == False:
+            slot_order.remove("headache_chronic")
+            slot_order.remove("chronic_headache_duration")
+            slot_order.remove("recent_headache_duration")
+            slot_order.remove("headache_type")
+            slot_order.remove("headache_exacerbating_by_tilting_head_forward")
+            slot_order.remove("headache_exacerbating_in_the_morning")
+            slot_order.remove("headache_location")
+            slot_order.remove("headache_pain_level")
+            slot_order.remove("headache_occipital")
+            slot_order.remove("headache_unilateral")
+            slot_order.remove("headache_sudden_onset")            
         if tracker.slots.get("headache_chronic") == True:
-            all_slots.remove("headache_recent")
-            all_slots.remove("headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day")
-            all_slots.remove("headache_recent_lasting_less_than_1_hour")
-            all_slots.remove("headache_recent_lasting_more_than_1_day")
-            all_slots.remove("headache_recent_duration")
-        if tracker.slots.get("headache_chronic") == False:
-            all_slots.remove("headache_chronic")
-            all_slots.remove("headache_chronic_attack_lasting_4_to_72_hours")
-            all_slots.remove("headache_chronic_attack_lasting_five_minutes_to_four_hours")
-            all_slots.remove("headache_chronic_attack_lasting_three_to_seven_days")
-            all_slots.remove("headache_chronic_attack_lasting_up_to_five_minutes")
-            all_slots.remove("headache_duration")
-        if tracker.slots.get("neck_pain") == False:
-            all_slots.remove("neck_pain_during_head_movement")
-            all_slots.remove("neck_pain_unilateral")
-        if tracker.slots.get("impaired_memory") == False:
-            all_slots.remove("impaired_memory_finding_objects_of_everyday_use")
-            all_slots.remove("impaired_memory_short_term")      
+            slot_order.remove("recent_headache_duration")
+        elif tracker.slots.get("headache_chronic") == False:
+            slot_order.remove("chronic_headache_duration")
         if tracker.slots.get("dizziness") == False:
-            all_slots.remove("dizziness_head_rotation")
-            all_slots.remove("dizziness_vertigo")       
-            all_slots.remove("orthostatic_hypotension")
-        if tracker.slots.get("tremors") == False:
-            all_slots.remove("tremors_worsen")
-            all_slots.remove("tremors_hands")
-            all_slots.remove("tremors_both_hands")
-            all_slots.remove("tremors_in_one_hand")       
-            all_slots.remove("tremors_stress_related")
-            all_slots.remove("tremors_subside_after_drinking_alcohol")       
-            all_slots.remove("tremors_worsen_after_caffeine_intake")
-        if tracker.slots.get("headache_lancinating") == True:
-            all_slots.remove("headache_pressing")
-            all_slots.remove("headache_pulsating")  
-        if tracker.slots.get("headache_pressing") == True:
-            all_slots.remove("headache_lancinating")
-            all_slots.remove("headache_pulsating")    
-        if tracker.slots.get("headache_pulsating") == True:
-            all_slots.remove("headache_pressing")
-            all_slots.remove("headache_lancinating")        
-        if tracker.slots.get("tremors_stress_related") == True:
-            all_slots.remove("tremors_subside_after_drinking_alcohol")
-            all_slots.remove("tremors_worsen_after_caffeine_intake")  
-        if tracker.slots.get("tremors_subside_after_drinking_alcohol") == True:
-            all_slots.remove("tremors_stress_related")
-            all_slots.remove("tremors_worsen_after_caffeine_intake")    
-        if tracker.slots.get("tremors_worsen_after_caffeine_intake") == True:
-            all_slots.remove("tremors_subside_after_drinking_alcohol")
-            all_slots.remove("tremors_stress_related")      
-        if tracker.slots.get("headache_mild") == True:
-            all_slots.remove("headache_moderate")
-            all_slots.remove("headache_severe")  
-        if tracker.slots.get("headache_moderate") == True:
-            all_slots.remove("headache_mild")
-            all_slots.remove("headache_severe")    
-        if tracker.slots.get("headache_severe") == True:
-            all_slots.remove("headache_mild")
-            all_slots.remove("headache_moderate")  
+            slot_order.remove("dizziness_head_rotation")
+            slot_order.remove("dizziness_vertigo")
+            slot_order.remove("impaired_balance_while_walking")
+        if tracker.slots.get("fever") == False:
+            slot_order.remove("temperature")
+        if tracker.slots.get("nasal_catarrh") == False:
+            slot_order.remove("facial_pain")
+            slot_order.remove("facial_pain_paranasal_sinus")
+        if tracker.slots.get("impaired_memory") == False:
+            slot_order.remove("impaired_memory_finding_objects_of_everyday_use")
+            slot_order.remove("impaired_memory_short_term")
+        if tracker.slots.get("neck_pain") == False:
+            slot_order.remove("neck_pain_unilateral")
+        
+        return slot_order
+
+
+    def validate_headache_chronic(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value == True:
+            return {"headache_chronic": True, "headache_recent": False}
+        elif slot_value == False:
+            return {"headache_chronic": False, "headache_recent": True}
+        else:
+            dispatcher.utter_message(text = "Please select one of the options provided.")
+            return {"headache_chronic": None}
+
+    def validate_chronic_headache_duration(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: "DomainDict",
+    ) -> Dict[Text, Any]:
+        if slot_value == "lasts up to 5 minutes":
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": True}
+        elif slot_value == "lasts 5 minutes to 4 hours":
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": True,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": False }
+        elif slot_value == "lasts 4 to 72 hours":
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": True,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": False  }
+        elif slot_value == "lasts 3 to 7 days":
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": True,"headache_chronic_attack_lasting_up_to_five_minutes": False }
+        else:
+            dispatcher.utter_message(text = "Please select one of the options provided.")
+            return {"chronic_headache_duration": None}
     
-        if tracker.slots.get("headache_generalized") == True:
-            all_slots.remove("headache_unilateral")
-
-
-        return all_slots
-
-
-    def validate_headache_duration(
+    def validate_recent_headache_duration(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "Chronic, attack lasting 4 to 72 hours":
-            return{"headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": True,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": False  }
-        elif slot_value == "Chronic, attack lasting five minutes to four hours":
-            return{"headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": True,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": False }
-        elif slot_value == "Chronic, attack lasting three to seven days":
-            return{"headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": True,"headache_chronic_attack_lasting_up_to_five_minutes": False  }
-        elif slot_value == "Chronic, attack lasting up to five minutes":
-            return{"headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes":True }
-
-    def validate_headache_recent_duration(
+        if slot_value == "lasts less than 1 hour":
+            return{"recent_headache_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": True,"headache_recent_lasting_more_than_1_day": False }
+        elif slot_value == "lasts for more than 1 hour":
+            return{"recent_headache_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": True,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": False }
+        elif slot_value == "lasts more than 1 day":
+            return{"recent_headache_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": True }
+        else:
+            dispatcher.utter_message(text = "Please select one of the options provided.")
+            return {"recent_headache_duration": None}
+    
+    def validate_headache_type(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "Recent, lasting for more than 1 hour and less than 1 day":
-            return{"headache_recent_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": True,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": False }
-        elif slot_value == "Recent, lasting less than 1 hour":
-            return{"headache_recent_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": True,"headache_recent_lasting_more_than_1_day": False }
-        elif slot_value == "Recent, lasting more than 1 day":
-            return{"headache_recent_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": True }
-
-    def validate_headache_pain_level(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        if slot_value == "Mild":
-            return{"headache_pain_level":slot_value,"headache_mild":True}
-        elif slot_value == "Moderate":
-            return{"headache_pain_level":slot_value,"headache_moderate": True }
-        elif slot_value == "Severe":
-            return{"headache_pain_level":slot_value,"headache_severe": True}
+        if slot_value == "Stabbing/Sharp":
+            return{"headache_type":slot_value,"headache_lancinating":True}
+        elif slot_value == "Pressing":
+            return{"headache_type":slot_value,"headache_pressing": True}
+        elif slot_value == "Pulsating":
+            return{"headache_type":slot_value,"headache_pulsating": True}
+        else:
+            dispatcher.utter_message(text = "Please select one of the options provided.")
+            return {"recent_headache_duration": None}
+            
     def validate_headache_location(
         self,
         slot_value: Any,
@@ -832,60 +858,69 @@ class ValidateHeadacheForm(FormValidationAction):
             return{"headache_location":slot_value,"headache_generalized": True,"headache_forehead":False,"headache_temporal_region": False }
         elif slot_value == "At the temples":
             return{"headache_location":slot_value,"headache_temporal_region": True, "headache_generalized": False,"headache_forehead":False}
-    def validate_headache_feeling(
+        else:
+            dispatcher.utter_message(text = "Please select one of the options provided.")
+            return {"recent_headache_duration": None}
+
+    def validate_headache_pain_level(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "Stabbing":
-            return{"headache_feeling":slot_value,"headache_lancinating":True}
-        elif slot_value == "Pressing":
-            return{"headache_feeling":slot_value,"headache_pressing": True}
-        elif slot_value == "Pulsating":
-            return{"headache_feeling":slot_value,"headache_pulsating": True}
+        if slot_value == "Mild":
+            return{"headache_pain_level":slot_value,"headache_mild":True}
+        elif slot_value == "Moderate":
+            return{"headache_pain_level":slot_value,"headache_moderate": True }
+        elif slot_value == "Severe":
+            return{"headache_pain_level":slot_value,"headache_severe": True, "headache_worst_headache_in_life": True}
+        else:   
+            dispatcher.utter_message(text = "Please select one of the options provided.")
+            return {"recent_headache_duration": None}
 
-    def validate_headache_recent_duration(
+    def validate_temperature(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "Recent, lasting for more than 1 hour and less than 1 day":
-            return{"headache_recent_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": True,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": False }
-        elif slot_value == "Recent, lasting less than 1 hour":
-            return{"headache_recent_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": True,"headache_recent_lasting_more_than_1_day": False }
-        elif slot_value == "Recent, lasting more than 1 day":
-            return{"headache_recent_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": True }
 
-
-    def validate_tremors_hands(
+        def check_float(potential_float):
+            try:
+                float(potential_float)
+                return True
+            except ValueError:
+                return False
+        
+        if slot_value.isnumeric() or check_float(slot_value):
+            temp = float(slot_value)
+            if temp <= 38 and temp >=37:
+                return {"temperature": slot_value, "fever_between_37_and_38": True}
+            elif temp > 38 and temp <= 40:
+                return {"temperature": slot_value, "fever_between_38_and_40": True}
+            elif temp > 40:
+                return {"temperature": slot_value, "fever_greater_than_40": True}
+            else:
+                return {"temperature": slot_value}
+        else:   
+            dispatcher.utter_message(text = "Please enter in a number")
+            return {"temperature": None}
+    
+    def validate_stiff_neck(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "One hand":
-            return{"tremors_hands":slot_value,"tremors_both_hands":False,"tremors_in_one_hand": True}
-        elif slot_value == "Both hands":
-            return{"tremors_hands":slot_value,"tremors_both_hands": True,"tremors_in_one_hand": False}
-
-    def validate_tremors_worsen(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        if slot_value == "Stress":
-            return{"tremors_worsen":slot_value,"tremors_stress_related": True }
-        elif slot_value == "Alcohol consumption":
-            return{"tremors_worsen":slot_value,"tremors_subside_after_drinking_alcohol": True }
-        elif slot_value == "Coffee/Tea consumption":
-            return{"tremors_worsen":slot_value,"tremors_worsen_after_caffeine_intake":True }
+        if slot_value == "Mild":
+            return{"headache_pain_level":slot_value,"headache_mild":True}
+        elif slot_value == "Moderate":
+            return{"headache_pain_level":slot_value,"headache_moderate": True }
+        elif slot_value == "Severe":
+            return{"headache_pain_level":slot_value,"headache_severe": True, "headache_worst_headache_in_life": True}
 
 class ValidateSkinForm(FormValidationAction):
     def name(self) -> Text:
@@ -1077,6 +1112,7 @@ class ValidateSkinForm(FormValidationAction):
 class ValidateJointForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_joint_form"
+    
     async def required_slots(
         self,
         slots_mapped_in_domain: List[Text],
@@ -1084,161 +1120,106 @@ class ValidateJointForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+            "joint_pain_location",
+            "joint_pain_during_ankle_movement",
+            "joint_pain_during_elbow_movement",
+            "joint_pain_during_hip_movement",
+            "joint_pain_during_knee_movement",
+            "joint_pain_during_shoulder_movement",
+            "joint_pain_during_thumb_movement",
+            "joint_pain_during_wrist_movement",
+            "joint_pain_sudden",
+            "joint_pain_trauma",
+            "joint_deformation_posttraumatic",
+            "joint_deformation_nontraumatic",
+            "joint_pain_aggravated_during_cold_damp_weather",
+            "joint_pain_during_movement_in_the_morning",
+            "joint_pain_tenderness",
+            "joint_stiffness"
+        ]
 
         if tracker.slots.get("joint_pain_ankle") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
 
         if tracker.slots.get("joint_pain_elbow") == True:
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_ankle_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
 
         if tracker.slots.get("joint_pain_hallux") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
-            all_slots.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
 
         if tracker.slots.get("joint_pain_hip") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
-            all_slots.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
 
         if tracker.slots.get("joint_pain_knee") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
-            all_slots.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
 
         if tracker.slots.get("joint_pain_shoulder") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
-            all_slots.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
 
         if tracker.slots.get("joint_pain_thumb") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
-            all_slots.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
 
         if tracker.slots.get("joint_pain_wrist") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_others")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
 
 
         if tracker.slots.get("joint_pain_others") == True:
-            all_slots.remove("joint_pain_elbow")
-            all_slots.remove("joint_pain_hallux")
-            all_slots.remove("joint_pain_hip")
-            all_slots.remove("joint_pain_ankle")
-            all_slots.remove("joint_pain_shoulder")
-            all_slots.remove("joint_pain_thumb")
-            all_slots.remove("joint_pain_knee")
-            all_slots.remove("joint_pain_wrist")
-            all_slots.remove("joint_pain_during_elbow_movement")
-            all_slots.remove("joint_pain_during_hip_movement")
-            all_slots.remove("joint_pain_during_knee_movement")
-            all_slots.remove("joint_pain_during_shoulder_movement")
-            all_slots.remove("joint_pain_during_thumb_movement")
-            all_slots.remove("joint_pain_during_wrist_movement")
-            all_slots.remove("joint_pain_during_ankle_movement")
+            slot_order.remove("joint_pain_during_elbow_movement")
+            slot_order.remove("joint_pain_during_hip_movement")
+            slot_order.remove("joint_pain_during_knee_movement")
+            slot_order.remove("joint_pain_during_shoulder_movement")
+            slot_order.remove("joint_pain_during_thumb_movement")
+            slot_order.remove("joint_pain_during_wrist_movement")
+            slot_order.remove("joint_pain_during_ankle_movement")
 
-        if tracker.slots.get("joint_deformation_posttraumatic") == True:
-            all_slots.remove("joint_deformation_nontraumatic")
-        if tracker.slots.get("joint_deformation_nontraumatic") == True:
-            all_slots.remove("joint_deformation_posttraumatic")
+        if tracker.slots.get("joint_pain_trauma") == True:
+            slot_order.remove("joint_deformation_nontraumatic")
+        elif tracker.slots.get("joint_pain_trauma") == False:
+            slot_order.remove("joint_deformation_posttraumatic")
 
-        return all_slots
+        return slot_order
 
 
     def validate_joint_pain_location(
@@ -1266,6 +1247,9 @@ class ValidateJointForm(FormValidationAction):
             return{"joint_pain_location":slot_value,"joint_pain_wrist":True }
         elif slot_value == "Others":
             return{"joint_pain_location":slot_value,"joint_pain_others":True }
+        else:
+            dispatcher.utter_message(text = "Please select one of the options provided.")
+            return {"joint_pain_location": None}
 
     def validate_joint_pain_trauma(
         self,
@@ -1275,9 +1259,9 @@ class ValidateJointForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         if slot_value == True:
-            return{"joint_pain_trauma":slot_value,"joint_deformation_posttraumatic": True }
+            return{"joint_pain_trauma":slot_value }
         elif slot_value == False:
-            return{"joint_pain_trauma":slot_value,"joint_deformation_nontraumatic": True }
+            return{"joint_pain_trauma":slot_value }
 
 class ValidateEarForm(FormValidationAction):
     def name(self) -> Text:
@@ -1468,7 +1452,7 @@ class CreateReport(Action):
         report_absent = {}
         all_slots = tracker.slots
 
-        history_slots = ["age", "gender", "allergy", "asthma"]
+        history_slots = ["age", "gender", "allergy", "smoking_cigarettes", "hypertension", "diagnosed_diabetes", "high_cholesterol", "high_bmi"]
         
         for symptom in all_slots:
             if symptom in history_slots:
@@ -1508,6 +1492,7 @@ class CreateReport(Action):
             absent_symptoms.append(a)
 
         symptom_list_df = pd.read_csv("actions/infermedica_symptom_list.csv")
+        risk_factor_df = pd.read_csv("actions/infermedica_risk_factors.csv")
         slots = tracker.slots
         age = tracker.get_slot("age")
         sex = tracker.get_slot("gender")
@@ -1528,6 +1513,12 @@ class CreateReport(Action):
                     evidence.append({"id": symptom_id, "choice_id": "present"})
                 else:
                     evidence.append({"id": symptom_id, "choice_id": "absent"})
+        for h in history:
+            risk_factor = h.replace("_", " ")
+            if risk_factor_df['risk_factor'].eq(risk_factor).any():
+                risk_factor_id = risk_factor_df.loc[risk_factor_df['risk_factor'] == risk_factor, "id"].iloc[0]
+                evidence.append({"id": risk_factor_id, "choice_id": "present", "source": "predefined"})
+
 
         api = infermedica_api.APIv3Connector(app_id="fb1de113", app_key="97e9474d5049b2f276da86e8d16c1f6b")
         response = api.diagnosis(evidence=evidence, sex=sex, age=age)
@@ -1542,499 +1533,3 @@ class CreateReport(Action):
         dispatcher.utter_message(text="\n".join(present_symptoms))
         dispatcher.utter_message(text="\n".join(absent_symptoms))
         dispatcher.utter_message(text="\n".join(triage))
-
-    
-# class Neo4j:
-#     def __init__(self, uri, user, password):
-#         self.driver = gd.driver(uri, auth=(user, password))
-        
-#     def close(self):
-#         self.driver.close()
-
-#     def retrieve_disease_prob(self, symptom):
-#         with self.driver.session() as session:
-#             value = session.write_transaction(self._get_disease, symptom)
-#             return value
-
-#     @staticmethod
-#     def _get_disease(tx, symptom):
-#         diseases = {}
-#         match = "(d:Disease)-[r]-(s:Symptom {{name: '{}'}})".format(symptom)
-#         query = "MATCH {} RETURN d.name AS disease, r.probability AS prob".format(match)
-        
-#         result = tx.run(query)
-#         for record in result:
-#             diseases[record["disease"]] = record["prob"]
-            
-#         return diseases
-
-
-# class CreateReport(Action):
-#     def name(self) -> Text:
-#         return "action_create_report"
-
-#     def run(self,
-#            dispatcher: CollectingDispatcher,
-#            tracker: Tracker,
-#            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#         history = ["age", "gender", "allergy", "asthma", "eye_surgery", "diabetes"]
-#         symptoms_to_present = [
-#             "coughing",
-#             "cough_type",
-#             "phlegm_color",
-#             "cough_duration",
-#             "pain_when_coughing",
-#             "persistent_cough",
-#             "wheezing",
-#             "shortness_of_breath",
-#             "fever",
-#             "temperature",
-#             "fever_duration",
-#             "feeling_cold",
-#             "shivering",
-#             "lethargy",
-#             "stuffy_nose",
-#             "runny_nose",
-#             "nasal_congestion",
-#             "nose_symptom_duration",
-#             "facial_pain",
-#             "headache",
-#             "headache_location",
-#             "headache_pain_scale",
-#             "headache_type",
-#             "headache_duration",
-#             "head_injury",
-#             "stress",
-#             "dizziness",
-#             "numbness",
-#             "numbness_location",
-#             "neck_pain",
-#             "eye_symptom_location",
-#             "eye_symptom_duration",
-#             "eye_redness",
-#             "eye_pain",
-#             "eye_pain_scale",
-#             "eye_injury",
-#             "eye_discharge",
-#             "blurred_vision",
-#             "double_vision",
-#             "sensitivity_to_light",
-#             "photopsia",
-#             "photopsia_location",
-#             "vision_loss",
-#             "floaters",
-#             "contact_lens",
-#             "abdominal_pain",
-#             "abdominal_pain_location",
-#             "abdominal_symptom_duration",
-#             "abdominal_pain_scale",
-#             "abdominal_tenderness",
-#             "abdominal_distension",
-#             "stomach_cramps",
-#             "diarrhea",
-#             "constipation",
-#             "loss_of_appetite",
-#             "flank_pain",
-#             "blood_in_stool",
-#             "blood_in_urine",
-#             "dark_urine",
-#             "pain_during_urination",
-#             "nausea",
-#             "vomiting",
-#             "yellow_skin_and_eyes"
-#             ]
-#         symptoms_in_database = [
-#             'hoarseness',
-#             'restless legs syndrome',
-#             'enlarged neck lymph nodes',
-#             'physical deformity',
-#             'erectile dysfunction',
-#             'vision loss',
-#             'abdominal discomfort',
-#             'skin lesion',
-#             'anger',
-#             'pain',
-#             'muscle weakness',
-#             'urinary retention',
-#             'heavy or prolonged periods',
-#             'scar',
-#             'fluid in the lungs',
-#             'neck swelling',
-#             'severe headache',
-#             'chills',
-#             'memory loss',
-#             'foot pain',
-#             'racing thoughts',
-#             'slow heart rate',
-#             'itchy eyes',
-#             'pain during urination',
-#             'elbow pain',
-#             'sleepiness',
-#             'abdominal tenderness',
-#             'ear pain',
-#             'abdominal pain',
-#             'pain in upper-right abdomen',
-#             'shakiness',
-#             'skin irritation',
-#             'peeling skin',
-#             'gagging',
-#             'ache',
-#             'scarring within the bile ducts',
-#             'discomfort',
-#             'sweating',
-#             'flank pain',
-#             'arm pain',
-#             'dull pain',
-#             'dark urine',
-#             'seizures',
-#             'headache',
-#             'hearing voices',
-#             'wandering and getting lost',
-#             'weakness of one side of the body',
-#             'plaque',
-#             'oral thrush',
-#             'slow bodily movement',
-#             'raised area of skin',
-#             'hopelessness',
-#             'weakness',
-#             'clumsiness',
-#             'bowel obstruction',
-#             'rash on the face',
-#             'knee pain',
-#             'lower abdominal pain',
-#             'wrist pain',
-#             'regurgitation',
-#             'episodes of no breathing',
-#             'persistent cough',
-#             'heel pain',
-#             'limping',
-#             'leg numbness',
-#             'malnutrition',
-#             'shoulder pain',
-#             'manic episode',
-#             'sensitivity to sound',
-#             'severe anxiety',
-#             'falling',
-#             'asymmetry',
-#             'swollen knee',
-#             'neck pain',
-#             'hunger',
-#             'difficulty swallowing',
-#             'forgetfulness',
-#             'abnormality walking',
-#             'feeling cold',
-#             'drooling',
-#             'wheezing',
-#             'sensitivity to light',
-#             'delusion',
-#             'aggression',
-#             'bruising',
-#             'heat therapy',
-#             'ice pack',
-#             'jaw pain',
-#             'chest pain worsened by breathing',
-#             'decreased range of motion',
-#             'flushing',
-#             'slurred speech',
-#             'hand swelling',
-#             'skin rash',
-#             'rectal pain',
-#             'failure to thrive',
-#             'heartburn',
-#             'arm discomfort',
-#             'stomach cramps',
-#             'difficulty speaking',
-#             'coma',
-#             'mild pain',
-#             'discomfort in upper abdomen',
-#             'itching',
-#             'severe pain',
-#             'hand tremor',
-#             'irregular menstruation',
-#             'chronic back pain',
-#             'brief visual or sensory abnormality',
-#             'head congestion',
-#             'drooping of upper eyelid',
-#             'sharp pain',
-#             'paranoia',
-#             'phlegm',
-#             'fluid in the abdomen',
-#             'pins and needles',
-#             'hip pain',
-#             'incontinence',
-#             'fatigue',
-#             'stiff neck',
-#             'impaired voice',
-#             'racing heartbeat',
-#             'shortness of breath',
-#             'radiating pain',
-#             'swelling under the skin',
-#             'unequal pupils',
-#             'pimple',
-#             'facial swelling',
-#             'eye pain',
-#             'blurred vision',
-#             'pain in right lower abdomen',
-#             'facial pain',
-#             'swollen feet',
-#             'fever',
-#             'inability to feel pleasure',
-#             'sinus pain',
-#             'dehydration',
-#             'weight loss',
-#             'persistent headache',
-#             'guilt',
-#             'thoughts of suicide',
-#             'kidney failure',
-#             'eye redness',
-#             'bleeding from anus',
-#             'tongue swelling',
-#             'pelvic pain',
-#             'stinging sensation',
-#             'cyst',
-#             'difficulty with bodily movement',
-#             'face rash',
-#             'leg pain',
-#             'shivering',
-#             'dark stool from digested blood',
-#             'diarrhea',
-#             'low oxygen in the body',
-#             'poor appetite',
-#             'lesion',
-#             'noisy breathing',
-#             'chest tightness',
-#             'agitation',
-#             'ringing in the ears',
-#             'paralysis',
-#             'amnesia',
-#             'partial loss of vision',
-#             'yellow skin and eyes',
-#             'finger pain',
-#             'screaming',
-#             'cloudy urine',
-#             'fear of loud sounds',
-#             'muscle spasms',
-#             'eye discharge',
-#             'swelling of the surface of the eye',
-#             'acute episodes',
-#             'lower extremity pain',
-#             'lump',
-#             'blister',
-#             'vomiting',
-#             'blood in urine',
-#             'hallucination',
-#             'unsteady gait',
-#             'fainting',
-#             'restlessness',
-#             'back pain',
-#             'joint pain',
-#             'dizziness',
-#             'upper abdominal pain',
-#             'leg pain during exercise',
-#             'painful swallowing',
-#             'coughing up blood',
-#             'feeling tired',
-#             'confusion in the evening hours',
-#             'sneezing',
-#             'laryngitis',
-#             'indigestion',
-#             'dryness',
-#             'bleeding',
-#             'high fever',
-#             'watery eyes',
-#             'swollen joint',
-#             'fast breathing',
-#             'double vision',
-#             'swollen veins in the lower esophagus',
-#             'nightmares',
-#             'muscle twitches',
-#             'tremor at rest',
-#             'substance abuse',
-#             'lump on the skin or joint',
-#             'disorganized behavior',
-#             'infection',
-#             'watery diarrhea',
-#             'muscle pain',
-#             'collapse',
-#             'unsteadiness',
-#             'visual hallucinations',
-#             'abdominal cramping from gallstones',
-#             'increased thirst',
-#             'frequent urge to urinate',
-#             'foot numbness',
-#             'fear',
-#             'frequent urination',
-#             'hand pain',
-#             'swollen tonsils',
-#             'lightheadedness',
-#             'lethargy',
-#             'vision disorder',
-#             'throbbing pain',
-#             'vaginal pain',
-#             'mild cough',
-#             'cough with phlegm',
-#             'intermittent pain',
-#             'runny nose',
-#             'nasal congestion',
-#             'pain worse at rest',
-#             'coughing',
-#             'red spots',
-#             'loss of interest',
-#             'anxiety',
-#             'discharge from penis',
-#             'eye irritation',
-#             'slowness in activity and thought',
-#             'difficulty breathing',
-#             'panic attack',
-#             'swollen lymph nodes',
-#             'leaked fluid out of blood vessels or an organ',
-#             'sadness',
-#             'red rashes',
-#             'scab',
-#             'dry skin',
-#             'belching',
-#             'toe pain',
-#             'difficulty walking',
-#             'dry cough',
-#             'blotchy rash',
-#             'cramping',
-#             'chest discomfort',
-#             'crying',
-#             'impulsivity',
-#             'mood swings',
-#             'chest pressure',
-#             'low body temperature',
-#             'spotting',
-#             'elevated alkaline phosphatase',
-#             'sinus pressure',
-#             'trembling',
-#             'mental confusion',
-#             'inflammation of ear',
-#             'foul smelling urine',
-#             'pain in lower abdomen',
-#             'shortness of breath while lying down',
-#             'vomiting blood',
-#             'intermittent abdominal pain',
-#             'swelling in extremities',
-#             'bone loss',
-#             'nerve pain',
-#             'throbbing headache',
-#             'ankle pain',
-#             'disorientation',
-#             'low blood pressure',
-#             'problems with coordination',
-#             'irritation of the tonsils',
-#             'weight gain',
-#             'thirst',
-#             'pain in upper abdomen',
-#             'loss of appetite',
-#             'rapid involuntary eye movement',
-#             'blood in stool',
-#             'fast heart rate',
-#             'vertigo',
-#             'tremor',
-#             'tenderness',
-#             'difficulty concentrating',
-#             'excess thirst',
-#             'nausea',
-#             'tongue numbness',
-#             'rib pain',
-#             'respiratory distress',
-#             'depression',
-#             'burning sensation',
-#             'delirium',
-#             'insomnia',
-#             'vaginal discharge',
-#             'swelling',
-#             'stiffness',
-#             'side pain',
-#             'seeing spots',
-#             'abdominal distension',
-#             'numbness',
-#             'sore throat',
-#             'vaginal bleeding',
-#             'chronic cough',
-#             'difficulty raising the foot',
-#             'flapping tremor',
-#             'redness',
-#             'dry mouth',
-#             'constipation',
-#             'hand numbness',
-#             'pain when coughing',
-#             'groin pain',
-#             'snoring',
-#             'confusion',
-#             'iron deficiency',
-#             'calf pain',
-#             'testicle pain',
-#             'leaking of urine',
-#             'malaise',
-#             'night sweats',
-#             'excess urination',
-#             'stuffy nose',
-#             'facial paralysis',
-#             'cavity'
-#             ]
-#         def get_diagnosis(symptoms):
-#             cyberlife_db = Neo4j("neo4j+s://ec6b6187.databases.neo4j.io:7687", "neo4j", "03u6rStifaqB7A-aOVXqttceAMzs-LuD7P19eK_l_yQ")
-#             diagnosis = {}
-#             for s in symptoms:
-#                 d = cyberlife_db.retrieve_disease_prob(s)
-#                 for key in d:
-#                     if key in diagnosis:
-#                         diagnosis[key] = diagnosis[key] + d[key]
-#                     else:
-#                         diagnosis[key] = d[key]
-            
-#             return sorted(diagnosis, key=diagnosis.get, reverse=True)[:3]
-#         all_slots = tracker.slots
-#         report_slots = {}
-#         hist = []
-#         present = []
-#         absent = []
-#         symptoms_to_diagnose = []
-#         top3 = ["Possible Causes:"]
-#         for s in all_slots:
-#             if all_slots[s] == None:
-#                 continue
-#             elif all_slots[s] == False:
-#                 if s in symptoms_to_present:
-#                     absent.append(s.replace("_", " "))
-#             else:
-#                 if s in history and all_slots[s] == True:
-#                     w = "{}: {}".format(s.replace("_", " "),"Yes")
-#                     hist.append(w)
-#                 elif s in history and all_slots[s] == False:
-#                     w = "{}: {}".format(s.replace("_", " "),"No")
-#                     hist.append(w)
-#                 elif s in history:
-#                     w = "{}: {}".format(s.replace("_", " "),all_slots[s])
-#                     hist.append(w)
-#                 else:
-#                     if s in symptoms_to_present:
-#                         report_slots[s] = all_slots[s]
-        
-#         for symptom in report_slots:
-#             if symptom[-8:] == "duration":
-#                 dur = "\t- Time since onset: " + report_slots[symptom]
-#                 present.append(dur)
-#             elif symptom[-5:] == "scale":
-#                 scale = "\t- Intensity: " + report_slots[symptom]
-#                 present.append(scale)
-#             elif symptom[-8:] == "location":
-#                 loc = "\t- Location: " + report_slots[symptom]
-#                 present.append(loc)
-#             elif report_slots[symptom] == True:
-#                 present.append(symptom.replace("_", " "))
-#             else:
-#                 w = "{}: {}".format(symptom.replace("_", " "),report_slots[symptom])
-#                 present.append(w)
-
-#             if symptom.replace("_", " ") in symptoms_in_database:
-#                 symptoms_to_diagnose.append(symptom.replace("_", " "))
-        
-#         top3 = top3 + get_diagnosis(symptoms_to_diagnose)
-#         report = hist + ["Present:"] + present + ["Absent:"] + absent + top3
-#         dispatcher.utter_message(text = "\n".join(report))
-#         print("\n".join(report))
-#         return []

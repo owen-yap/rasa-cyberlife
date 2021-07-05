@@ -1,0 +1,143 @@
+risk_factor,id
+woman,p_1
+man,p_2
+low bmi,p_6
+high bmi,p_7
+diagnosed diabetes,p_8
+hypertension,p_9
+high cholesterol,p_10
+postmenopause,p_11
+recent travel to the united states or canada,p_13
+recent travel to central or south america,p_14
+recent travel to europe,p_15
+recent travel to northern africa,p_16
+recent travel to central africa,p_17
+recent travel to southern africa,p_18
+recent travel to australia and oceania,p_19
+recent travel to russia kazakhstan or mongolia,p_20
+recent travel to the middle east,p_21
+paracetamol overdose,p_25
+psychological trauma,p_27
+smoking cigarettes,p_28
+contact with weed killers,p_36
+wild mushroom consumption,p_37
+chronic heavy alcohol use,p_38
+carbon monoxide source,p_40
+contact with insecticides,p_41
+pregnancy,p_42
+opioid use,p_43
+taking sleeping pills or sedatives,p_45
+sedative or hypnotic withdrawal,p_46
+recent surgery,p_47
+insect bite,p_48
+minor skin injury,p_52
+limb injury,p_53
+hormonal contraceptive or menopausal hormone therapy,p_54
+postpartum period,p_55
+cannabis marijuana smoking,p_69
+coronary disease,p_78
+bacterial tonsillitis,p_79
+prior myocardial infarction,p_80
+atmospheric pressure changes,p_81
+contact with allergen,p_82
+compromised immune system,p_83
+recent excessive alcohol consumption,p_84
+rheumatic fever,p_90
+contact with sick person chickenpox,p_99
+contact with animals stray cat,p_100
+structural heart disease,p_121
+contact with animals,p_122
+chronic uv exposure,p_128
+chest injury,p_136
+prolonged exposure to sunlight and heat,p_138
+contact lenses,p_139
+time spent at more than 2500 meters or 8200 ft above sea level,p_140
+pre-menstrual age,p_141
+non-serious eye injury,p_142
+abdominal injury,p_144
+acceleration-deceleration injury,p_145
+back injury,p_146
+instituting ace-inhibitor therapy,p_149
+pregnancy i trimester,p_152
+pregnancy ii trimester,p_153
+pregnancy iii trimester,p_154
+animal bite,p_155
+male sexual immaturity,p_157
+major skin injury,p_159
+history of urinary tract infections,p_161
+diagnosed chronic obstructive pulmonary disease,p_164
+non-healing wound,p_166
+diagnosed asthma,p_167
+toe injury,p_168
+finger injury,p_169
+history of depressive episode,p_171
+atherosclerosis,p_173
+anticoagulant use,p_174
+history of anaphylactic reactions,p_176
+history of neoplasm,p_178
+daily corticosteroid use,p_180
+diagnosed aortic aneurysm,p_182
+diagnosed peripheral vascular disease,p_183
+nose injury,p_185
+dental trauma,p_188
+history of tonsillectomy,p_190
+local limb compression,p_191
+history of nephrolithiasis,p_196
+history of deep vein thrombosis,p_201
+diagnosed hemophilia,p_202
+high risk for an ectopic pregnancy,p_204
+genital injury,p_207
+last tetanus immunization over 5 years ago,p_208
+ear injury,p_209
+profuse bleeding recently,p_213
+serious eye injury,p_214
+risky sexual behavior,p_216
+chronic nsaids use,p_220
+nail injury,p_229
+unspecified conditions marker,p_230
+recent head injury,p_232
+craniocerebral trauma in the past 5 years,p_233
+burn,p_234
+recent travel to asia excluding middle east russia mongolia and kazakhstan,p_236
+neck injury,p_240
+pelvis injury,p_241
+ankle injury,p_243
+knee injury,p_244
+hip injury,p_245
+foot injury,p_246
+calf injury,p_247
+thigh injury,p_248
+hand injury,p_250
+wrist injury,p_251
+forearm injury,p_252
+elbow injury,p_253
+arm injury,p_254
+shoulder injury,p_255
+lower limb injury,p_256
+upper limb injury,p_257
+polytrauma,p_258
+trunk injury,p_259
+head area injury,p_260
+major force injury,p_261
+diagnosed psoriasis,p_263
+recent physical injury,p_264
+frequent tobacco smoke exposure,p_267
+no skin injury,p_271
+family history of bleeding disorders,p_272
+salicylate overdose,p_273
+history of hysterectomy,p_276
+history of stroke,p_278
+prolonged lower limb immobilization,p_280
+lip injury,p_282
+circumcision,p_283
+personal or family history of allergy,p_287
+school attendance,p_289
+missed vaccine,p_292
+within two years after menarche,p_293
+breasts development,p_295
+history of chickenpox or vzv vaccination,p_296
+physical contact with covid-19 case,p_300
+possible contact with covid-19 case,p_301
+victim of bullying,p_304
+oral antibiotics in the past 2 weeks,p_305
+diagnosed concussion,p_306

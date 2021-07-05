@@ -80,8 +80,26 @@ slots:
   allergy:
     type: text
     influence_conversation: false
+  smoking_cigarettes:
+    type: bool
+    influence_conversation: false
+  hypertension:
+    type: bool
+    influence_conversation: false
+  diagnosed_diabetes:
+    type: bool
+    influence_conversation: false
+  high_bmi:
+    type: bool
+    influence_conversation: false
+  high_cholesterol:
+    type: bool
+    influence_conversation: false
   asthma:
     type: text
+    influence_conversation: false
+  diagnosed_asthma:
+    type: bool
     influence_conversation: false
   # URTI symptoms
   fever:
@@ -577,7 +595,7 @@ slots:
   headache_chronic:
     type: bool
     influence_conversation: false
-  headache_duration:
+  chronic_headache_duration:
     type: text
     influence_conversation: false
   headache_chronic_attack_lasting_4_to_72_hours:
@@ -595,7 +613,7 @@ slots:
   headache_recent:
     type: bool
     influence_conversation: false
-  headache_recent_duration:
+  recent_headache_duration:
     type: text
     influence_conversation: false
   headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day:
@@ -625,7 +643,7 @@ slots:
   headache_temporal_region:
     type: bool
     influence_conversation: false
-  headache_feeling:
+  headache_type:
     type: text
     influence_conversation: false
   headache_lancinating:
@@ -638,6 +656,9 @@ slots:
     type: bool
     influence_conversation: false
   headache_severe:
+    type: bool
+    influence_conversation: false
+  headache_worst_headache_in_life:
     type: bool
     influence_conversation: false
   headache_pain_level:
@@ -670,7 +691,7 @@ slots:
   orthostatic_hypotension:
     type: bool
     influence_conversation: false
-  impaired balance while walking:
+  impaired_balance_while_walking:
     type: bool
     influence_conversation: false
   impaired_memory:
@@ -688,36 +709,39 @@ slots:
   neck_pain:
     type: bool
     influence_conversation: false
-  neck_pain_during_head_movement:
+  stiff_neck:
     type: bool
     influence_conversation: false
   neck_pain_unilateral:
     type: bool
     influence_conversation: false
+  redness_on_shoulders_and_nape_of_neck:
+    type: bool
+    influence_conversation: false
   tremors:
     type: bool
     influence_conversation: false
-  tremors_both_hands:
-    type: bool
-    influence_conversation: false
-  tremors_in_one_hand:
-    type: bool
-    influence_conversation: false
-  tremors_hands:
-    type: text
-    influence_conversation: false
-  tremors_worsen:
-    type: text
-    influence_conversation: false
-  tremors_stress_related:
-    type: bool
-    influence_conversation: false
-  tremors_subside_after_drinking_alcohol:
-    type: bool
-    influence_conversation: false
-  tremors_worsen_after_caffeine_intake:
-    type: bool
-    influence_conversation: false
+  # tremors_both_hands:
+  #   type: bool
+  #   influence_conversation: false
+  # tremors_in_one_hand:
+  #   type: bool
+  #   influence_conversation: false
+  # tremors_hands:
+  #   type: text
+  #   influence_conversation: false
+  # tremors_worsen:
+  #   type: text
+  #   influence_conversation: false
+  # tremors_stress_related:
+  #   type: bool
+  #   influence_conversation: false
+  # tremors_subside_after_drinking_alcohol:
+  #   type: bool
+  #   influence_conversation: false
+  # tremors_worsen_after_caffeine_intake:
+  #   type: bool
+  #   influence_conversation: false
   # Dermatological changes
   dermatological_changes:
     type: bool
@@ -1187,6 +1211,41 @@ responses:
     - text: Do you have any allergies?
   utter_ask_allergy:
     - text: Ok, what allergies do you have?
+  utter_ask_smoking_cigarettes:
+    - text: Do you smoke?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
+  utter_ask_hypertension:
+    - text: Do you have high blood pressure (hypertension)?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
+  utter_ask_diagnosed_diabetes:
+    - text: Are you diagnosed with diabetes?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
+  utter_ask_high_cholesterol:
+    - text: Do you have high cholesterol?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
+  utter_ask_high_bmi:
+    - text: Are you overweight?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
   utter_symptom_prompt:
     - text: Ok, which symptom is bothering you the most?
   utter_additional_symptom_prompt:
@@ -1737,55 +1796,57 @@ responses:
           payload: No
   # Headache responses
   utter_ask_headache:
-    - text: Do you have a headache?
+    - text: Do you have any headache?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_headache_chronic:
-    - text: Has it been bothering you for very long period of time?
+    - text: Has your headache been bothering you for very long period of time (more than 3 months)?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
-  utter_ask_headache_duration:
-    - text: How long are your headaches?
+  utter_ask_chronic_headache_duration:
+    - text: How long do your headaches usually last?
       buttons:
+        - title: lasts up to 5 minutes
+          payload: lasts up to 5 minutes
+        - title: lasts between 5 minutes to 4 hours
+          payload: lasts 5 minutes to 4 hours
         - title: Lasts 4 to 72 hours
-          payload: Chronic, attack lasting 4 to 72 hours
-        - title: Lasts five minutes to four hours
-          payload: Chronic, attack lasting five minutes to four hours
-        - title: Lasts three to seven days
-          payload: Chronic, attack lasting three to seven days
-        - title: Lasts up to five minutes
-          payload: Chronic, attack lasting up to five minutes
-  utter_ask_headache_recent:
-    - text: Was your headache recent?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  utter_ask_headache_recent_duration:
+          payload: lasts 4 to 72 hours
+        - title: lasts 3 to 7 days
+          payload: lasts 3 to 7 days
+  utter_ask_recent_headache_duration:
     - text: How long are your headaches?
       buttons:
-        - title: Lasts for more than 1 hour and less than 1 day
-          payload: Recent, lasting for more than 1 hour and less than 1 day
         - title: Lasts less than 1 hour
-          payload: Recent, lasting less than 1 hour
+          payload: lasts less than 1 hour
+        - title: Lasts for more than 1 hour
+          payload: lasts for more than 1 hour
         - title: Lasts more than 1 day
-          payload: Recent, lasting more than 1 day
+          payload: lasts more than 1 day
+  utter_ask_headache_type:
+    - text: what best describes your headache?
+      buttons:
+        - title: Stabbing or sharp
+          payload: Stabbing/Sharp
+        - title: Pressing
+          payload: Pressing
+        - title: Pulsating
+          payload: Pulsating
   utter_ask_headache_exacerbating_by_tilting_head_forward:
-    - text: Does your headache worsen when tilting your head forward?
+    - text: Does your headache worsen when you tilt your head forward?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_headache_exacerbating_in_the_morning:
-    - text: Does your headache gets worse in the morning?
+    - text: Does your headache get worse in the morning?
       buttons:
         - title: Yes
           payload: Yes
@@ -1796,86 +1857,77 @@ responses:
       buttons:
         - title: Forehead
           payload: Forehead
-        - title: All over
-          payload: All over
         - title: At the temples
           payload: At the temples
-  utter_ask_headache_feeling:
-    - text: what kind of headache are you feeling?
-      buttons:
-        - title: Stabbing
-          payload: Stabbing
-        - title: Pressing
-          payload: Pressing
-        - title: Pulsating
-          payload: Pulsating
-  utter_ask_headache_occipital:
-    - text: Do you have throbbing or sharp pain that typically starts at the back of your head near your neck?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  utter_ask_headache_unilateral: #all-over order
-    - text: Is your headache one-sided?
+        - title: All over
+          payload: All over
+  utter_ask_headache_unilateral:
+    - text: Does your headache only occur on one side?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_headache_pain_level:
-    - text: How much pain are you experiencing?
+    - text: How painful is the headache?
       buttons:
-        - title: Mild
+        - title: Mild - does not interfere with my daily activities
           payload: Mild
-        - title: Moderate
+        - title: Moderate - cannot perform some activities
           payload: Moderate
-        - title: Severe
+        - title: Severe - one of the worst pains experienced
           payload: Severe
+  utter_ask_headache_occipital:
+    - text: Have you experienced any throbbing or sharp pain that starts at the back of your head or near your neck?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
   utter_ask_headache_sudden_onset:
-    - text: Do you get headaches suddenly(sudden onset)?
+    - text: Did the headache start suddenly and reach its peak very quickly?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_dizziness:
-    - text: Are you experiencing dizziness?
+    - text: Any dizziness / giddiness?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_dizziness_head_rotation:
-    - text: Do you get dizzy because of rotating your head?
+    - text: Does the dizziness worsen when you rotate or move your head?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_dizziness_vertigo:
-    - text: Do you have vertigo?
+    - text: Do you get the feeling like the world is spinning?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_orthostatic_hypotension:
-    - text: Do you have low blood pressure(orthostatic hypotension)?
+    - text: Do you have low blood pressure?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_impaired_balance_while_walking:
-    - text: Do you have impaired balance while walking?
+    - text: Is it difficult to keep your balance when you walk?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_impaired_memory:
-    - text: Is your memory impaired?
+    - text: Are you having trouble remembering things?
       buttons:
         - title: Yes
           payload: Yes
@@ -1889,28 +1941,28 @@ responses:
         - title: No
           payload: No
   utter_ask_impaired_memory_short_term:
-    - text: Did you experience a short term memory loss?
+    - text: Do you have any trouble remembering things which just occurred?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_tinnitus:
-    - text: Do you experience ringing or other noises in one or both of your ears?
+    - text: Have you experienced ringing or other noises in one or both of your ears?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_neck_pain:
-    - text: Do you have neck pain?
+    - text: Any neck pain?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
-  utter_ask_neck_pain_during_head_movement:
-    - text: Do you have neck pain during head movement?
+  utter_ask_stiff_neck:
+    - text: Does your neck feel sore or are you finding it difficult to turn your head to the side?
       buttons:
         - title: Yes
           payload: Yes
@@ -1923,29 +1975,13 @@ responses:
           payload: Yes
         - title: No
           payload: No
-  utter_ask_tremors:
-    - text: Do you have tremors?
+  utter_ask_redness_on_shoulders_and_nape_of_neck:
+    - text: Is your shoulders or the back of your neck red?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
-  utter_ask_tremors_hands:
-    - text: Are your tremors in one hand or both hands?
-      buttons:
-        - title: One hand
-          payload: One hand
-        - title: Both hands
-          payload: Both hands
-  utter_ask_tremors_worsen:
-    - text: Which one of these makes your tremors worse?
-      buttons:
-        - title: Stress
-          payload: Stress
-        - title: Alcohol consumption
-          payload: Alcohol consumption
-        - title: Coffee/Tea consumption
-          payload: Coffee/Tea consumption
 
   # Dermatological changes
   utter_ask_erythema:
@@ -2208,70 +2244,84 @@ responses:
           payload: Others
 
   utter_ask_joint_pain_during_ankle_movement:
-    - text: Do you have pain when you move your anke?
+    - text: Is there any pain when you move your anke?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_during_elbow_movement:
-    - text: Do you have pain when you move your elbow?
+    - text: Is there any pain when you move your elbow?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_during_hip_movement:
-    - text: Do you have pain when you move your hip?
+    - text: Is there any pain when you move your hip?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_during_knee_movement:
-    - text: Do you have pain when you move your knee?
+    - text: Is there any pain when you move your knee?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_during_shoulder_movement:
-    - text: Do you have pain when you move your shoulder?
+    - text: Is there any pain when you move your shoulder?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_during_thumb_movement:
-    - text: Do you have pain when you move your thumb?
+    - text: Is there any pain when you move your thumb?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_during_wrist_movement:
-    - text: Do you have pain when you move your wrist?
+    - text: Is there any pain when you move your wrist?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_sudden:
-    - text: Did you experience joint pain suddenly?
+    - text: Does the joint pain come on suddenly?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_trauma:
-    - text: Did your joint move out of place from falling/hurting(trauma) yourself?
+    - text: Did your joint start hurting after falling/injuring yourself?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
+  utter_ask_joint_deformation_posttraumatic:
+    - text: Does your joint look out of place or different?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
+  utter_ask_joint_deformation_nontraumatic:
+    - text: Does your joint look out of place or different?
       buttons:
         - title: Yes
           payload: Yes
         - title: No
           payload: No
   utter_ask_joint_pain_aggravated_during_cold_damp_weather:
-    - text: Did your joint pain get worse when you're exposed to cold?
+    - text: Did your joint pain get worse when you're exposed to cold weather?
       buttons:
         - title: Yes
           payload: Yes
@@ -2681,7 +2731,41 @@ forms:
         - type: from_intent
           intent: inform_allergy
           value: true
-
+      smoking_cigarettes:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      hypertension:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      diagnosed_diabetes:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      high_cholesterol:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      high_bmi:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
   abdominal_pain_form:
     required_slots:
       abdominal_pain:
@@ -3111,314 +3195,201 @@ forms:
           intent: deny
           value: false
   headache_form:
-    headache:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_chronic:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_duration:
-      - type: from_text
-    headache_chronic_attack_lasting_4_to_72_hours:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_chronic_attack_lasting_five_minutes_to_four_hours:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_chronic_attack_lasting_three_to_seven_days:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_chronic_attack_lasting_up_to_five_minutes:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_recent:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_recent_duration:
-      - type: from_text
-    headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_recent_lasting_less_than_1_hour:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_recent_lasting_more_than_1_day:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_exacerbating_by_tilting_head_forward:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_exacerbating_in_the_morning:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_location:
-      - type: from_text
-    headache_temporal_region:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_forehead:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_generalized:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_pain_level:
-      - type: from_text
-    headache_mild:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_moderate:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_severe:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_feeling:
-      - type: from_text
-    headache_lancinating:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_pressing:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_pulsating:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_occipital:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_unilateral:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    headache_sudden_onset:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    dizziness:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    dizziness_head_rotation:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    dizziness_vertigo:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    orthostatic_hypotension:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    impaired balance while walking:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    impaired_memory:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    impaired_memory_finding_objects_of_everyday_use:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    impaired_memory_short_term:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    tinnitus:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    neck_pain:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    neck_pain_during_head_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    neck_pain_unilateral:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    tremors:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    tremors_hands:
-      - type: from_text
-    tremors_both_hands:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    tremors_in_one_hand:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    tremors_worsen:
-      - type: from_text
-    tremors_stress_related:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    tremors_subside_after_drinking_alcohol:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    tremors_worsen_after_caffeine_intake:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
+    required_slots:
+      headache:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      headache_chronic:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      chronic_headache_duration:
+        - type: from_text
+      recent_headache_duration:
+        - type: from_text
+      headache_type:
+        - type: from_text
+      headache_exacerbating_by_tilting_head_forward:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      headache_exacerbating_in_the_morning:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      headache_location:
+        - type: from_text
+      headache_pain_level:
+        - type: from_text
+      headache_occipital:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      headache_unilateral:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      headache_sudden_onset:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      dizziness:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      dizziness_head_rotation:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      dizziness_vertigo:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      impaired_balance_while_walking:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      orthostatic_hypotension:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      fever:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      temperature:
+        - type: from_text
+      nasal_catarrh:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      facial_pain:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      facial_pain_paranasal_sinus:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      impaired_memory:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      impaired_memory_finding_objects_of_everyday_use:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      impaired_memory_short_term:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      tinnitus:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      neck_pain:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      stiff_neck:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      neck_pain_unilateral:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      redness_on_shoulders_and_nape_of_neck:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      pain_near_eye_socket:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      tremors:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
 
   skin_form:
     required_slots:
@@ -3620,183 +3591,114 @@ forms:
           intent: deny
           value: false
   joint_form:
-    joint_pain:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_location:
-      - type: from_text
-    joint_pain_ankle:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_elbow:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_hallux:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_hip:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_knee:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_shoulder:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_thumb:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_wrist:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_others:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_ankle_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_elbow_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_hip_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_knee_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_shoulder_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_thumb_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_wrist_movement:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_sudden:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_trauma:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_deformation_nontraumatic:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_deformation_posttraumatic:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_aggravated_during_cold_damp_weather:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_during_movement_in_the_morning:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_pain_tenderness:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-    joint_stiffness:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
+    required_slots:
+      joint_pain_location:
+        - type: from_text
+      joint_pain_during_ankle_movement:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_during_elbow_movement:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_during_hip_movement:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_during_knee_movement:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_during_shoulder_movement:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_during_thumb_movement:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_during_wrist_movement:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_sudden:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_trauma:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_deformation_nontraumatic:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_deformation_posttraumatic:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_aggravated_during_cold_damp_weather:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_during_movement_in_the_morning:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_pain_tenderness:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      joint_stiffness:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
   ear_form:
     required_slots:
       earache:
