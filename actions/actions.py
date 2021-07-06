@@ -18,13 +18,23 @@ class ValidateHistoryTakingForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        additional_slots = ["confirm_allergy"]
-        if tracker.slots.get("confirm_allergy"):
+        slot_order = [
+            "age",
+            "gender",
+            "allergies",
+            "allergy",
+            "smoking_cigarettes",
+            "hypertension",
+            "diagnosed_diabetes",
+            "high_cholesterol",
+            "high_bmi"
+            ]
+        if tracker.slots.get("allergies") == False:
             # If the user has allergies, ask
             # what allergies they have.
-            additional_slots.append("allergy")
+            slot_order.remove("allergy")
 
-        return slots_mapped_in_domain + additional_slots
+        return slot_order
 
 
 class ValidateAbdominalPainForm(FormValidationAction):
@@ -362,6 +372,7 @@ class ValidateUrtiForm(FormValidationAction):
             "facial_pain_paranasal_sinus",
             "facial_pain_longer_than_a_couple_of_hours",
             "pharyngeal_pain",
+            "fatigue",
             "dyspnea",
             "dyspnea_severity",
             "dyspnea_duration",
@@ -608,6 +619,8 @@ class ValidateBackPainForm(FormValidationAction):
             "back_pain_lumbar_radiates_to_back_of_the_thigh",
             "back_pain_lumbar_radiating_to_the_groin",
             "flank_pain",
+            "buttocks_pain",
+            "neck_pain",
             "back_pain_sudden",
             "back_pain_lasting_several_hours",
             "back_pain_improves_with_rest",
@@ -643,11 +656,11 @@ class ValidateBackPainForm(FormValidationAction):
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "mild":
+        if slot_value == "Mild":
             return {"back_pain_scale": slot_value}
-        elif slot_value == "moderate":
+        elif slot_value == "Moderate":
             return {"back_pain_scale": slot_value}
-        elif slot_value == "severe":
+        elif slot_value == "Severe":
             return {"back_pain_scale": slot_value, "back_pain_severe": True}
         else:
             dispatcher.utter_message(text = "Please select one of the options provided.")
@@ -718,9 +731,9 @@ class ValidateHeadacheForm(FormValidationAction):
            "headache_exacerbating_by_tilting_head_forward",
            "headache_exacerbating_in_the_morning",
            "headache_location",
+           "headache_unilateral",
            "headache_pain_level",
            "headache_occipital",
-           "headache_unilateral",
            "headache_sudden_onset",
            "dizziness",
            "dizziness_head_rotation",
@@ -742,6 +755,11 @@ class ValidateHeadacheForm(FormValidationAction):
            "redness_on_shoulders_and_nape_of_neck",
            "pain_near_eye_socket",
            "tremors",
+           "nausea",
+           "vomiting",
+           "vomiting_duration",
+           "vomiting_every_time_after_meal",
+           "vomiting_more_often_in_the_morning",
        ]
         if tracker.slots.get("headache") == False:
             slot_order.remove("headache_chronic")
@@ -773,7 +791,10 @@ class ValidateHeadacheForm(FormValidationAction):
             slot_order.remove("impaired_memory_short_term")
         if tracker.slots.get("neck_pain") == False:
             slot_order.remove("neck_pain_unilateral")
-        
+        if tracker.slots.get("vomiting") == False:
+            slot_order.remove("vomiting_duration")
+            slot_order.remove("vomiting_every_time_after_meal")
+            slot_order.remove("vomiting_more_often_in_the_morning")
         return slot_order
 
 
@@ -843,7 +864,7 @@ class ValidateHeadacheForm(FormValidationAction):
             return{"headache_type":slot_value,"headache_pulsating": True}
         else:
             dispatcher.utter_message(text = "Please select one of the options provided.")
-            return {"recent_headache_duration": None}
+            return {"headache_type": None}
             
     def validate_headache_location(
         self,
@@ -854,13 +875,13 @@ class ValidateHeadacheForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         if slot_value == "Forehead":
             return{"headache_location":slot_value,"headache_forehead":True,"headache_temporal_region": False,"headache_generalized": False}
-        elif slot_value == "General":
+        elif slot_value == "All over":
             return{"headache_location":slot_value,"headache_generalized": True,"headache_forehead":False,"headache_temporal_region": False }
         elif slot_value == "At the temples":
             return{"headache_location":slot_value,"headache_temporal_region": True, "headache_generalized": False,"headache_forehead":False}
         else:
             dispatcher.utter_message(text = "Please select one of the options provided.")
-            return {"recent_headache_duration": None}
+            return {"headache_location": None}
 
     def validate_headache_pain_level(
         self,
@@ -877,7 +898,7 @@ class ValidateHeadacheForm(FormValidationAction):
             return{"headache_pain_level":slot_value,"headache_severe": True, "headache_worst_headache_in_life": True}
         else:   
             dispatcher.utter_message(text = "Please select one of the options provided.")
-            return {"recent_headache_duration": None}
+            return {"headache_pain_level": None}
 
     def validate_temperature(
         self,
@@ -903,24 +924,26 @@ class ValidateHeadacheForm(FormValidationAction):
             elif temp > 40:
                 return {"temperature": slot_value, "fever_greater_than_40": True}
             else:
-                return {"temperature": slot_value}
+                dispatcher.utter_message(text = "Please enter in a number between 37.0 and 42.0")
+                return {"temperature": None}
         else:   
             dispatcher.utter_message(text = "Please enter in a number")
             return {"temperature": None}
     
-    def validate_stiff_neck(
+    def validate_vomiting_duration(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
-        if slot_value == "Mild":
-            return{"headache_pain_level":slot_value,"headache_mild":True}
-        elif slot_value == "Moderate":
-            return{"headache_pain_level":slot_value,"headache_moderate": True }
-        elif slot_value == "Severe":
-            return{"headache_pain_level":slot_value,"headache_severe": True, "headache_worst_headache_in_life": True}
+        if slot_value == "less than a week":
+            return {"vomiting_less_than_7_days": True, "vomiting_duration": slot_value}
+        elif slot_value == "more than a week":
+            return {"vomiting_7_days_or_more": True, "vomiting_duration": slot_value}
+        else:
+            dispatcher.utter_message(text = "Please select one of the following options")
+            return {"vomiting_duration": None}
 
 class ValidateSkinForm(FormValidationAction):
     def name(self) -> Text:
@@ -998,7 +1021,7 @@ class ValidateSkinForm(FormValidationAction):
 
         if tracker.slots.get("dermatological_changes_painful") ==  False:
             slot_order.remove("skin_pain_severe")
-        if tracker.slots.get("dermatological_changes_upper_lower_extremities") != "None":
+        if tracker.slots.get("dermatological_changes_upper_lower_extremities") != "None" and tracker.slots.get("dermatological_changes_upper_lower_extremities") != None and "dermatological_changes_location" in slot_order:
             slot_order.remove("dermatological_changes_location")
 
         return slot_order
@@ -1270,6 +1293,8 @@ class ValidateEarForm(FormValidationAction):
             "discharge_from_ear_type",
             "ear_canal_swelling",
             "itching_in_ear",
+            "tinnitus",
+            "dizziness",
             "numbness_of_part_of_ear",
             "pain_behind_ear",
             "pain_increases_when_touching_ear_area",
@@ -1522,10 +1547,10 @@ class CreateReport(Action):
         for s in slots:
             slot_name = s.replace("_", " ")
             if symptom_list_df['symptom_name'].eq(slot_name).any():
-                print(slot_name)
                 symptom_id = symptom_list_df.loc[symptom_list_df['symptom_name'] == slot_name, "symptom_id"].iloc[0]
                 
                 if slots[s] == True:
+                    print(s)
                     evidence.append({"id": symptom_id, "choice_id": "present"})
                 else:
                     evidence.append({"id": symptom_id, "choice_id": "absent"})
@@ -1537,18 +1562,29 @@ class CreateReport(Action):
                     evidence.append({"id": risk_factor_id, "choice_id": "present", "source": "predefined"})
                 elif history[h] == False:
                     evidence.append({"id": risk_factor_id, "choice_id": "absent", "source": "predefined"})
-                
-        print(evidence)
 
         api = infermedica_api.APIv3Connector(app_id="fb1de113", app_key="97e9474d5049b2f276da86e8d16c1f6b")
         response = api.diagnosis(evidence=evidence, sex=sex, age=age)
+        triage = api.triage(evidence=evidence, sex=sex, age=age)
+        emergency = triage["triage_level"]
+        print(emergency)
         conditions = response["conditions"]
         triage = ["Associated Conditions: "]
         for i in range(len(conditions)):
             triage.append("{}, {}%".format(conditions[i]["name"], str(round(conditions[i]["probability"]*100, 2))))
 
+        print(response)
         dispatcher.utter_message(text="\n".join(patient_hist))
         dispatcher.utter_message(text="\n".join(chief_complaint))
         dispatcher.utter_message(text="\n".join(present_symptoms))
         dispatcher.utter_message(text="\n".join(absent_symptoms))
         dispatcher.utter_message(text="\n".join(triage))
+        if emergency == "emergency_ambulance" or emergency == "emergency":
+            dispatcher.utter_message(text="You have some symptoms which are ver serious. Please seek emergency care now")
+        elif emergency == "consultation_24":
+            dispatcher.utter_message(text="Your symptoms have been recorded and will be sent to the doctor. Please continue observing your symptoms and if they get worse, seek medical help immediately. Thank you for your patience.")
+        elif emergency == "consultation":
+            dispatcher.utter_message(text="Your symptoms have been recorded and will be sent to the doctor. Thank you for your patience.")
+        else:
+            dispatcher.utter_message(text="Your symptoms have been recorded and will be sent to the doctor. Thank you for your patience.")
+            

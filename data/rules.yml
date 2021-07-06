@@ -265,6 +265,13 @@ rules:
       - action: ear_form
       - active_loop: ear_form
 
+  - rule: Activate ear form (tinnitus)
+    steps:
+      - intent: tinnitus
+      - action: action_set_symptom
+      - action: ear_form
+      - active_loop: ear_form
+
   - rule: Activate eye form (eye_pain)
     steps:
       - intent: eye_pain

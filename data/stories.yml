@@ -16,9 +16,9 @@ stories:
     - slot_was_set:
       - gender: male
     - slot_was_set:
-      - requested_slot: confirm_allergy
+      - requested_slot: allergies
     - slot_was_set:
-      - confirm_allergy: false
+      - allergies: false
     - slot_was_set:
       - requested_slot: null
     - active_loop: null

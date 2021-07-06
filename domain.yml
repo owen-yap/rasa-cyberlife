@@ -49,6 +49,7 @@ intents:
   - discharge_from_ear
   - numbness_of_part_of_ear
   - ear_canal_swelling
+  - tinnitus
   - back_pain
   - pain_in_breast
   - nodule_located_in_breast
@@ -78,7 +79,7 @@ slots:
   gender:
     type: text
     influence_conversation: false
-  confirm_allergy:
+  allergies:
     type: bool
     influence_conversation: false
   allergy:
@@ -197,6 +198,9 @@ slots:
     type: bool
     influence_conversation: false
   pharyngeal_pain:
+    type: bool
+    influence_conversation: false
+  fatigue:
     type: bool
     influence_conversation: false
   dyspnea:
@@ -553,6 +557,9 @@ slots:
     type: bool
     influence_conversation: false
   back_pain_recurrent:
+    type: bool
+    influence_conversation: false
+  buttocks_pain:
     type: bool
     influence_conversation: false
   # Breast pain
@@ -1214,7 +1221,7 @@ responses:
           payload: male
         - title: Female
           payload: female
-  utter_ask_confirm_allergy:
+  utter_ask_allergies:
     - text: Do you have any allergies?
   utter_ask_allergy:
     - text: Ok, what allergies do you have?
@@ -1254,7 +1261,7 @@ responses:
         - title: No
           payload: No
   utter_symptom_prompt:
-    - text: Ok, which symptom is bothering you the most?
+    - text: Ok, which symptom is bothering you the most? (enter one symptom)
   utter_additional_symptom_prompt:
     - text: Are there any other symptoms which you may have?
   utter_submit:
@@ -1617,6 +1624,13 @@ responses:
           payload: Yes
         - title: No
           payload: No
+  utter_ask_fatigue:
+    - text: Do you feel constantly tired, lethargic or fatigued?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
   utter_ask_dyspnea:
     - text: Are you experiencing any shortness of breath or difficulty breathing?
       buttons:
@@ -1789,6 +1803,13 @@ responses:
           payload: No
   utter_ask_back_pain_recurrent:
     - text: Does your back pain come and go frequently?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
+  utter_ask_buttocks_pain:
+    - text: Any pain in your buttocks?
       buttons:
         - title: Yes
           payload: Yes
@@ -1989,7 +2010,13 @@ responses:
           payload: Yes
         - title: No
           payload: No
-
+  utter_ask_tremors:
+    - text: Are you experiencing any tremors / uncontrollable shaking in any part of your body?
+      buttons:
+        - title: Yes
+          payload: Yes
+        - title: No
+          payload: No
   # Dermatological changes
   utter_ask_erythema:
     - text: Is it a rash or redness of skin?
@@ -2451,7 +2478,7 @@ responses:
           payload: No
   # Breast Pain Responses
   utter_ask_breast_pain:
-    - text: Is the pain only in one breast or both?
+    - text: Is the pain or symptom only in one breast or both?
       buttons:
         - title: Only one breast
           payload: only one breast
@@ -2729,7 +2756,7 @@ forms:
         - type: from_text
       gender:
         - type: from_text
-      confirm_allergy:
+      allergies:
         - type: from_intent
           intent: affirm
           value: true
@@ -2739,6 +2766,9 @@ forms:
         - type: from_intent
           intent: inform_allergy
           value: true
+      allergy:
+        - type: from_entity
+          entity: allergy
       smoking_cigarettes:
         - type: from_intent
           intent: affirm
@@ -3033,6 +3063,13 @@ forms:
         - type: from_intent
           intent: deny
           value: false
+      fatigue:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
       dyspnea:
         - type: from_intent
           intent: affirm
@@ -3127,6 +3164,20 @@ forms:
           intent: deny
           value: false
       flank_pain:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      buttocks_pain:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      neck_pain:
         - type: from_intent
           intent: affirm
           value: true
@@ -3392,6 +3443,36 @@ forms:
           intent: deny
           value: false
       tremors:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      nausea:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      vomiting:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      vomiting_duration:
+        - type: from_text
+      vomiting_every_time_after_meal:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      vomiting_more_often_in_the_morning:
         - type: from_intent
           intent: affirm
           value: true
@@ -3749,6 +3830,20 @@ forms:
           intent: deny
           value: false
       itching_in_ear:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      tinnitus:
+        - type: from_intent
+          intent: affirm
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
+      dizziness:
         - type: from_intent
           intent: affirm
           value: true

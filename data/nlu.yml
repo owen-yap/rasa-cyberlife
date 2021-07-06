@@ -231,6 +231,7 @@ nlu:
       - stomach cramps
       - cramping in stomach
       - cramps in the belly
+      - cramps
   - intent: abdominal_mass
     examples: |
       - I can feel a lump in my stomach
@@ -383,6 +384,7 @@ nlu:
       - keeps sneezing
       - my nose is runny
       - I have runny nose
+      - sneezing
   - intent: nasal_congestion
     examples: |
       - blocked nose
@@ -536,6 +538,7 @@ nlu:
       - elbow joint painful
       - knee joint painful
       - ankle joint painful
+      - my knee hurts like hell
   - intent: earache
     examples: |
       - my ear hurts
@@ -583,6 +586,16 @@ nlu:
       - enlarged ear
       - ear is bigger than normal
       - ear canal swollen
+  - intent: tinnitus
+    examples: |
+      - my ears are ringing
+      - nonstop ringing in my ears
+      - ringing in mmy left ear
+      - high pitch noise in my ear
+      - buzzing in my ear
+      - hearing ringing
+      - hearing noises in ear
+      - noise in ear
   - intent: eye_pain
     examples: |
       - my eye hurts
@@ -666,6 +679,21 @@ nlu:
       - white and clear
       - white / clear
       - green / yellow
+  - intent: other_symptoms
+    examples: |
+      - here for a diabetes checkup
+      - here for a hypertension checkup
+      - child developmental checkup
+      - checkup for child
+      - here for health checkup
+      - flareups due to COVID-19 vaccination
+      - flare ups due to covid 19 vaccination
+      - tiredness
+      - fainting
+      - snoring
+      - difficulty smelling
+      - cannot smell
+      - 
   - intent: out_of_scope
     examples: |
       - that's not what I want to do
