@@ -27,6 +27,8 @@ intents:
   - dyspnea
   - chest_pain
   - headache
+  - dizziness
+  - neck_pain
   - abdominal_pain
   - bloating
   - abdominal_pain_crampy
@@ -49,10 +51,12 @@ intents:
   - ear_canal_swelling
   - back_pain
   - pain_in_breast
+  - nodule_located_in_breast
   - eye_pain
   - red_eye
   - itching_of_eyes
   - impaired_vision
+  - decreased_visual_acuity
   - diplopia
   - mild_pain
   - moderate_pain
@@ -848,6 +852,9 @@ slots:
   erythema:
     type: bool
     influence_conversation: false
+  rash:
+    type: bool
+    influence_conversation: false
   erythema_and_scaling_on_large_portion_of_body:
     type: bool
     influence_conversation: false
@@ -1111,9 +1118,6 @@ slots:
   diminished_eye_motility_in_the_same_direction:
     type: bool
     influence_conversation: false
-  drooping_lower_eyelid:
-    type: bool
-    influence_conversation: false
   dry_discharge_on_eyelids:
     type: bool
     influence_conversation: false
@@ -1154,6 +1158,9 @@ slots:
     type: bool
     influence_conversation: false
   impaired_vision_in_one_eye:
+    type: bool
+    influence_conversation: false
+  decreased_visual_acuity:
     type: bool
     influence_conversation: false
   diplopia:
@@ -1689,12 +1696,12 @@ responses:
         - title: No
           payload: No
   utter_ask_chest_pain_exacerbating_with_deep_breath_or_cough:
-    - text: What about when you cough or take deep breaths?
+    - text: Does the chest pain get worse when you cough or take deep breaths?
       buttons:
-        - title: Yes, it gets worse
-          payload: /affirm
+        - title: Yes
+          payload: Yes
         - title: No
-          payload: /deny
+          payload: No
   utter_ask_chest_pain_exacerbating_when_lying_down:
     - text: Will it get worse if you lie down?
       buttons:
@@ -2510,7 +2517,7 @@ responses:
         - title: No
           payload: No
   utter_ask_impaired_vision:
-    - text: Has your vision been affected in any way?
+    - text: Is your vision or ability to see affected in any way?
       buttons:
         - title: Yes
           payload: yes
@@ -2523,6 +2530,14 @@ responses:
           payload: yes
         - title: No
           payload: No
+  utter_ask_decreased_visual_acuity:
+    - text: Has your vision became blurry or foggy recently?
+      buttons:
+        - title: Yes
+          payload: yes
+        - title: No
+          payload: No
+      
   utter_ask_eyes_sensitive_to_light:
     - text: Are your eyes sensitive to light?
       buttons:
@@ -2585,13 +2600,6 @@ responses:
         payload: Moving back to the centre
   utter_ask_diminished_eye_motility_in_the_same_direction:
     - text: Does one of your eyes move slower than the other?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
-  utter_ask_drooping_lower_eyelid:
-    - text: Is your lower eyelid drooping?
       buttons:
         - title: Yes
           payload: Yes
@@ -3798,6 +3806,13 @@ forms:
       - type: from_intent
         intent: deny
         value: false
+      eyes_sensitive_to_light:
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       impaired_vision:
       - type: from_intent
         intent: affirm
@@ -3806,6 +3821,13 @@ forms:
         intent: deny
         value: false
       impaired_vision_in_one_eye:
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
+      decreased_visual_acuity:
       - type: from_intent
         intent: affirm
         value: true
@@ -3843,13 +3865,6 @@ forms:
       impaired_eye_motion_direction:
       - type: from_text
       diminished_eye_motility_in_the_same_direction:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-      drooping_lower_eyelid:
       - type: from_intent
         intent: affirm
         value: true
@@ -3920,13 +3935,6 @@ forms:
         intent: deny
         value: false
       stinging_eyes_and_feeling_of_sand_under_eyelids:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
-      eyes_sensitive_to_light:
       - type: from_intent
         intent: affirm
         value: true

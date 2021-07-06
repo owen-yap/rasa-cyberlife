@@ -185,6 +185,134 @@ nlu:
       - allergic to [lamotrigine](allergy)
       - allergic to [atracurium](allergy)
       - allergic to [acidic fruits](allergy)
+  - intent: abdominal_pain
+    examples: |
+      - i have abdominal pain
+      - abdominal pain
+      - pain in the abdomen
+      - stomach pain
+      - stomachache
+      - tummy is painful
+      - pain in the tummy
+      - bellyache
+      - upset stomach
+      - dysepepsia
+      - suffering from indigestion
+      - indigestion
+      - abdomen is aching
+      - it hurts when i press on my stomach
+      - my abdomen is tender
+      - stomach is tender
+      - there is pain when i apply pressure to my stomach
+      - pain when i touch my abdomen
+  - intent: bloating
+    examples: |
+      - abdominal distension
+      - I feel bloated
+      - my stomach feels bloated
+      - distended stomach
+      - distension
+      - feeling full
+      - abdomen feels full
+      - feels like there is a lot fo fluids in my abdomen
+      - a lot of water in stomach
+      - stomach feels full
+      - belly feels swollen
+      - stomach is swollen
+      - stomach is big
+      - huge stomach
+      - stuffed feeling
+      - stomach feels stuffed
+      - stuffed stomach
+  - intent: abdominal_pain_crampy
+    examples: |
+      - tight feeling in stomach
+      - cramping in abdomen
+      - stomach cramps
+      - cramping in stomach
+      - cramps in the belly
+  - intent: abdominal_mass
+    examples: |
+      - I can feel a lump in my stomach
+      - stomach lump
+      - stomach mass
+      - something is inside my abdomen
+      - something is inside my stomach
+      - soft and lumpy thing in my stomach
+      - abdominal lump
+      - abdominal mass
+  - intent: flank_pain
+    examples: |
+      - my flanks hurt
+      - the sides of my stomach hurt
+      - left side of my abdomen is painful
+      - right side of stomach is painful
+      - flank pain
+  - intent: diarrhea
+    examples: |
+      - I have watery stools
+      - when i pass motion, my shit is watery
+      - watery shit
+      - diarrhea
+      - i have diarrhea
+      - going to the toilet a lot
+      - passing motion very often
+  - intent: constipation
+    examples: |
+      - i have constipation
+      - constipated
+      - cannot shit
+      - cannot pass motion
+      - hard stools
+      - shit is stuck
+      - dry bowel movements
+      - bowel is stuck
+  - intent: nausea
+    examples: |
+      - i feel nauseous
+      - nausea
+      - i want to throw up
+  - intent: vomiting
+    examples: |
+      - vomited
+      - i vomited
+      - throwing up
+      - i threw up
+      - vomited all my food out
+      - vomit water
+  - intent: blood_in_stool
+    examples: |
+      - there is blood in my shit
+      - shit looks red
+      - reddish stools
+      - blood in stools
+      - blood comes out when i pass motion
+      - stools are red in color
+      - stools are unusually dark
+      - blood coming out when i pass motion
+  - intent: dark_urine
+    examples: |
+      - my urine is unusually dark
+      - dark urine
+      - black urine
+      - brown urine
+      - urine is very dark
+  - intent: blood_in_urine
+    examples: |
+      - there is blood in my urine
+      - blood in urine
+      - urine is reddish in color
+      - red urine
+      - blood in my piss
+      - blood comes out when i piss
+      - there is blood when i urinate
+  - intent: pain_while_urinating
+    examples: |
+      - it hurts when i pee
+      - there is pain when i urinate
+      - hurts when i piss
+      - peeing is painful
+      - pain during urination
   - intent: fever
     examples: |
       - I have fever
@@ -301,6 +429,33 @@ nlu:
       - chest pressure
       - sharp stabbing feeling on my chest
       - chest is very painful
+  - intent: back_pain
+    examples: |
+      - my back hurts
+      - spine hurts
+      - back pain
+      - lower back pain
+      - upper back pain
+      - my back is very painful
+      - pin in my spine
+      - i think i may have a herniated disc
+      - i have slip disc
+      - chronic back pain
+  - intent: pain_in_breast
+    examples: |
+      - my breasts hurt
+      - pain in my breast
+      - breast pain
+  - intent: nodule_located_in_breast
+    examples: |
+      - there is a lump in my breast
+      - something in my breast
+      - mass inside my breast
+      - breast tumour
+      - i think i may have a tumour in my breast
+      - breast lump
+      - breast mass
+      - lump inside my breast
   - intent: headache
     examples: |
       - headache
@@ -310,127 +465,37 @@ nlu:
       - i have migraine
       - head pain
       - throbbing headache
+      - tension headache
+      - worst headache in my life
+      - head hurts
+      - head pain
+      - brain pain
       - tension in my head
       - throbbing
       - got a headache
-  - intent: abdominal_pain
+  - intent: dizziness
     examples: |
-      - i have abdominal pain
-      - abdominal pain
-      - pain in the abdomen
-      - stomach pain
-      - stomachache
-      - tummy is painful
-      - pain in the tummy
-      - bellyache
-      - upset stomach
-      - dysepepsia
-      - suffering from indigestion
-      - indigestion
-      - abdomen is aching
-      - it hurts when i press on my stomach
-      - my abdomen is tender
-      - stomach is tender
-      - there is pain when i apply pressure to my stomach
-      - pain when i touch my abdomen
-  - intent: bloating
+      - i feel dizzy
+      - lightheaded
+      - feel like the world is spinning
+      - giddiness
+      - i feel giddy
+      - cannot stand properly
+      - vertigo
+  - intent: impaired_memory
     examples: |
-      - abdominal distension
-      - I feel bloated
-      - my stomach feels bloated
-      - distended stomach
-      - distension
-      - feeling full
-      - abdomen feels full
-      - feels like there is a lot fo fluids in my abdomen
-      - a lot of water in stomach
-      - stomach feels full
-      - belly feels swollen
-      - stomach is swollen
-      - stomach is big
-      - huge stomach
-      - stuffed feeling
-      - stomach feels stuffed
-      - stuffed stomach
-  - intent: abdominal_pain_crampy
+      - having trouble remembering
+      - can't seem to remember common everyday things
+      - suddenly lost my memory about recent things
+      - i think i may have dementia
+      - i think i may have Alzheimer's disease
+      - losing my memory
+  - intent: neck_pain
     examples: |
-      - tight feeling in stomach
-      - cramping in abdomen
-      - stomach cramps
-      - cramping in stomach
-      - cramps in the belly
-  - intent: flank_pain
-    examples: |
-      - my flanks hurt
-      - the sides of my stomach hurt
-      - left side of my abdomen is painful
-      - right side of stomach is painful
-      - flank pain
-  - intent: diarrhea
-    examples: |
-      - I have watery stools
-      - when i pass motion, my shit is watery
-      - watery shit
-      - diarrhea
-      - i have diarrhea
-      - going to the toilet a lot
-      - passing motion very often
-  - intent: constipation
-    examples: |
-      - i have constipation
-      - constipated
-      - cannot shit
-      - cannot pass motion
-      - hard stools
-      - shit is stuck
-      - dry bowel movements
-      - bowel is stuck
-  - intent: blood_in_stool
-    examples: |
-      - there is blood in my shit
-      - shit looks red
-      - reddish stools
-      - blood in stools
-      - blood comes out when i pass motion
-      - stools are red in color
-      - stools are unusually dark
-      - blood coming out when i pass motion
-  - intent: dark_urine
-    examples: |
-      - my urine is unusually dark
-      - dark urine
-      - black urine
-      - brown urine
-      - urine is very dark
-  - intent: blood_in_urine
-    examples: |
-      - there is blood in my urine
-      - blood in urine
-      - urine is reddish in color
-      - red urine
-      - blood in my piss
-      - blood comes out when i piss
-      - there is blood when i urinate
-  - intent: pain_while_urinating
-    examples: |
-      - it hurts when i pee
-      - there is pain when i urinate
-      - hurts when i piss
-      - peeing is painful
-      - pain during urination
-  - intent: nausea
-    examples: |
-      - i feel nauseous
-      - nausea
-      - i want to throw up
-  - intent: vomiting
-    examples: |
-      - vomited
-      - i vomited
-      - throwing up
-      - i threw up
-      - vomited all my food out
-      - vomit water
+      - my neck hurts
+      - neck pain
+      - pain in neck
+      - pain at the back of neck
   - intent: dermatological_changes
     examples: |
       - skin
@@ -449,6 +514,11 @@ nlu:
       - red lines on skin
       - itchy skin
       - skin becomes very itchy upon contact of water
+      - eczema
+      - dry skin
+      - i have eczema
+      - scaly skin
+      - bumps on skin
   - intent: joint_pain
     examples: |
       - my knees hurt
@@ -463,6 +533,9 @@ nlu:
       - arthritis
       - stiff joints
       - tender joints
+      - elbow joint painful
+      - knee joint painful
+      - ankle joint painful
   - intent: earache
     examples: |
       - my ear hurts
@@ -497,6 +570,7 @@ nlu:
       - blood flowing out of ear
       - something coming out of ear
       - fluids coming out of ear
+      - discharge from ear
   - intent: numbness_of_part_of_ear
     examples: |
       - ear feels numb
@@ -509,23 +583,6 @@ nlu:
       - enlarged ear
       - ear is bigger than normal
       - ear canal swollen
-  - intent: back_pain
-    examples: |
-      - my back hurts
-      - spine hurts
-      - back pain
-      - lower back pain
-      - upper back pain
-      - my back is very painful
-      - pin in my spine
-      - i think i may have a herniated disc
-      - slip disc
-      - chronic back pain
-  - intent: pain_in_breast
-    examples: |
-      - my breasts hurt
-      - pain in my breast
-      - breast pain
   - intent: eye_pain
     examples: |
       - my eye hurts
@@ -558,6 +615,15 @@ nlu:
       - losing my vision
       - decreased vision
       - lesser vision
+      - can't see
+  - intent: decreased_visual_acuity
+    examples: |
+      - blurry vision
+      - foggy vision
+      - vision is foggy
+      - very foggy
+      - vision impaired
+      - blurring of sight
   - intent: diplopia
     examples: |
       - double vision

@@ -19,6 +19,13 @@ rules:
       - action: action_set_symptom
       - action: abdominal_pain_form
       - active_loop: abdominal_pain_form
+  
+  - rule: Activate abdominal form (abdominal_pain_crampy)
+    steps:
+      - intent: abdominal_pain_crampy
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
 
   - rule: Activate abdominal form (diarrhea)
     steps:
@@ -27,6 +34,20 @@ rules:
       - action: abdominal_pain_form
       - active_loop: abdominal_pain_form
   
+  - rule: Activate abdominal form (constipation)
+    steps:
+      - intent: constipation
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
+  
+  - rule: Activate abdominal form (nausea)
+    steps:
+      - intent: nausea
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
+
   - rule: Activate abdominal form (vomiting)
     steps:
       - intent: vomiting
@@ -34,16 +55,37 @@ rules:
       - action: abdominal_pain_form
       - active_loop: abdominal_pain_form
 
-  - rule: Activate abdominal form (constipation)
+  - rule: Activate abdominal form (flank_pain)
     steps:
-      - intent: constipation
+      - intent: flank_pain
       - action: action_set_symptom
       - action: abdominal_pain_form
       - active_loop: abdominal_pain_form
 
-  - rule: Activate abdominal form (flank_pain)
+  - rule: Activate abdominal form (blood_in_stool)
     steps:
-      - intent: flank_pain
+      - intent: blood_in_stool
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
+
+  - rule: Activate abdominal form (dark_urine)
+    steps:
+      - intent: dark_urine
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
+
+  - rule: Activate abdominal form (blood_in_urine)
+    steps:
+      - intent: blood_in_urine
+      - action: action_set_symptom
+      - action: abdominal_pain_form
+      - active_loop: abdominal_pain_form
+
+  - rule: Activate abdominal form (pain_while_urinating)
+    steps:
+      - intent: pain_while_urinating
       - action: action_set_symptom
       - action: abdominal_pain_form
       - active_loop: abdominal_pain_form
@@ -62,6 +104,27 @@ rules:
       - action: urti_form
       - active_loop: urti_form
 
+  - rule: Activate urti form (cough_dry)
+    steps:
+      - intent: cough_dry
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+
+  - rule: Activate urti form (cough_productive)
+    steps:
+      - intent: cough_productive
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+  
+  - rule: Activate urti form (hemoptysis)
+    steps:
+      - intent: hemoptysis
+      - action: action_set_symptom
+      - action: urti_form
+      - active_loop: urti_form
+  
   - rule: Activate urti form (nasal_catarrh)
     steps:
       - intent: nasal_catarrh
@@ -71,7 +134,7 @@ rules:
 
   - rule: Activate urti form (nasal_congestion)
     steps:
-      - intent: nasal_catarrh
+      - intent: nasal_congestion
       - action: action_set_symptom
       - action: urti_form
       - active_loop: urti_form
@@ -103,13 +166,48 @@ rules:
       - action: action_set_symptom
       - action: urti_form
       - active_loop: urti_form
+  
+  - rule: Activate back pain form (back_pain)
+    steps:
+      - intent: back_pain
+      - action: action_set_symptom
+      - action: back_pain_form
+      - active_loop: back_pain_form
+  
+  - rule: Activate breast form (pain_in_breast)
+    steps:
+      - intent: pain_in_breast
+      - action: action_set_symptom
+      - action: breast_pain_form
+      - active_loop: breast_pain_form
 
-  - rule: Activate urti form (headache)
+  - rule: Activate breast form (nodule_located_in_breast)
+    steps:
+      - intent: nodule_located_in_breast
+      - action: action_set_symptom
+      - action: breast_pain_form
+      - active_loop: breast_pain_form
+
+  - rule: Activate headache form (headache)
     steps:
       - intent: headache
       - action: action_set_symptom
       - action: headache_form
-      - active_loop: urti_form
+      - active_loop: headache_form
+
+  - rule: Activate headache form (dizziness)
+    steps:
+      - intent: dizziness
+      - action: action_set_symptom
+      - action: headache_form
+      - active_loop: headache_form
+  
+  - rule: Activate headache form (neck_pain)
+    steps:
+      - intent: neck_pain
+      - action: action_set_symptom
+      - action: headache_form
+      - active_loop: headache_form
 
   - rule: Activate skin form (dermatological_changes)
     steps:
@@ -146,6 +244,13 @@ rules:
       - action: ear_form
       - active_loop: ear_form
 
+  - rule: Activate ear form (discharge_from_ear)
+    steps:
+      - intent: discharge_from_ear
+      - action: action_set_symptom
+      - action: ear_form
+      - active_loop: ear_form
+
   - rule: Activate ear form (numbness_of_part_of_ear)
     steps:
       - intent: numbness_of_part_of_ear
@@ -159,20 +264,6 @@ rules:
       - action: action_set_symptom
       - action: ear_form
       - active_loop: ear_form
-
-  - rule: Activate back pain form (back_pain)
-    steps:
-      - intent: back_pain
-      - action: action_set_symptom
-      - action: back_pain_form
-      - active_loop: back_pain_form
-
-  - rule: Activate breast form (pain_in_breast)
-    steps:
-      - intent: pain_in_breast
-      - action: action_set_symptom
-      - action: breast_pain_form
-      - active_loop: breast_pain_form
 
   - rule: Activate eye form (eye_pain)
     steps:
@@ -198,6 +289,13 @@ rules:
   - rule: Activate eye form (impaired_vision)
     steps:
       - intent: impaired_vision
+      - action: action_set_symptom
+      - action: eye_form
+      - active_loop: eye_form
+
+  - rule: Activate eye form (decreased_visual_acuity)
+    steps:
+      - intent: decreased_visual_acuity
       - action: action_set_symptom
       - action: eye_form
       - active_loop: eye_form

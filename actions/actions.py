@@ -1024,18 +1024,6 @@ class ValidateSkinForm(FormValidationAction):
             dispatcher.utter_message(text = "Please select one of the options provided.")
             return {"dermatological_flare_ups_reason": None}
 
-    def validate_dermatological_changes_located_in_the_genital_area(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: "DomainDict",
-    ) -> Dict[Text, Any]:
-        if slot_value == True:
-            return{"dermatological_changes_located_in_the_genital_area": True}
-        else:
-            return{"dermatological_changes_located_in_the_genital_area": False, "dermatological_changes_female_genital_area": False,"dermatological_changes_male_genital_area": False }
-
     def validate_dermatological_changes_upper_lower_extremities(
         self,
         slot_value: Any,
@@ -1335,21 +1323,49 @@ class ValidateEyeForm(FormValidationAction):
         tracker: "Tracker",
         domain: "DomainDict",
     ) -> List[Text]:
-        all_slots = slots_mapped_in_domain
+        slot_order = [
+            "eye_pain",
+            "eye_pain_unbearable",
+            "red_eye",
+            "eyes_sensitive_to_light",
+            "impaired_vision",
+            "decreased_visual_acuity",
+            "impaired_vision_in_one_eye",
+            "diplopia",
+            "diplopia_lasting_more_than_24_hours",
+            "difficulty_completely_closing_one_eye",
+            "impaired_eye_motion",
+            "impaired_eye_motion_direction",
+            "diminished_eye_motility_in_the_same_direction",
+            "dry_eye",
+            "dry_discharge_on_eyelids",
+            "eye_flashes",
+            "lens_clouding",
+            "eyelid_lesion",
+            "eyelid_lesion_painful",
+            "eyelid_lesion_red_and_warm",
+            "eyelid_lesion_red_lump_with_yellow_tip",
+            "stinging_eyes_and_feeling_of_sand_under_eyelids",
+            "itching_of_eyes",
+            "pain_near_eye_socket",
+            "sunken_eyeballs",
+            "thick_eye_discharge",
+            "weak_eye_clenching",
+        ]
 
         if tracker.slots.get("eye_pain") == False:
-            all_slots.remove("eye_pain_unbearable")
+            slot_order.remove("eye_pain_unbearable")
         if tracker.slots.get("impaired_vision") == False:
-            all_slots.remove("impaired_vision_in_one_eye")
-        if tracker.slots.get("impaired_eye_motion") == False:
-            all_slots.remove("impaired_eye_motion_direction")
-        if tracker.slots.get("eyelid_lesion") == False:
-            all_slots.remove("eyelid_lesion_painful")
-            all_slots.remove("eyelid_lesion_red_and_warm")
-            all_slots.remove("eyelid_lesion_red_lump_with_yellow_tip")
+            slot_order.remove("impaired_vision_in_one_eye")
         if tracker.slots.get("diplopia") == False:
-            all_slots.remove("diplopia_lasting_more_than_24_hours")
-        return all_slots
+            slot_order.remove("diplopia_lasting_more_than_24_hours")
+        if tracker.slots.get("impaired_eye_motion") == False:
+            slot_order.remove("impaired_eye_motion_direction")
+        if tracker.slots.get("eyelid_lesion") == False:
+            slot_order.remove("eyelid_lesion_painful")
+            slot_order.remove("eyelid_lesion_red_and_warm")
+            slot_order.remove("eyelid_lesion_red_lump_with_yellow_tip")
+        return slot_order
 
     def validate_impaired_eye_motion_direction(
         self,
@@ -1517,12 +1533,15 @@ class CreateReport(Action):
             risk_factor = h.replace("_", " ")
             if risk_factor_df['risk_factor'].eq(risk_factor).any():
                 risk_factor_id = risk_factor_df.loc[risk_factor_df['risk_factor'] == risk_factor, "id"].iloc[0]
-                evidence.append({"id": risk_factor_id, "choice_id": "present", "source": "predefined"})
-
+                if history[h] == True:
+                    evidence.append({"id": risk_factor_id, "choice_id": "present", "source": "predefined"})
+                elif history[h] == False:
+                    evidence.append({"id": risk_factor_id, "choice_id": "absent", "source": "predefined"})
+                
+        print(evidence)
 
         api = infermedica_api.APIv3Connector(app_id="fb1de113", app_key="97e9474d5049b2f276da86e8d16c1f6b")
         response = api.diagnosis(evidence=evidence, sex=sex, age=age)
-        print(response)
         conditions = response["conditions"]
         triage = ["Associated Conditions: "]
         for i in range(len(conditions)):
