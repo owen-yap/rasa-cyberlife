@@ -1201,7 +1201,7 @@ slots:
 responses:
   utter_greet:
     - text: |-
-        Hi, I am Cyberlife! I am here to help your doctor with the consultation later.
+        Hi, I am Cyberlife! I am here to help your doctor with the consultation later. 
 
         I will ask you questions about your symptoms and conditions. A report will be generated at the end and I will need your help to present it to your doctor later.
 

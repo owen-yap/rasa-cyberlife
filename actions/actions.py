@@ -1580,7 +1580,7 @@ class CreateReport(Action):
         dispatcher.utter_message(text="\n".join(absent_symptoms))
         dispatcher.utter_message(text="\n".join(triage))
         if emergency == "emergency_ambulance" or emergency == "emergency":
-            dispatcher.utter_message(text="You have some symptoms which are ver serious. Please seek emergency care now")
+            dispatcher.utter_message(text="You have some symptoms which are very serious. Please seek emergency care now")
         elif emergency == "consultation_24":
             dispatcher.utter_message(text="Your symptoms have been recorded and will be sent to the doctor. Please continue observing your symptoms and if they get worse, seek medical help immediately. Thank you for your patience.")
         elif emergency == "consultation":
