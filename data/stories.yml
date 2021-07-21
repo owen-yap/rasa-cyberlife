@@ -35,3 +35,182 @@ stories:
     - action: utter_no_worries
     - intent: goodbye
     - action: utter_goodbye
+
+  - story: interactive_story_2
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - action: history_taking_form
+    - active_loop: history_taking_form
+    - slot_was_set:
+      - requested_slot: age
+    - slot_was_set:
+      - age: '29'
+    - slot_was_set:
+      - requested_slot: gender
+    - slot_was_set:
+      - gender: male
+    - slot_was_set:
+      - requested_slot: allergies
+    - slot_was_set:
+      - allergies: false
+    - slot_was_set:
+      - requested_slot: smoking_cigarettes
+    - slot_was_set:
+      - smoking_cigarettes: false
+    - slot_was_set:
+      - requested_slot: hypertension
+    - slot_was_set:
+      - hypertension: false
+    - slot_was_set:
+      - requested_slot: diagnosed_diabetes
+    - slot_was_set:
+      - diagnosed_diabetes: false
+    - slot_was_set:
+      - requested_slot: high_cholesterol
+    - slot_was_set:
+      - high_cholesterol: false
+    - slot_was_set:
+      - requested_slot: high_bmi
+    - slot_was_set:
+      - high_bmi: false
+    - slot_was_set:
+      - requested_slot: null
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: utter_symptom_prompt
+    - intent: chest_pain
+    - action: action_set_symptom
+    - slot_was_set:
+      - chest_pain: true
+    - slot_was_set:
+      - initial:
+        - chest pain
+    - action: urti_form
+    - active_loop: urti_form
+    - slot_was_set:
+      - chest_pain: true
+    - slot_was_set:
+      - requested_slot: fever
+    - slot_was_set:
+      - fever: false
+    - slot_was_set:
+      - requested_slot: cough
+    - slot_was_set:
+      - cough: true
+    - slot_was_set:
+      - requested_slot: cough_duration
+    - slot_was_set:
+      - cough_duration: 3 to 8 weeks
+    - slot_was_set:
+      - cough_lasting_three_to_eight_weeks: true
+    - slot_was_set:
+      - requested_slot: cough_productive
+    - slot_was_set:
+      - cough_productive: true
+    - slot_was_set:
+      - cough_dry: false
+    - slot_was_set:
+      - requested_slot: hemoptysis
+    - slot_was_set:
+      - hemoptysis: false
+    - slot_was_set:
+      - requested_slot: cough_productive_color
+    - slot_was_set:
+      - cough_productive_color: yellow or green
+    - slot_was_set:
+      - cough_productive_with_yellow_or_green_sputum: true
+    - slot_was_set:
+      - requested_slot: cough_nocturnal
+    - slot_was_set:
+      - cough_nocturnal: true
+    - slot_was_set:
+      - requested_slot: cough_paroxysmal
+    - slot_was_set:
+      - cough_paroxysmal: true
+    - slot_was_set:
+      - requested_slot: nasal_catarrh
+    - slot_was_set:
+      - nasal_catarrh: false
+    - slot_was_set:
+      - requested_slot: nasal_congestion
+    - slot_was_set:
+      - nasal_congestion: false
+    - slot_was_set:
+      - requested_slot: facial_pain
+    - slot_was_set:
+      - facial_pain: false
+    - slot_was_set:
+      - requested_slot: pharyngeal_pain
+    - slot_was_set:
+      - pharyngeal_pain: false
+    - slot_was_set:
+      - requested_slot: fatigue
+    - intent: nlu_fallback
+    - action: utter_please_rephrase
+    - action: urti_form
+    - slot_was_set:
+      - requested_slot: fatigue
+    - slot_was_set:
+      - fatigue: false
+    - slot_was_set:
+      - requested_slot: dyspnea
+    - slot_was_set:
+      - dyspnea: true
+    - slot_was_set:
+      - requested_slot: dyspnea_severity
+    - slot_was_set:
+      - dyspnea_severity: after few minutes of walking
+    - slot_was_set:
+      - dyspnea_after_a_few_minutes_of_walking: true
+    - slot_was_set:
+      - requested_slot: dyspnea_duration
+    - slot_was_set:
+      - dyspnea_duration: less than 1 hour
+    - slot_was_set:
+      - dyspnea_lasting_less_than_1_hour: true
+    - slot_was_set:
+      - requested_slot: dyspnea_orthopnea
+    - slot_was_set:
+      - dyspnea_orthopnea: true
+    - slot_was_set:
+      - requested_slot: chest_pain_type
+    - slot_was_set:
+      - chest_pain_type: pressing
+    - slot_was_set:
+      - chest_pain_pressure: true
+    - slot_was_set:
+      - requested_slot: chest_pain_duration
+    - slot_was_set:
+      - chest_pain_duration: less than 30 minutes
+    - slot_was_set:
+      - chest_pain_lasting_less_than_30_minutes: true
+    - slot_was_set:
+      - requested_slot: chest_pain_exacerbated_by_stress
+    - slot_was_set:
+      - chest_pain_exacerbated_by_stress: true
+    - slot_was_set:
+      - requested_slot: chest_pain_during_exertion
+    - slot_was_set:
+      - chest_pain_during_exertion: true
+    - slot_was_set:
+      - requested_slot: chest_pain_exacerbating_with_deep_breath_or_cough
+    - slot_was_set:
+      - chest_pain_exacerbating_with_deep_breath_or_cough: true
+    - slot_was_set:
+      - requested_slot: chest_pain_exacerbating_when_lying_down
+    - slot_was_set:
+      - chest_pain_exacerbating_when_lying_down: false
+    - slot_was_set:
+      - requested_slot: chest_pain_radiating
+    - slot_was_set:
+      - chest_pain_radiating: Not Spreading
+    - slot_was_set:
+      - requested_slot: null
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: utter_additional_symptom_prompt
+    - intent: deny
+    - action: action_create_report

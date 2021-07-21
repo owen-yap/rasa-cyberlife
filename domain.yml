@@ -1,75 +1,89 @@
-version: "2.0"
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - thank_you
-  - goodbye
-  - give_age
-  - give_temperature
-  - give_body_part
-  - give_gender
-  - give_duration
-  - affirm
-  - deny
-  - inform_allergy
-  - cough
-  - cough_dry
-  - cough_productive
-  - hemoptysis
-  - inform_asthma
-  - fever
-  - nasal_catarrh
-  - nasal_congestion
-  - facial_pain
-  - pharyngeal_pain
-  - dyspnea
-  - chest_pain
-  - headache
-  - dizziness
-  - neck_pain
-  - abdominal_pain
-  - bloating
-  - abdominal_pain_crampy
-  - diarrhea
-  - constipation
-  - flank_pain
-  - blood_in_stool
-  - dark_urine
-  - blood_in_urine
-  - pain_while_urinating
-  - nausea
-  - vomiting
-  - dermatological_changes
-  - joint_pain
-  - earache
-  - clogged_ear
-  - decreased_hearing
-  - discharge_from_ear
-  - numbness_of_part_of_ear
-  - ear_canal_swelling
-  - tinnitus
-  - back_pain
-  - pain_in_breast
-  - nodule_located_in_breast
-  - eye_pain
-  - red_eye
-  - itching_of_eyes
-  - impaired_vision
-  - decreased_visual_acuity
-  - diplopia
-  - mild_pain
-  - moderate_pain
-  - severe_pain
-  - give_color
-  - out_of_scope
-
+- give_age
+- greet
+- affirm
+- give_color
+- radiating_pain
+- deny
+- nlu_fallback
+- severity_description
+- chest_pain
+- sharp_stabbing
+- give_gender
+- pressing
+- give_duration
+- thank_you
+- goodbye
+- give_temperature
+- give_body_part
+- inform_allergy
+- cough
+- cough_dry
+- cough_productive
+- hemoptysis
+- inform_asthma
+- fever
+- nasal_catarrh
+- nasal_congestion
+- facial_pain
+- pharyngeal_pain
+- dyspnea
+- headache
+- dizziness
+- neck_pain
+- abdominal_pain
+- bloating
+- abdominal_pain_crampy
+- diarrhea
+- constipation
+- flank_pain
+- blood_in_stool
+- dark_urine
+- blood_in_urine
+- pain_while_urinating
+- nausea
+- vomiting
+- dermatological_changes
+- joint_pain
+- earache
+- clogged_ear
+- decreased_hearing
+- discharge_from_ear
+- numbness_of_part_of_ear
+- ear_canal_swelling
+- tinnitus
+- back_pain
+- pain_in_breast
+- nodule_located_in_breast
+- eye_pain
+- red_eye
+- itching_of_eyes
+- impaired_vision
+- decreased_visual_acuity
+- diplopia
+- mild_pain
+- moderate_pain
+- severe_pain
+- give_asthma_history
+- burning_gnawing
+- pulsating
+- location
+- exacerbation
+- intensity
+- pus
+- none_of_the_above
+- number_of_breast_affected
+- abnormal_size
+- movement
+- onset_duration
+- out_of_scope
 entities:
-  - allergy
-
+- allergy
 slots:
-  # History taking
   initial:
     type: list
     influence_conversation: false
@@ -106,7 +120,6 @@ slots:
   diagnosed_asthma:
     type: bool
     influence_conversation: false
-  # URTI symptoms
   fever:
     type: bool
     influence_conversation: false
@@ -299,7 +312,6 @@ slots:
   chest_pain_recurrent:
     type: bool
     influence_conversation: false
-  # Abdominal Pain
   abdominal_pain:
     type: bool
     influence_conversation: false
@@ -519,7 +531,6 @@ slots:
   diminished_appetite:
     type: bool
     influence_conversation: false
-  # Back Pain
   back_pain:
     type: bool
     influence_conversation: false
@@ -562,7 +573,6 @@ slots:
   buttocks_pain:
     type: bool
     influence_conversation: false
-  # Breast pain
   breast_pain:
     type: text
     influence_conversation: false
@@ -599,7 +609,6 @@ slots:
   symptoms_regularly_appear_a_few_days_before_menstrual_period:
     type: bool
     influence_conversation: false
-  # Headache
   headache:
     type: bool
     influence_conversation: false
@@ -732,28 +741,6 @@ slots:
   tremors:
     type: bool
     influence_conversation: false
-  # tremors_both_hands:
-  #   type: bool
-  #   influence_conversation: false
-  # tremors_in_one_hand:
-  #   type: bool
-  #   influence_conversation: false
-  # tremors_hands:
-  #   type: text
-  #   influence_conversation: false
-  # tremors_worsen:
-  #   type: text
-  #   influence_conversation: false
-  # tremors_stress_related:
-  #   type: bool
-  #   influence_conversation: false
-  # tremors_subside_after_drinking_alcohol:
-  #   type: bool
-  #   influence_conversation: false
-  # tremors_worsen_after_caffeine_intake:
-  #   type: bool
-  #   influence_conversation: false
-  # Dermatological changes
   dermatological_changes:
     type: bool
     influence_conversation: false
@@ -787,25 +774,25 @@ slots:
   dermatological_changes_location:
     type: text
     influence_conversation: false
-  dermatological_changes_eyelid: #
+  dermatological_changes_eyelid:
     type: bool
     influence_conversation: false
-  dermatological_changes_feet: #
+  dermatological_changes_feet:
     type: bool
     influence_conversation: false
-  dermatological_changes_hands: #
+  dermatological_changes_hands:
     type: bool
     influence_conversation: false
-  dermatological_changes_trunk: #
+  dermatological_changes_trunk:
     type: bool
     influence_conversation: false
-  dermatological_changes_located_in_the_mouth: #
+  dermatological_changes_located_in_the_mouth:
     type: bool
     influence_conversation: false
   dermatological_changes_scalp:
     type: bool
     influence_conversation: false
-  dermatological_changes_located_on_the_face: #
+  dermatological_changes_located_on_the_face:
     type: bool
     influence_conversation: false
   dermatological_changes_located_on_the_joint:
@@ -868,28 +855,25 @@ slots:
   erythema_around_eyes:
     type: bool
     influence_conversation: false
-  # erythema_migrans:
-  #   type: bool
-  #   influence_conversation: false
   erythema_of_skin_overlying_a_joint:
     type: bool
     influence_conversation: false
   erythema_facial:
     type: bool
     influence_conversation: false
-  erythema_finger: #hand
+  erythema_finger:
     type: bool
     influence_conversation: false
-  erythema_hand: #hand
+  erythema_hand:
     type: bool
     influence_conversation: false
-  erythema_palmar: #palm - hand
+  erythema_palmar:
     type: bool
     influence_conversation: false
   erythema_limb:
     type: bool
     influence_conversation: false
-  erythema_scalp: #head
+  erythema_scalp:
     type: bool
     influence_conversation: false
   erythema_toe:
@@ -916,13 +900,13 @@ slots:
   pruritus_aggravated_by_change_in_temperature_sweating_or_wearing_wool:
     type: bool
     influence_conversation: false
-  pruritus_foot: #set based on derma changes questions
+  pruritus_foot:
     type: bool
     influence_conversation: false
   pruritus_most_intense_at_night:
     type: bool
     influence_conversation: false
-  pruritus_scalp: #set based on derma changes questions
+  pruritus_scalp:
     type: bool
     influence_conversation: false
   honey_coloured_crust_on_the_skin:
@@ -961,14 +945,13 @@ slots:
   skin_thickening:
     type: bool
     influence_conversation: false
-
   joint_pain:
     type: bool
     influence_conversation: false
   joint_pain_location:
     type: text
     influence_conversation: false
-  joint_pain_ankle: #ankle
+  joint_pain_ankle:
     type: bool
     influence_conversation: false
   joint_pain_elbow:
@@ -1094,7 +1077,6 @@ slots:
   redness_behind_the_ear:
     type: bool
     influence_conversation: false
-  # Eye slots
   eye_pain:
     type: bool
     influence_conversation: false
@@ -1119,7 +1101,7 @@ slots:
   impaired_medial_eye_motion:
     type: bool
     influence_conversation: false
-  impaired_upward_eye_motion: 
+  impaired_upward_eye_motion:
     type: bool
     influence_conversation: false
   diminished_eye_motility_in_the_same_direction:
@@ -1197,2687 +1179,2676 @@ slots:
   weak_eye_clenching:
     type: bool
     influence_conversation: false
-
 responses:
   utter_greet:
-    - text: |-
-        Hi, I am Cyberlife! I am here to help your doctor with the consultation later. 
+  - text: |-
+      Hi, I am Cyberlife! I am here to help your doctor with the consultation later. 
 
-        I will ask you questions about your symptoms and conditions. A report will be generated at the end and I will need your help to present it to your doctor later.
+      I will ask you questions about your symptoms and conditions. A report will be generated at the end and I will need your help to present it to your doctor later.
 
-        This service provides general information only. It does not give a medical diagnosis or replace an appointment with a medical professional.
+      This service provides general information only. It does not give a medical diagnosis or replace an appointment with a medical professional.
   utter_goodbye:
-    - text: Bye
+  - text: Bye
   utter_no_worries:
-    - text: No problem! 😄
-  utter_ask_continue:
-    - text: Sorry, I don't quite understand. Do you want to continue?
+  - text: No problem! 😄
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request. If you would like to skip the Triage, please say "I wish to quit".
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   utter_ask_age:
-    - text: What is your age?
+  - text: What is your age?
   utter_ask_gender:
-    - text: What is your gender at birth?
-      buttons:
-        - title: Male
-          payload: male
-        - title: Female
-          payload: female
+  - text: What is your gender at birth?
+    buttons:
+    - title: Male
+      payload: male
+    - title: Female
+      payload: female
   utter_ask_allergies:
-    - text: Do you have any allergies?
+  - text: Do you have any allergies?
   utter_ask_allergy:
-    - text: Ok, what allergies do you have?
+  - text: Ok, what allergies do you have?
   utter_ask_smoking_cigarettes:
-    - text: Do you smoke?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you smoke?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_hypertension:
-    - text: Do you have high blood pressure (hypertension)?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have high blood pressure (hypertension)?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_diagnosed_diabetes:
-    - text: Are you diagnosed with diabetes?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you diagnosed with diabetes?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_high_cholesterol:
-    - text: Do you have high cholesterol?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have high cholesterol?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_high_bmi:
-    - text: Are you overweight?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you overweight?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_symptom_prompt:
-    - text: Ok, which symptom is bothering you the most? (enter one symptom)
+  - text: Ok, which symptom is bothering you the most? (enter one symptom)
   utter_additional_symptom_prompt:
-    - text: Are there any other symptoms which you may have?
+  - text: Are there any other symptoms which you may have?
   utter_submit:
-    - text: Thank you!
+  - text: Thank you!
   utter_ask_asthma:
-    - text: Do you currently or previously have asthma?
-      buttons:
-        - title: Previously had asthma
-          payload: History of asthma
-        - title: Currently have asthma
-          payload: Patient has asthma
-        - title: No asthma
-          payload: No asthma
-  # Abdominal Pain Questions
+  - text: Do you currently or previously have asthma?
+    buttons:
+    - title: Previously had asthma
+      payload: History of asthma
+    - title: Currently have asthma
+      payload: Patient has asthma
+    - title: No asthma
+      payload: No asthma
   utter_ask_abdominal_pain:
-    - text: Are you experiencing any pain around your stomach and abdomen area?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you experiencing any pain around your stomach and abdomen area?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_abdominal_pain_type:
-    - text: What best describes the pain?
-      buttons:
-        - title: Cramping
-          payload: cramping
-        - title: Burning or gnawing
-          payload: burning or gnawing
-        - title: Sharp and stabbing
-          payload: sharp and stabbing
-        - title: Others
-          payload: others
+  - text: What best describes the pain?
+    buttons:
+    - title: Cramping
+      payload: cramping
+    - title: Burning or gnawing
+      payload: burning or gnawing
+    - title: Sharp and stabbing
+      payload: sharp and stabbing
+    - title: Others
+      payload: others
   utter_ask_abdominal_pain_location:
-    - text: Which part of the abdomen is the pain occuring?
-      buttons:
-        - title: left upper
-          payload: left upper
-        - title: left lower
-          payload: left lower
-        - title: right upper
-          payload: right upper
-        - title: right lower
-          payload: right lower
-        - title: centre
-          payload: centre
-        - title: sides / flanks
-          payload: flanks
-        - title: pelvis
-          payload: pelvis
-        - title: all over
-          payload: all over
+  - text: Which part of the abdomen is the pain occuring?
+    buttons:
+    - title: left upper
+      payload: left upper
+    - title: left lower
+      payload: left lower
+    - title: right upper
+      payload: right upper
+    - title: right lower
+      payload: right lower
+    - title: centre
+      payload: centre
+    - title: sides / flanks
+      payload: flanks
+    - title: pelvis
+      payload: pelvis
+    - title: all over
+      payload: all over
   utter_ask_abdominal_pain_postprandial:
-    - text: Does the pain occur everytime after you eat?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the pain occur everytime after you eat?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_abdominal_pain_premenstrual:
-    - text: Is the pain occuring before your period begins?
-      buttons:
-        - title: Yes
-          payload: No
-        - title: No
-          payload: No
+  - text: Is the pain occuring before your period begins?
+    buttons:
+    - title: Yes
+      payload: No
+    - title: No
+      payload: No
   utter_ask_abdominal_pain_onset:
-    - text: Did the pain come gradually or suddenly?
-      buttons:
-        - title: gradually
-          payload: gradual
-        - title: suddenly
-          payload: sudden
+  - text: Did the pain come gradually or suddenly?
+    buttons:
+    - title: gradually
+      payload: gradual
+    - title: suddenly
+      payload: sudden
   utter_ask_abdominal_pain_duration:
-    - text: How long has it been since the pain started?
-      buttons:
-        - title: Less than 2 days
-          payload: less than 2 days
-        - title: Between 2 to 7 days
-          payload: between 2 to 7 days
-        - title: Between 1 to 2 weeks
-          payload: between 1 to 2 weeks
-        - title: More than 2 weeks
-          payload: more than 2 weeks
+  - text: How long has it been since the pain started?
+    buttons:
+    - title: Less than 2 days
+      payload: less than 2 days
+    - title: Between 2 to 7 days
+      payload: between 2 to 7 days
+    - title: Between 1 to 2 weeks
+      payload: between 1 to 2 weeks
+    - title: More than 2 weeks
+      payload: more than 2 weeks
   utter_ask_abdominal_pain_scale:
-    - text: How would you describe the pain?
-      buttons:
-        - title: Mild - does not interfere with my daily activities
-          payload: Mild
-        - title: Moderate - cannot perform some activities
-          payload: Moderate
-        - title: Severe - one of the worst pains experienced
-          payload: Severe
+  - text: How would you describe the pain?
+    buttons:
+    - title: Mild - does not interfere with my daily activities
+      payload: Mild
+    - title: Moderate - cannot perform some activities
+      payload: Moderate
+    - title: Severe - one of the worst pains experienced
+      payload: Severe
   utter_ask_abdominal_tenderness:
-    - text: Does your abdomen hurt more when you touch or apply pressure to it?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your abdomen hurt more when you touch or apply pressure to it?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_abdominal_tenderness_location:
-    - text: Which part of your abdomen hurts more when pressure is applied?
-      buttons:
-        - title: left upper
-          payload: left upper
-        - title: left lower
-          payload: left lower
-        - title: right upper
-          payload: right upper
-        - title: right lower
-          payload: right lower
-        - title: pelvis
-          payload: pelvis
+  - text: Which part of your abdomen hurts more when pressure is applied?
+    buttons:
+    - title: left upper
+      payload: left upper
+    - title: left lower
+      payload: left lower
+    - title: right upper
+      payload: right upper
+    - title: right lower
+      payload: right lower
+    - title: pelvis
+      payload: pelvis
   utter_ask_abdominal_mass:
-    - text: Do you feel any mass or lump in your abdomen?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you feel any mass or lump in your abdomen?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_abdominal_pain_exacerbation:
-    - text: Does the pain worsen due to the following activities?
-      buttons:
-        - title: After caffeine consumption
-          payload: after caffeine consumption
-        - title: During coughing or movement
-          payload: during coughing or movement
-        - title: During deep breaths
-          payload: during deep breaths
-        - title: On an empty stomach
-          payload: on an empty stomach
-        - title: When I am stressed
-          payload: when under stressed
-        - title: None of the above
-          payload: no
+  - text: Does the pain worsen due to the following activities?
+    buttons:
+    - title: After caffeine consumption
+      payload: after caffeine consumption
+    - title: During coughing or movement
+      payload: during coughing or movement
+    - title: During deep breaths
+      payload: during deep breaths
+    - title: On an empty stomach
+      payload: on an empty stomach
+    - title: When I am stressed
+      payload: when under stress
+    - title: None of the above
+      payload: no
   utter_ask_bloating:
-    - text: Do you feel bloated?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you feel bloated?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_diarrhea:
-    - text: Do you have diarrhea?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have diarrhea?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_diarrhea_duration:
-    - text: How long has the diarrhea lasted?
-      buttons:
-        - title: Less than 2 days
-          payload: less than 2 days
-        - title: Between 2 days and 2 weeks
-          payload: between 2 days and 2 weeks
-        - title: More than 2 weeks
-          payload: more than 2 weeks
+  - text: How long has the diarrhea lasted?
+    buttons:
+    - title: Less than 2 days
+      payload: less than 2 days
+    - title: Between 2 days and 2 weeks
+      payload: between 2 days and 2 weeks
+    - title: More than 2 weeks
+      payload: more than 2 weeks
   utter_ask_constipation:
-    - text: Do you have any constipation?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any constipation?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_nausea:
-    - text: Have you felt nauseous?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Have you felt nauseous?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_vomiting:
-    - text: Ok, then have you vomited?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Ok, then have you vomited?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_vomiting_duration:
-    - text: How long have you been vomiting?
-      buttons:
-        - title: Less than a week
-          payload: less than a week
-        - title: More than a week
-          payload: more than a week
+  - text: How long have you been vomiting?
+    buttons:
+    - title: Less than a week
+      payload: less than a week
+    - title: More than a week
+      payload: more than a week
   utter_ask_vomiting_every_time_after_meal:
-    - text: Are you vomiting every time after you eat?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you vomiting every time after you eat?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_vomiting_more_often_in_the_morning:
-    - text: Do you find yourself vomiting more often in the morning?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you find yourself vomiting more often in the morning?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_diminished_appetite:
-    - text: Do you have a poor appetite ever since the symptoms started occuring?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have a poor appetite ever since the symptoms started occuring?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_stools:
-    - text: Have you noticed black feces or blood when you pass motion?
-      buttons:
-        - title: Black feces
-          payload: black feces
-        - title: Blood in feces
-          payload: blood in feces
-        - title: No dark feces or blood
-          payload: no
+  - text: Have you noticed black feces or blood when you pass motion?
+    buttons:
+    - title: Black feces
+      payload: black feces
+    - title: Blood in feces
+      payload: blood in feces
+    - title: No dark feces or blood
+      payload: no
   utter_ask_painful_defecation:
-    - text: Do you experience any pain or problems when you pass motion?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you experience any pain or problems when you pass motion?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_bleeding_from_anus:
-    - text: Are you bleeding from your anus?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you bleeding from your anus?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_bleeding_from_anus_scale:
-    - text: Is it light bleeding or heavy bleeding?
-      buttons:
-        - title: Light
-          payload: light
-        - title: Heavy
-          payload: heavy
+  - text: Is it light bleeding or heavy bleeding?
+    buttons:
+    - title: Light
+      payload: light
+    - title: Heavy
+      payload: heavy
   utter_ask_blood_in_urine:
-    - text: Is there any blood in your urine or is it reddish in colour?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any blood in your urine or is it reddish in colour?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pain_while_urinating:
-    - text: Any pain when you urinate?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  # URTI responses
+  - text: Any pain when you urinate?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_fever:
-    - text: Do you have any fever?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any fever?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_temperature:
-    - text: What is the temperature of your fever?
+  - text: What is the temperature of your fever?
   utter_ask_cough:
-    - text: Any coughing?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Any coughing?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_cough_duration:
-    - text: How long have you been coughing?
-      buttons:
-        - title: Less than 3 weeks
-          payload: less than 3 weeks
-        - title: 3 to 8 weeks
-          payload: 3 to 8 weeks
-        - title: More than 8 weeks
-          payload: more than 8 weeks
+  - text: How long have you been coughing?
+    buttons:
+    - title: Less than 3 weeks
+      payload: less than 3 weeks
+    - title: 3 to 8 weeks
+      payload: 3 to 8 weeks
+    - title: More than 8 weeks
+      payload: more than 8 weeks
   utter_ask_cough_productive:
-    - text: Is there phlegm when you cough?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there phlegm when you cough?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_hemoptysis:
-    - text: Are you coughing out blood?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you coughing out blood?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_cough_productive_color:
-    - text: What is the color of the phelgm?
-      buttons:
-        - title: Pink and frothy
-          payload: pink and frothy
-        - title: Yellow or green
-          payload: yellow or green
-        - title: Others
-          payload: others
+  - text: What is the color of the phelgm?
+    buttons:
+    - title: Pink and frothy
+      payload: pink and frothy
+    - title: Yellow or green
+      payload: yellow or green
+    - title: Others
+      payload: others
   utter_ask_cough_nocturnal:
-    - text: Do you cough more at night?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you cough more at night?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_cough_paroxysmal:
-    - text: Are your coughs violent?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are your coughs violent?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_nasal_catarrh:
-    - text: Do you have any runny nose?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any runny nose?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_nasal_congestion:
-    - text: What about blocked or stuffy nose?
-      buttons:  
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: What about blocked or stuffy nose?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_nasal_congestion_chronic:
-    - text: Has your blocked nose lasted for a long time (3 months or more)?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Has your blocked nose lasted for a long time (3 months or more)?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_facial_pain:
-    - text: Do you have any facial pain?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any facial pain?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_facial_pain_paranasal_sinus:
-    - text: Is the pain located at your sinuses? Your sinuses are found at the side of your nose, near your cheeks and above your eyes.
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is the pain located at your sinuses? Your sinuses are found at the side of your nose, near your cheeks and above your eyes.
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_facial_pain_longer_than_a_couple_of_hours:
-    - text: Does the pain last longer than a couple of hours?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the pain last longer than a couple of hours?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pharyngeal_pain:
-    - text: Ok, do you have any sore throat?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Ok, do you have any sore throat?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_fatigue:
-    - text: Do you feel constantly tired, lethargic or fatigued?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you feel constantly tired, lethargic or fatigued?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dyspnea:
-    - text: Are you experiencing any shortness of breath or difficulty breathing?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you experiencing any shortness of breath or difficulty breathing?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dyspnea_severity:
-    - text: When does your shortness of breath occur?
-      buttons:
-        - title: When I am resting
-          payload: when resting
-        - title: After a few minutes of walking
-          payload: after few minutes of walking
-        - title: When I do physical activities
-          payload: when i do physical activities
+  - text: When does your shortness of breath occur?
+    buttons:
+    - title: When I am resting
+      payload: when resting
+    - title: After a few minutes of walking
+      payload: after few minutes of walking
+    - title: When I do physical activities
+      payload: when i do physical activities
   utter_ask_dyspnea_duration:
-    - text: How long does your shortness of breath usually last?
-      buttons:
-        - title: lasts less than 1 hour
-          payload: less than 1 hour
-        - title: lasts between 1 to 24 hours
-          payload: 1 to 24 hours
-        - title: lasts between 1 day to 4 weeks
-          payload: 1 day to 4 weeks
+  - text: How long does your shortness of breath usually last?
+    buttons:
+    - title: lasts less than 1 hour
+      payload: less than 1 hour
+    - title: lasts between 1 to 24 hours
+      payload: 1 to 24 hours
+    - title: lasts between 1 day to 4 weeks
+      payload: 1 day to 4 weeks
   utter_ask_dyspnea_orthopnea:
-    - text: Does it only occur when you are lying down?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does it only occur when you are lying down?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chest_pain:
-    - text: Do you have any chest pain?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any chest pain?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chest_pain_type:
-    - text: What best describes your chest pain?
-      buttons:
-        - title: burning
-          payload: burning
-        - title: pressing / tightness
-          payload: pressing
-        - title: stabbing
-          payload: stabbing
+  - text: What best describes your chest pain?
+    buttons:
+    - title: burning
+      payload: burning
+    - title: pressing / tightness
+      payload: pressing
+    - title: stabbing
+      payload: stabbing
   utter_ask_chest_pain_continues_after_rest:
-    - text: Does your chest pain continue even after you rest?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your chest pain continue even after you rest?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chest_pain_duration:
-    - text: How long does the chest pain usually last?
-      buttons:
-        - title: less than 30 minutes
-          payload: less than 30 minutes
-        - title: between 30 minutes and 8 hours
-          payload: between 30 minutes and 8 hours
-        - title: more than 8 hours
-          payload: more than 8 hours
+  - text: How long does the chest pain usually last?
+    buttons:
+    - title: less than 30 minutes
+      payload: less than 30 minutes
+    - title: between 30 minutes and 8 hours
+      payload: between 30 minutes and 8 hours
+    - title: more than 8 hours
+      payload: more than 8 hours
   utter_ask_chest_pain_exacerbated_by_stress:
-    - text: Does it get worse when you feel more stressed?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does it get worse when you feel more stressed?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chest_pain_during_exertion:
-    - text: Does it get worse when you do physical activities?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does it get worse when you do physical activities?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chest_pain_exacerbating_with_deep_breath_or_cough:
-    - text: Does the chest pain get worse when you cough or take deep breaths?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the chest pain get worse when you cough or take deep breaths?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chest_pain_exacerbating_when_lying_down:
-    - text: Will it get worse if you lie down?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Will it get worse if you lie down?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chest_pain_radiating:
-    - text: Is the chest pain spreading to other parts of the body?
-      buttons:
-        - title: Spreading to the left arm
-          payload: spreading to left upper limb
-        - title: Spreading to the neck
-          payload: spreading to neck
-        - title: Spreading to shoulders
-          payload: spreading to shoulders
-        - title: No, not spreading
-          payload: not spreading
+  - text: Is the chest pain spreading to other parts of the body?
+    buttons:
+    - title: Spreading to the left arm
+      payload: spreading to left upper limb
+    - title: Spreading to the neck
+      payload: spreading to neck
+    - title: Spreading between shoulders
+      payload: spreading between shoulders
+    - title: Spreading elsewhere
+      payload: spreading elsewhere
+    - title: No, not spreading
+      payload: not spreading
   utter_ask_back_pain:
-    - text: Do you have any back pain?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any back pain?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_back_pain_location:
-    - text: Is the pain at your upper back or your lower back?
-      buttons:
-        - title: Upper back
-          payload: upper back
-        - title: Lower back
-          payload: lower back
-        - title: Both upper and lower back
-          payload: both upper and lower back
+  - text: Is the pain at your upper back or your lower back?
+    buttons:
+    - title: Upper back
+      payload: upper back
+    - title: Lower back
+      payload: lower back
+    - title: Both upper and lower back
+      payload: both upper and lower back
   utter_ask_back_pain_exacerbated_by_physical_exertion:
-    - text: Does the pain get worse when you are doing physical activities?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the pain get worse when you are doing physical activities?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_back_pain_scale:
-    - text: How would you describe the pain?
-      buttons:
-        - title: Mild - does not interfere with my daily activities
-          payload: Mild
-        - title: Moderate - cannot perform some activities
-          payload: Moderate
-        - title: Severe - one of the worst pains experienced
-          payload: Severe
+  - text: How would you describe the pain?
+    buttons:
+    - title: Mild - does not interfere with my daily activities
+      payload: Mild
+    - title: Moderate - cannot perform some activities
+      payload: Moderate
+    - title: Severe - one of the worst pains experienced
+      payload: Severe
   utter_ask_back_pain_lumbar_radiates_to_back_of_the_thigh:
-    - text: Does the pain spread to your thighs?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the pain spread to your thighs?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_back_pain_lumbar_radiating_to_the_groin:
-    - text: Does the pain spread to your groin?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the pain spread to your groin?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_back_pain_sudden:
-    - text: Does the pain come on suddenly?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the pain come on suddenly?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_back_pain_lasting_several_hours:
-    - text: Does the back pain last for several hours at once?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the back pain last for several hours at once?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_back_pain_improves_with_rest:
-    - text: Does the back pain improve when you rest?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the back pain improve when you rest?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_back_pain_recurrent:
-    - text: Does your back pain come and go frequently?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your back pain come and go frequently?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_buttocks_pain:
-    - text: Any pain in your buttocks?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Any pain in your buttocks?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_flank_pain:
-    - text: Any pain on the sides of your stomach / abdomen?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  # Headache responses
+  - text: Any pain on the sides of your stomach / abdomen?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_headache:
-    - text: Do you have any headache?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any headache?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_headache_chronic:
-    - text: Has your headache been bothering you for very long period of time (more than 3 months)?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Has your headache been bothering you for very long period of time (more than 3 months)?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_chronic_headache_duration:
-    - text: How long do your headaches usually last?
-      buttons:
-        - title: lasts up to 5 minutes
-          payload: lasts up to 5 minutes
-        - title: lasts between 5 minutes to 4 hours
-          payload: lasts 5 minutes to 4 hours
-        - title: Lasts 4 to 72 hours
-          payload: lasts 4 to 72 hours
-        - title: lasts 3 to 7 days
-          payload: lasts 3 to 7 days
+  - text: How long do your headaches usually last?
+    buttons:
+    - title: lasts up to 5 minutes
+      payload: lasts up to 5 minutes
+    - title: lasts between 5 minutes to 4 hours
+      payload: lasts 5 minutes to 4 hours
+    - title: Lasts 4 to 72 hours
+      payload: lasts 4 to 72 hours
+    - title: lasts 3 to 7 days
+      payload: lasts 3 to 7 days
   utter_ask_recent_headache_duration:
-    - text: How long are your headaches?
-      buttons:
-        - title: Lasts less than 1 hour
-          payload: lasts less than 1 hour
-        - title: Lasts for more than 1 hour
-          payload: lasts for more than 1 hour
-        - title: Lasts more than 1 day
-          payload: lasts more than 1 day
+  - text: How long are your headaches?
+    buttons:
+    - title: Lasts less than 1 hour
+      payload: lasts less than 1 hour
+    - title: Lasts for more than 1 hour
+      payload: lasts for more than 1 hour
+    - title: Lasts more than 1 day
+      payload: lasts more than 1 day
   utter_ask_headache_type:
-    - text: what best describes your headache?
-      buttons:
-        - title: Stabbing or sharp
-          payload: Stabbing/Sharp
-        - title: Pressing
-          payload: Pressing
-        - title: Pulsating
-          payload: Pulsating
+  - text: what best describes your headache?
+    buttons:
+    - title: Stabbing or sharp
+      payload: Stabbing/Sharp
+    - title: Pressing
+      payload: Pressing
+    - title: Pulsating
+      payload: Pulsating
   utter_ask_headache_exacerbating_by_tilting_head_forward:
-    - text: Does your headache worsen when you tilt your head forward?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your headache worsen when you tilt your head forward?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_headache_exacerbating_in_the_morning:
-    - text: Does your headache get worse in the morning?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your headache get worse in the morning?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_headache_location:
-    - text: Where is your headache?
-      buttons:
-        - title: Forehead
-          payload: Forehead
-        - title: At the temples
-          payload: At the temples
-        - title: All over
-          payload: All over
+  - text: Where is your headache?
+    buttons:
+    - title: Forehead
+      payload: Forehead
+    - title: At the temples
+      payload: At the temples
+    - title: All over
+      payload: All over
   utter_ask_headache_unilateral:
-    - text: Does your headache only occur on one side?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your headache only occur on one side?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_headache_pain_level:
-    - text: How painful is the headache?
-      buttons:
-        - title: Mild - does not interfere with my daily activities
-          payload: Mild
-        - title: Moderate - cannot perform some activities
-          payload: Moderate
-        - title: Severe - one of the worst pains experienced
-          payload: Severe
+  - text: How painful is the headache?
+    buttons:
+    - title: Mild - does not interfere with my daily activities
+      payload: Mild
+    - title: Moderate - cannot perform some activities
+      payload: Moderate
+    - title: Severe - one of the worst pains experienced
+      payload: Severe
   utter_ask_headache_occipital:
-    - text: Have you experienced any throbbing or sharp pain that starts at the back of your head or near your neck?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Have you experienced any throbbing or sharp pain that starts at the back of your head or near your neck?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_headache_sudden_onset:
-    - text: Did the headache start suddenly and reach its peak very quickly?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Did the headache start suddenly and reach its peak very quickly?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dizziness:
-    - text: Any dizziness / giddiness?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Any dizziness / giddiness?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dizziness_head_rotation:
-    - text: Does the dizziness worsen when you rotate or move your head?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the dizziness worsen when you rotate or move your head?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dizziness_vertigo:
-    - text: Do you get the feeling like the world is spinning?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you get the feeling like the world is spinning?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_orthostatic_hypotension:
-    - text: Do you have low blood pressure?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have low blood pressure?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_impaired_balance_while_walking:
-    - text: Is it difficult to keep your balance when you walk?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is it difficult to keep your balance when you walk?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_impaired_memory:
-    - text: Are you having trouble remembering things?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you having trouble remembering things?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_impaired_memory_finding_objects_of_everyday_use:
-    - text: Do have difficulty remembering where your objects for everyday use are?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do have difficulty remembering where your objects for everyday use are?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_impaired_memory_short_term:
-    - text: Do you have any trouble remembering things which just occurred?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any trouble remembering things which just occurred?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_tinnitus:
-    - text: Have you experienced ringing or other noises in one or both of your ears?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Have you experienced ringing or other noises in one or both of your ears?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_neck_pain:
-    - text: Any neck pain?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Any neck pain?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_stiff_neck:
-    - text: Does your neck feel sore or are you finding it difficult to turn your head to the side?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your neck feel sore or are you finding it difficult to turn your head to the side?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_neck_pain_unilateral:
-    - text: Is your neck pain one sided?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your neck pain one sided?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_redness_on_shoulders_and_nape_of_neck:
-    - text: Is your shoulders or the back of your neck red?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your shoulders or the back of your neck red?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_tremors:
-    - text: Are you experiencing any tremors / uncontrollable shaking in any part of your body?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  # Dermatological changes
+  - text: Are you experiencing any tremors / uncontrollable shaking in any part of your body?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_erythema:
-    - text: Is it a rash or redness of skin?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is it a rash or redness of skin?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_flare_ups_reason:
-    - text: Which one of these makes your skin condition worse?
-      buttons:
-        - title: Coming into contact with buttons,fasteners or cosmetics
-          payload: Coming into contact with buttons,fasteners or cosmetics
-        - title: Stress
-          payload: Stress
-        - title: Alcohol consumption
-          payload: Alcohol consumption
-        - title: Sunlight exposure
-          payload: Sunlight exposure
-        - title: None of the above
-          payload: None of the above
+  - text: Which one of these makes your skin condition worse?
+    buttons:
+    - title: Coming into contact with buttons,fasteners or cosmetics
+      payload: Coming into contact with buttons,fasteners or cosmetics
+    - title: Stress
+      payload: Stress
+    - title: Alcohol consumption
+      payload: Alcohol consumption
+    - title: Sunlight exposure
+      payload: Sunlight exposure
+    - title: None of the above
+      payload: None of the above
   utter_ask_dermatological_changes_entire_skin:
-    - text: Does the condition affect all over your skin? #all over - skin condition location
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the condition affect all over your skin?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_changes_upper_lower_extremities:
-    - text: Does your skin condition happen at your upper limbs, lower limbs, or elsewhere?
-      buttons:
-        - title: Lower limbs excluding feet
-          payload: Lower Body excluding feet
-        - title: Upper limbs excluding hands
-          payload: Upper Body excluding hands
-        - title: Hand
-          payload: Hand
-        - title: Feet
-          payload: Feet
-        - title: Elsewhere
-          payload: Elsewhere
+  - text: Does your skin condition happen at your upper limbs, lower limbs, or elsewhere?
+    buttons:
+    - title: Lower limbs excluding feet
+      payload: Lower Body excluding feet
+    - title: Upper limbs excluding hands
+      payload: Upper Body excluding hands
+    - title: Hand
+      payload: Hand
+    - title: Feet
+      payload: Feet
+    - title: Elsewhere
+      payload: Elsewhere
   utter_ask_dermatological_changes_location:
-    - text: Where is your skin condition located?
-      buttons:
-        - title: Eyelid
-          payload: Eyelid
-        - title: Trunk
-          payload: Trunk
-        - title: Mouth
-          payload: Mouth
-        - title: Head/Face
-          payload: Head/Face
-        - title: Near a joint #need to make a slot
-          payload: Near a joint
-        - title: Scalp
-          payload: Scalp
-        - title: Genitals
-          payload: Genitals
-        - title: Other places
-          payload: other places
+  - text: Where is your skin condition located?
+    buttons:
+    - title: Eyelid
+      payload: Eyelid
+    - title: Trunk
+      payload: Trunk
+    - title: Mouth
+      payload: Mouth
+    - title: Head/Face
+      payload: Head/Face
+    - title: Near a joint
+      payload: Near a joint
+    - title: Scalp
+      payload: Scalp
+    - title: Genitals
+      payload: Genitals
+    - title: Other places
+      payload: other places
   utter_ask_dermatological_changes_localization_near_sebaceous_glands:
-    - text: Is your skin condition at your hair follicles(at the root of your hair)?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your skin condition at your hair follicles(at the root of your hair)?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pigmentation:
-    - text: Is your skin condition causing your skin colour to lighten or darken?
-      buttons:
-        - title: Lighten
-          payload: lighten
-        - title: Darken
-          payload: darken
-        - title: Normal skin colour
-          payload: normal skin colour
+  - text: Is your skin condition causing your skin colour to lighten or darken?
+    buttons:
+    - title: Lighten
+      payload: lighten
+    - title: Darken
+      payload: darken
+    - title: Normal skin colour
+      payload: normal skin colour
   utter_ask_erythema_and_scaling_on_large_portion_of_body:
-    - text: Do you have dry and flaky skin on a large portion of your body?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have dry and flaky skin on a large portion of your body?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_erythema_foreskin_or_head_of_the_penis:
-    - text: Do you have a rash on your penis?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have a rash on your penis?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_erythema_vulva:
-    - text: Do you have a rash on your vagina?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have a rash on your vagina?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_erythema_facial_butterfly_shaped:
-    - text: Is your rash on your face and does it look like a butterfly?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your rash on your face and does it look like a butterfly?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_changes_located_in_genital_area_chancre:
-    - text: Are there ulcers located on or around your genitals?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are there ulcers located on or around your genitals?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_erythema_limb_hot_to_the_touch:
-    - text: Does the affected skin on your limbs feel hot when you touch it?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the affected skin on your limbs feel hot when you touch it?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_changes_painful:
-    - text: Is your skin condition painful?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your skin condition painful?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_changes_preceded_by_pain_or_itching:
-    - text: Does your skin conditon start from pain or itching?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your skin conditon start from pain or itching?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_changes_recurring_during_infections_or_menstrual_period:
-    - text: Does your skin condition happen during menstrual periods?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your skin condition happen during menstrual periods?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_changes_rough_and_irregular_surface:
-    - text: Does your skin condition cause rough and irregular surfaces on your skin?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your skin condition cause rough and irregular surfaces on your skin?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dermatological_changes_scabs:
-    - text: Does your skin condition cause scabs?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your skin condition cause scabs?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pruritus:
-    - text: Will your skin get itchy?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Will your skin get itchy?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pruritus_aggravated_by_change_in_temperature_sweating_or_wearing_wool:
-    - text: Does your skin get itchy due to temperature, sweating or wearing wool?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your skin get itchy due to temperature, sweating or wearing wool?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pruritus_most_intense_at_night:
-    - text: Is your skin most itchy at night?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your skin most itchy at night?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_leopard_like_spots_on_the_skin:
-    - text: Does your skin condition look like leopard spots?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your skin condition look like leopard spots?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_and_blood_vessel_inflammation:
-    - text: Is your skin condition causing your skin to swell?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your skin condition causing your skin to swell?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_desquamation:
-    - text: Is your skin condition causing your skin to peel?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your skin condition causing your skin to peel?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_mass:
-    - text: Did your skin condition cause a lump(tumour) on your skin?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Did your skin condition cause a lump(tumour) on your skin?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_mass_greater_than_1_cm_in_diameter:
-    - text: Is this lump greater than 1cm in diameter?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is this lump greater than 1cm in diameter?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_mass_bleeding:
-    - text: Did your skin lump(tumour) cause bleeding?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Did your skin lump(tumour) cause bleeding?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_mole_or_birthmark_with_irregular_border:
-    - text: Do you have an unusual or irregular skin mole or birthmark?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have an unusual or irregular skin mole or birthmark?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_pain_severe:
-    - text: Would you describe the pain on your skin as severe?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Would you describe the pain on your skin as severe?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_skin_thickening:
-    - text: Is your skin thicker or more leathery now?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  # Joint pain responses
+  - text: Is your skin thicker or more leathery now?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_location:
-    - text: Where do you have joint pain?
-      buttons:
-        - title: Ankle
-          payload: Ankle
-        - title: Elbow
-          payload: Elbow
-        - title: Big toe
-          payload: Big toe
-        - title: Hip
-          payload: Hip
-        - title: Knee
-          payload: Knee
-        - title: Shoulder
-          payload: Shoulder
-        - title: Thumb
-          payload: Thumb
-        - title: Wrist
-          payload: Wrist
-        - title: Others
-          payload: Others
-
+  - text: Where do you have joint pain?
+    buttons:
+    - title: Ankle
+      payload: Ankle
+    - title: Elbow
+      payload: Elbow
+    - title: Big toe
+      payload: Big toe
+    - title: Hip
+      payload: Hip
+    - title: Knee
+      payload: Knee
+    - title: Shoulder
+      payload: Shoulder
+    - title: Thumb
+      payload: Thumb
+    - title: Wrist
+      payload: Wrist
+    - title: Others
+      payload: Others
   utter_ask_joint_pain_during_ankle_movement:
-    - text: Is there any pain when you move your anke?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any pain when you move your anke?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_during_elbow_movement:
-    - text: Is there any pain when you move your elbow?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any pain when you move your elbow?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_during_hip_movement:
-    - text: Is there any pain when you move your hip?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any pain when you move your hip?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_during_knee_movement:
-    - text: Is there any pain when you move your knee?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any pain when you move your knee?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_during_shoulder_movement:
-    - text: Is there any pain when you move your shoulder?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any pain when you move your shoulder?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_during_thumb_movement:
-    - text: Is there any pain when you move your thumb?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any pain when you move your thumb?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_during_wrist_movement:
-    - text: Is there any pain when you move your wrist?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any pain when you move your wrist?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_sudden:
-    - text: Does the joint pain come on suddenly?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does the joint pain come on suddenly?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_trauma:
-    - text: Did your joint start hurting after falling/injuring yourself?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Did your joint start hurting after falling/injuring yourself?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_deformation_posttraumatic:
-    - text: Does your joint look out of place or different?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your joint look out of place or different?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_deformation_nontraumatic:
-    - text: Does your joint look out of place or different?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your joint look out of place or different?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_aggravated_during_cold_damp_weather:
-    - text: Did your joint pain get worse when you're exposed to cold weather?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Did your joint pain get worse when you're exposed to cold weather?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_during_movement_in_the_morning:
-    - text: Does your joint hurt when you first move it in the morning?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your joint hurt when you first move it in the morning?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_pain_tenderness:
-    - text: Does your joint hurt when you touch/press it?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your joint hurt when you touch/press it?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_joint_stiffness:
-    - text: Does your joint feel stiff to movement?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-
+  - text: Does your joint feel stiff to movement?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_earache:
-    - text: Does your ear hurt?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your ear hurt?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_clogged_ear:
-    - text: Is your ear clogged?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is your ear clogged?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_decreased_hearing:
-    - text: Has your hearing ability decreased?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-
+  - text: Has your hearing ability decreased?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_decreased_hearing_reason:
-    - text: Has your hearing ability been affected like the following?
-      buttons:
-        - title: Sudden loss of hearing
-          payload: Sudden loss of hearing
-        - title: Slowly losing hearing
-          payload: Slowly losing hearing
-        - title: Hearing ability changing (changing intensity and duration)
-          payload: Hearing ability changing (changing intensity and duration)
-        - title: None of the above
-          payload: None of the above
-
+  - text: Has your hearing ability been affected like the following?
+    buttons:
+    - title: Sudden loss of hearing
+      payload: Sudden loss of hearing
+    - title: Slowly losing hearing
+      payload: Slowly losing hearing
+    - title: Hearing ability changing (changing intensity and duration)
+      payload: Hearing ability changing (changing intensity and duration)
+    - title: None of the above
+      payload: None of the above
   utter_ask_discharge_from_ear:
-    - text: Do you have any form of discharge from your ear?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any form of discharge from your ear?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_discharge_from_ear_type:
-    - text: What kind of discharge do are you experiencing?
-      buttons:
-        - title: Blood
-          payload: Blood
-        - title: Pus
-          payload: Pus
-        - title: Others
-          payload: Others
-
+  - text: What kind of discharge do are you experiencing?
+    buttons:
+    - title: Blood
+      payload: Blood
+    - title: Pus
+      payload: Pus
+    - title: Others
+      payload: Others
   utter_ask_ear_canal_swelling:
-    - text: Do you have swelling inside your ear?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have swelling inside your ear?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_itching_in_ear:
-    - text: Does your ear itch?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your ear itch?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_numbness_of_part_of_ear:
-    - text: Do you experience numbness at your ear?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you experience numbness at your ear?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pain_behind_ear:
-    - text: Do you have any pain behind your ear?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have any pain behind your ear?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pain_increases_when_touching_ear_area:
-    - text: Does your pain increase when you touch your ear?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your pain increase when you touch your ear?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_redness_behind_the_ear:
-    - text: Do you have redness behind your ear?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  # Breast Pain Responses
+  - text: Do you have redness behind your ear?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_breast_pain:
-    - text: Is the pain or symptom only in one breast or both?
-      buttons:
-        - title: Only one breast
-          payload: only one breast
-        - title: Both breasts
-          payload: both breasts
+  - text: Is the pain or symptom only in one breast or both?
+    buttons:
+    - title: Only one breast
+      payload: only one breast
+    - title: Both breasts
+      payload: both breasts
   utter_ask_abnormal_breast_size:
-    - text: Is your breast larger or smaller than normal?
-      buttons:
-        - title: larger than normal
-          payload: larger than normal
-        - title: smaller than normal
-          payload: smaller than normal
-        - title: no change in size
-          payload: no change in size
+  - text: Is your breast larger or smaller than normal?
+    buttons:
+    - title: larger than normal
+      payload: larger than normal
+    - title: smaller than normal
+      payload: smaller than normal
+    - title: no change in size
+      payload: no change in size
   utter_ask_breast_asymmetry_in_size_or_shape:
-    - text: Is one of your breast different in size or shape compared to the other?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is one of your breast different in size or shape compared to the other?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_nodule_located_in_breast:
-    - text: Do you feel any lumps in your breasts?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you feel any lumps in your breasts?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_nipple_discharge:
-    - text: Is there any discharge other than milk coming out from your nipple?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is there any discharge other than milk coming out from your nipple?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_retraction_or_indentation_of_nipple:
-    - text: Has your nipple retracted or gone inwards?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Has your nipple retracted or gone inwards?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_symptoms_regularly_appear_a_few_days_before_menstrual_period:
-    - text: Do your symptoms regularly appear a few days before your menstrual period?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  # Eye responses
+  - text: Do your symptoms regularly appear a few days before your menstrual period?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_eye_pain:
-    - text: Does your eye hurt?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Does your eye hurt?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_eye_pain_unbearable:
-    - text: Is the pain in your eyes unbearable?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Is the pain in your eyes unbearable?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_impaired_vision:
-    - text: Is your vision or ability to see affected in any way?
-      buttons:
-        - title: Yes
-          payload: yes
-        - title: No
-          payload: No
+  - text: Is your vision or ability to see affected in any way?
+    buttons:
+    - title: Yes
+      payload: yes
+    - title: No
+      payload: No
   utter_ask_impaired_vision_in_one_eye:
-    - text: Is your vision affected only in one eye?
-      buttons:
-        - title: Yes
-          payload: yes
-        - title: No
-          payload: No
+  - text: Is your vision affected only in one eye?
+    buttons:
+    - title: Yes
+      payload: yes
+    - title: No
+      payload: No
   utter_ask_decreased_visual_acuity:
-    - text: Has your vision became blurry or foggy recently?
-      buttons:
-        - title: Yes
-          payload: yes
-        - title: No
-          payload: No
-      
+  - text: Has your vision became blurry or foggy recently?
+    buttons:
+    - title: Yes
+      payload: yes
+    - title: No
+      payload: No
   utter_ask_eyes_sensitive_to_light:
-    - text: Are your eyes sensitive to light?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are your eyes sensitive to light?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_difficulty_completely_closing_one_eye:
-    - text: Do you have difficulty completely closing one eye?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you have difficulty completely closing one eye?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_red_eye:
-    - text: Are your eyes red?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are your eyes red?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_diplopia:
-    - text: Are you experiencing any double vision?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Are you experiencing any double vision?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_diplopia_lasting_more_than_24_hours:
-    - text: Has the double vision lasted more than 24 hours?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Has the double vision lasted more than 24 hours?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_itching_of_eyes:
-    - text: Ok, then are your eyes itchy?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No   
+  - text: Ok, then are your eyes itchy?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_impaired_eye_motion:
-    - text: Do you have difficulty moving your eye?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Do you have difficulty moving your eye?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_impaired_eye_motion_direction:
-    - text: In which direction are you having difficulties in moving your eye?
-      buttons:
-      - title: Moving Downwards
-        payload: Moving Downwards
-      - title: Moving Upwards 
-        payload: Moving Upwards
-      - title: Moving to the left/right
-        payload: Moving to the left/right
-      - title: Moving back to the centre
-        payload: Moving back to the centre
+  - text: In which direction are you having difficulties in moving your eye?
+    buttons:
+    - title: Moving Downwards
+      payload: Moving Downwards
+    - title: Moving Upwards
+      payload: Moving Upwards
+    - title: Moving to the left/right
+      payload: Moving to the left/right
+    - title: Moving back to the centre
+      payload: Moving back to the centre
   utter_ask_diminished_eye_motility_in_the_same_direction:
-    - text: Does one of your eyes move slower than the other?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Does one of your eyes move slower than the other?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dry_eye:
-    - text: Are your eyes dry?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Are your eyes dry?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_dry_discharge_on_eyelids:
-    - text: Is there a build up of dry boogers, mucus or pus on your eyelids?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Is there a build up of dry boogers, mucus or pus on your eyelids?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_eye_flashes:
-    - text: Do you see flashes or streaks of light at times?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
+  - text: Do you see flashes or streaks of light at times?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_lens_clouding:
-    - text: Is your vision foggy or do the pupils of your eyes look cloudy?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No
-  utter_ask_eyelid_lesion:   
-    - text: Do you have abnormal skin changes on your eyelid such as lesions or bumps?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Is your vision foggy or do the pupils of your eyes look cloudy?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
+  utter_ask_eyelid_lesion:
+  - text: Do you have abnormal skin changes on your eyelid such as lesions or bumps?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_eyelid_lesion_painful:
-    - text: Is the skin on your eyelid painful?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Is the skin on your eyelid painful?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_eyelid_lesion_red_and_warm:
-    - text: Is the skin on your eyelid red and warm?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Is the skin on your eyelid red and warm?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_eyelid_lesion_red_lump_with_yellow_tip:
-    - text: Is the lesions on your eyelid a red lump with a yellow tip?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Is the lesions on your eyelid a red lump with a yellow tip?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_eyelid_twitching:
-    - text: Are your eyelids twitching a lot?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Are your eyelids twitching a lot?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_stinging_eyes_and_feeling_of_sand_under_eyelids:
-    - text: Do your eyes sting or feel like there is sand under your eyelids?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Do your eyes sting or feel like there is sand under your eyelids?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_pain_near_eye_socket:
-    - text: Do you feel any pain at the back of your eye?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Do you feel any pain at the back of your eye?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_sunken_eyeballs:
-    - text: Does the skin under your eye look dark, depressed or hollow?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Does the skin under your eye look dark, depressed or hollow?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_thick_eye_discharge:
-    - text: Is there a thick discharge coming out from your eyes?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Is there a thick discharge coming out from your eyes?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
   utter_ask_weak_eye_clenching:
-    - text: Do you have a hard time clenching your eyes?
-      buttons:
-        - title: Yes
-          payload: Yes
-        - title: No
-          payload: No  
+  - text: Do you have a hard time clenching your eyes?
+    buttons:
+    - title: Yes
+      payload: Yes
+    - title: No
+      payload: No
 actions:
-  - action_create_report
-  - utter_additional_symptom_prompt
-  - action_set_symptom
-  - utter_goodbye
-  - utter_greet
-  - utter_no_worries
-  - utter_symptom_prompt
-  - validate_abdominal_pain_form
-  - validate_urti_form
-  - validate_back_pain_form
-  - validate_history_taking_form
-  - validate_headache_form
-  - validate_skin_form
-  - validate_joint_form
-  - validate_ear_form
-  - validate_breast_pain_form
-  - validate_eye_form
-
+- action_create_report
+- action_set_symptom
+- utter_additional_symptom_prompt
+- utter_goodbye
+- utter_greet
+- utter_no_worries
+- utter_please_rephrase
+- utter_symptom_prompt
+- validate_abdominal_pain_form
+- validate_back_pain_form
+- validate_breast_pain_form
+- validate_ear_form
+- validate_eye_form
+- validate_headache_form
+- validate_history_taking_form
+- validate_joint_form
+- validate_skin_form
+- validate_urti_form
 forms:
   history_taking_form:
     required_slots:
       age:
-        - type: from_text
+      - type: from_text
       gender:
-        - type: from_text
+      - type: from_text
       allergies:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
-        - type: from_intent
-          intent: inform_allergy
-          value: true
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
+      - type: from_intent
+        intent: inform_allergy
+        value: true
       allergy:
-        - type: from_entity
-          entity: allergy
+      - type: from_entity
+        entity: allergy
       smoking_cigarettes:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       hypertension:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       diagnosed_diabetes:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       high_cholesterol:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       high_bmi:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   abdominal_pain_form:
     required_slots:
       abdominal_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       abdominal_pain_type:
-        - type: from_text
+      - type: from_text
       abdominal_pain_location:
-        - type: from_text
+      - type: from_text
       abdominal_pain_duration:
-        - type: from_text
+      - type: from_text
       abdominal_pain_onset:
-        - type: from_text
+      - type: from_text
       abdominal_pain_scale:
-        - type: from_intent
-          intent: mild_pain
-          value: mild
-        - type: from_intent
-          intent: moderate_pain
-          value: moderate
-        - type: from_intent
-          intent: severe_pain
-          value: severe
+      - type: from_intent
+        intent: mild_pain
+        value: mild
+      - type: from_intent
+        intent: moderate_pain
+        value: moderate
+      - type: from_intent
+        intent: severe_pain
+        value: severe
       abdominal_tenderness:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       abdominal_tenderness_location:
-        - type: from_text
+      - type: from_text
       abdominal_pain_postprandial:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       bloating:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       abdominal_pain_premenstrual:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       abdominal_pain_exacerbation:
-        - type: from_text
+      - type: from_text
       abdominal_mass:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       fever:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       temperature:
-        - type: from_text
+      - type: from_text
       diarrhea:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       diarrhea_duration:
-        - type: from_text
+      - type: from_text
       constipation:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       nausea:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       vomiting:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       vomiting_duration:
-        - type: from_text
+      - type: from_text
       vomiting_every_time_after_meal:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       vomiting_more_often_in_the_morning:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       diminished_appetite:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       stools:
-        - type: from_text
+      - type: from_text
       painful_defecation:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       bleeding_from_anus:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       bleeding_from_anus_scale:
-        - type: from_text
+      - type: from_text
       blood_in_urine:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pain_while_urinating:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   urti_form:
     required_slots:
       fever:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       temperature:
-        - type: from_text
+      - type: from_text
       cough:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       cough_duration:
-        - type: from_text
+      - type: from_text
       cough_productive:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       hemoptysis:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       cough_productive_color:
-        - type: from_text
+      - type: from_text
       cough_nocturnal:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       cough_paroxysmal:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       nasal_catarrh:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       nasal_congestion:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       nasal_congestion_chronic:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       facial_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       facial_pain_paranasal_sinus:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       facial_pain_longer_than_a_couple_of_hours:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pharyngeal_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       fatigue:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dyspnea:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dyspnea_severity:
-        - type: from_text
+      - type: from_text
       dyspnea_duration:
-        - type: from_text
+      - type: from_text
       dyspnea_orthopnea:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       chest_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       chest_pain_type:
-        - type: from_text
+      - type: from_text
       chest_pain_duration:
-        - type: from_text
+      - type: from_text
       chest_pain_exacerbated_by_stress:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       chest_pain_during_exertion:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       chest_pain_exacerbating_with_deep_breath_or_cough:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       chest_pain_exacerbating_when_lying_down:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       chest_pain_radiating:
-        - type: from_text
+      - type: from_text
   back_pain_form:
     required_slots:
       back_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       back_pain_location:
-        - type: from_text
+      - type: from_text
       back_pain_exacerbated_by_physical_exertion:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       back_pain_scale:
-        - type: from_text
+      - type: from_text
       back_pain_lumbar_radiates_to_back_of_the_thigh:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       back_pain_lumbar_radiating_to_the_groin:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       flank_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       buttocks_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       neck_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       back_pain_sudden:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       back_pain_lasting_several_hours:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       back_pain_improves_with_rest:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       back_pain_recurrent:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   breast_pain_form:
     required_slots:
       breast_pain:
-        - type: from_text
+      - type: from_text
       abnormal_breast_size:
-        - type: from_text
+      - type: from_text
       breast_asymmetry_in_size_or_shape:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       nodule_located_in_breast:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       nipple_discharge:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       retraction_or_indentation_of_nipple:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       symptoms_regularly_appear_a_few_days_before_menstrual_period:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   headache_form:
     required_slots:
       headache:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       headache_chronic:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       chronic_headache_duration:
-        - type: from_text
+      - type: from_text
       recent_headache_duration:
-        - type: from_text
+      - type: from_text
       headache_type:
-        - type: from_text
+      - type: from_text
       headache_exacerbating_by_tilting_head_forward:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       headache_exacerbating_in_the_morning:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       headache_location:
-        - type: from_text
+      - type: from_text
       headache_pain_level:
-        - type: from_text
+      - type: from_text
       headache_occipital:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       headache_unilateral:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       headache_sudden_onset:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dizziness:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dizziness_head_rotation:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dizziness_vertigo:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       impaired_balance_while_walking:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       orthostatic_hypotension:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       fever:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       temperature:
-        - type: from_text
+      - type: from_text
       nasal_catarrh:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       facial_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       facial_pain_paranasal_sinus:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       impaired_memory:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       impaired_memory_finding_objects_of_everyday_use:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       impaired_memory_short_term:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       tinnitus:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       neck_pain:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       stiff_neck:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       neck_pain_unilateral:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       redness_on_shoulders_and_nape_of_neck:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pain_near_eye_socket:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       tremors:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       nausea:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       vomiting:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       vomiting_duration:
-        - type: from_text
+      - type: from_text
       vomiting_every_time_after_meal:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       vomiting_more_often_in_the_morning:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
-
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   skin_form:
     required_slots:
       dermatological_changes:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       erythema:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pruritus:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_flare_ups_reason:
-        - type: from_text
+      - type: from_text
       dermatological_changes_entire_skin:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_changes_upper_lower_extremities:
-        - type: from_text
+      - type: from_text
       dermatological_changes_location:
-        - type: from_text
+      - type: from_text
       pigmentation:
-        - type: from_text
+      - type: from_text
       dermatological_changes_painful:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_pain_severe:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_changes_localization_near_sebaceous_glands:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_changes_located_in_genital_area_chancre:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       erythema_foreskin_or_head_of_the_penis:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       erythema_vulva:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_changes_preceded_by_pain_or_itching:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_changes_recurring_during_infections_or_menstrual_period:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_changes_rough_and_irregular_surface:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dermatological_changes_scabs:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       erythema_and_scaling_on_large_portion_of_body:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       erythema_facial_butterfly_shaped:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       erythema_limb_hot_to_the_touch:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pruritus_aggravated_by_change_in_temperature_sweating_or_wearing_wool:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pruritus_most_intense_at_night:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       leopard_like_spots_on_the_skin:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_and_blood_vessel_inflammation:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_desquamation:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_mass:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_mass_greater_than_1_cm_in_diameter:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_mass_bleeding:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_mole_or_birthmark_with_irregular_border:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       skin_thickening:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   joint_form:
     required_slots:
       joint_pain_location:
-        - type: from_text
+      - type: from_text
       joint_pain_during_ankle_movement:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_during_elbow_movement:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_during_hip_movement:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_during_knee_movement:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_during_shoulder_movement:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_during_thumb_movement:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_during_wrist_movement:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_sudden:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_trauma:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_deformation_nontraumatic:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_deformation_posttraumatic:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_aggravated_during_cold_damp_weather:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_during_movement_in_the_morning:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_pain_tenderness:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       joint_stiffness:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   ear_form:
     required_slots:
       earache:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       clogged_ear:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       decreased_hearing:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       decreased_hearing_reason:
-        - type: from_text
+      - type: from_text
       discharge_from_ear:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       discharge_from_ear_type:
-        - type: from_text
+      - type: from_text
       ear_canal_swelling:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       itching_in_ear:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       tinnitus:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       dizziness:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       numbness_of_part_of_ear:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pain_behind_ear:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       pain_increases_when_touching_ear_area:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
       redness_behind_the_ear:
-        - type: from_intent
-          intent: affirm
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+      - type: from_intent
+        intent: affirm
+        value: true
+      - type: from_intent
+        intent: deny
+        value: false
   eye_form:
     required_slots:
       eye_pain:
@@ -4065,7 +4036,7 @@ forms:
         intent: deny
         value: false
       weak_eye_clenching:
-      - type: from_intent  
+      - type: from_intent
         intent: affirm
         value: true
       - type: from_intent

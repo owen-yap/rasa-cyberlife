@@ -1,715 +1,861 @@
 version: "2.0"
 nlu:
-  - intent: greet
-    examples: |
-      - hey
-      - hello
-      - hi
-      - hello there
-      - good morning
-      - good evening
-      - moin
-      - hey there
-      - let's go
-      - hey dude
-      - goodmorning
-      - goodevening
-      - good afternoon
-  - intent: thank_you
-    examples: |
-      - okay great thanks
-      - thank you
-      - sure thanks
-      - thanks bye
-      - thanks
-  - intent: goodbye
-    examples: |
-      - good afternoon
-      - cu
-      - good by
-      - cee you later
-      - good night
-      - bye
-      - goodbye
-      - have a nice day
-      - see you around
-      - bye bye
-      - see you later
-      - goodbye!
-      - bye!
-      - centre
-  - intent: give_age
-    examples: |
-      - 21
-      - 32
-      - 52
-      - 42
-      - 41
-      - 43
-      - 53
-      - 45
-      - 25
-      - 29
-      - 76
-      - 24
-      - 56
-      - 46
-      - 67
-      - 4
-      - 7
-      - 28
-      - 6
-      - 30
-      - 3
-      - 20
-  - intent: give_temperature
-    examples: |
-      - 37.1
-      - 37.2
-      - 37.3
-      - 37.4
-      - 37.5
-      - 37.8
-      - 38.2
-      - 38.4
-      - 38.9
-      - 39.1
-      - 39.2
-      - 39.4
-      - 38.7
-  - intent: give_body_part
-    examples: |
-      - hand
-      - left hand
-      - right hand
-      - leg
-      - calf
-      - foot
-      - my hand
-      - my foot
-      - my head
-      - ears
-      - eyes
-      - both my eyes
-      - behind the eyes
-      - forehead
-      - on left side
-      - both eyes
-      - sides
-  - intent: give_gender
-    examples: |
-      - male
-      - female
-  - intent: give_duration
-    examples: |
-      - more than a week
-      - more than 3 weeks
-      - 1-2 days
-      - 3-5 days
-      - close to a week
-      - couple of hours
-      - a few hours
-      - 10 days ago
-      - 3 days ago
-      - a little over 4 days
-      - 1 week
-  - intent: affirm
-    examples: |
-      - yes
-      - y
-      - indeed
-      - of course
-      - that sounds good
-      - correct
-      - sure
-      - ok
-      - why not
-      - ok great
-      - yes I did
-      - yeah, great
-      - pretty good
-      - fine
-      - You bet
-      - I sure did
-      - more or less
-      - ye
-  - intent: deny
-    examples: |
-      - no
-      - n
-      - never
-      - I don't think so
-      - don't like that
-      - no way
-      - not really
-      - none
-      - absolutely not
-      - no thanks
-      - didn't do any
-      - no I didn't
-      - could have been better
-      - not great
-      - nope
-      - No eye surgery / treatment done
-  - intent: inform_allergy
-    examples: |
-      - I am allergic to [grass and tree pollen](allergy)
-      - [grass and tree pollen](allergy)
-      - [pollen](allergy)
-      - allergic to [grass](allergy)
-      - I have [hay fever](allergy)
-      - allergic to [dust](allergy)
-      - allergies to [nuts](allergy)
-      - [peanut](allergy) allergy
-      - [shellfish](allergy)
-      - allergic to [ibuprofen](allergy)
-      - [aspirin](allergy) allergy
-      - Have an allergy to [diary](allergy) products
-      - I have a [peanut](allergy) allergy
-      - yes, I have [peach allergy](allergy)
-      - yes, I am allergic to [peach](allergy)
-      - allergic to [eggs](allergy)
-      - allergic to [mould](allergy)
-      - allergic to [dustmites](allergy)
-      - allergic to [pollarax](allergy)
-      - allergic to [paracetemol](allergy)
-      - allergic to [amoxicillin](allergy)
-      - allergic to [ampicillin](allergy)
-      - allergic to [penicillin](allergy)
-      - allergic to [tetracycline](allergy)
-      - allergic to [aspirin](allergy)
-      - allergic to [naproxen](allergy)
-      - allergic to [cetuximab](allergy)
-      - allergic to [rituximab](allergy)
-      - allergic to [carbamazepine](allergy)
-      - allergic to [lamotrigine](allergy)
-      - allergic to [atracurium](allergy)
-      - allergic to [acidic fruits](allergy)
-  - intent: abdominal_pain
-    examples: |
-      - i have abdominal pain
-      - abdominal pain
-      - pain in the abdomen
-      - stomach pain
-      - stomachache
-      - tummy is painful
-      - pain in the tummy
-      - bellyache
-      - upset stomach
-      - dysepepsia
-      - suffering from indigestion
-      - indigestion
-      - abdomen is aching
-      - it hurts when i press on my stomach
-      - my abdomen is tender
-      - stomach is tender
-      - there is pain when i apply pressure to my stomach
-      - pain when i touch my abdomen
-  - intent: bloating
-    examples: |
-      - abdominal distension
-      - I feel bloated
-      - my stomach feels bloated
-      - distended stomach
-      - distension
-      - feeling full
-      - abdomen feels full
-      - feels like there is a lot fo fluids in my abdomen
-      - a lot of water in stomach
-      - stomach feels full
-      - belly feels swollen
-      - stomach is swollen
-      - stomach is big
-      - huge stomach
-      - stuffed feeling
-      - stomach feels stuffed
-      - stuffed stomach
-  - intent: abdominal_pain_crampy
-    examples: |
-      - tight feeling in stomach
-      - cramping in abdomen
-      - stomach cramps
-      - cramping in stomach
-      - cramps in the belly
-      - cramps
-  - intent: abdominal_mass
-    examples: |
-      - I can feel a lump in my stomach
-      - stomach lump
-      - stomach mass
-      - something is inside my abdomen
-      - something is inside my stomach
-      - soft and lumpy thing in my stomach
-      - abdominal lump
-      - abdominal mass
-  - intent: flank_pain
-    examples: |
-      - my flanks hurt
-      - the sides of my stomach hurt
-      - left side of my abdomen is painful
-      - right side of stomach is painful
-      - flank pain
-  - intent: diarrhea
-    examples: |
-      - I have watery stools
-      - when i pass motion, my shit is watery
-      - watery shit
-      - diarrhea
-      - i have diarrhea
-      - going to the toilet a lot
-      - passing motion very often
-  - intent: constipation
-    examples: |
-      - i have constipation
-      - constipated
-      - cannot shit
-      - cannot pass motion
-      - hard stools
-      - shit is stuck
-      - dry bowel movements
-      - bowel is stuck
-  - intent: nausea
-    examples: |
-      - i feel nauseous
-      - nausea
-      - i want to throw up
-  - intent: vomiting
-    examples: |
-      - vomited
-      - i vomited
-      - throwing up
-      - i threw up
-      - vomited all my food out
-      - vomit water
-  - intent: blood_in_stool
-    examples: |
-      - there is blood in my shit
-      - shit looks red
-      - reddish stools
-      - blood in stools
-      - blood comes out when i pass motion
-      - stools are red in color
-      - stools are unusually dark
-      - blood coming out when i pass motion
-  - intent: dark_urine
-    examples: |
-      - my urine is unusually dark
-      - dark urine
-      - black urine
-      - brown urine
-      - urine is very dark
-  - intent: blood_in_urine
-    examples: |
-      - there is blood in my urine
-      - blood in urine
-      - urine is reddish in color
-      - red urine
-      - blood in my piss
-      - blood comes out when i piss
-      - there is blood when i urinate
-  - intent: pain_while_urinating
-    examples: |
-      - it hurts when i pee
-      - there is pain when i urinate
-      - hurts when i piss
-      - peeing is painful
-      - pain during urination
-  - intent: fever
-    examples: |
-      - I have fever
-      - I currently have a fever
-      - I have high temperature
-      - mild fever
-      - I have high fever
-      - feeling feverish
-      - fever
-      - body temperature is high
-      - have a fever that won't go down
-      - having a fever
-      - I am having a bad fever
-  - intent: cough
-    examples: |
-      - cough
-      - coughing
-      - coughing with phelgm
-      - coughing with blood
-      - rasp
-      - wheezing
-      - coughing for more than 3 days
-      - I have a cough
-      - I am wheezing
-      - coughing up phlegm
-      - cough last night
-      - I have chronic cough
-      - coughing a lot
-      - wheeze
-  - intent: cough_dry
-    examples: |
-      - I have a dry cough
-      - my cough is dry
-      - dry cough
-      - it is a dry cough
-      - dry cough
-      - i am coughing with no phlegm
-      - coughing without phlegm
-      - cough dry
-  - intent: cough_productive
-    examples: |
-      - my cough contains phlegm
-      - cough with phlegm
-      - i have phlegm in my cough
-      - coughing up phlegm
-      - phlegm
-  - intent: hemoptysis
-    examples: |
-      - there is blood in my cough
-      - cough with blood
-      - cough up blood
-      - coughing with blood
-      - blood is coming out when i cough
-      - blood
-  - intent: inform_asthma
-    examples: |
-      - I have childhood asthma
-      - I currently have asthma
-      - I have a history of asthma
-      - mild asthma
-      - I have severe asthma
-      - Patient has asthma
-      - History of asthma
-  - intent: nasal_catarrh
-    examples: |
-      - runny nose
-      - nose mucus keeps dripping
-      - keeps sneezing
-      - my nose is runny
-      - I have runny nose
-      - sneezing
-  - intent: nasal_congestion
-    examples: |
-      - blocked nose
-      - stuffy nose
-      - nasal congestion
-      - congested nose
-      - my nose has mucus stuck in it
-      - stucked nose
-      - my nose is blocked
-      - my nose is stuffy
-      - my nose is congested
-  - intent: facial_pain
-    examples: |
-      - face pain
-      - facial pain
-      - pain at my sinuses
-      - face feels sore
-      - sinus pressure
-  - intent: pharyngeal_pain
-    examples: |
-      - sore throat
-      - strep throat
-      - throat is swollen
-      - my tonsils are inflammed
-      - red throat
-      - hurts when i drink water
-      - throat is painful
-      - pharyngeal pain
-  - intent: dyspnea
-    examples: |
-      - shortness of breath
-      - cannot breathe
-      - breathing difficulties
-      - feels like suffocating
-      - unable to breathe normally
-      - breathing rate increases suddenly
-      - panting for no reason
-  - intent: chest_pain
-    examples: |
-      - chest pain
-      - chest feels very tight
-      - heart feels pain
-      - a lot of pressure on my chest
-      - chest pressure
-      - sharp stabbing feeling on my chest
-      - chest is very painful
-  - intent: back_pain
-    examples: |
-      - my back hurts
-      - spine hurts
-      - back pain
-      - lower back pain
-      - upper back pain
-      - my back is very painful
-      - pin in my spine
-      - i think i may have a herniated disc
-      - i have slip disc
-      - chronic back pain
-  - intent: pain_in_breast
-    examples: |
-      - my breasts hurt
-      - pain in my breast
-      - breast pain
-  - intent: nodule_located_in_breast
-    examples: |
-      - there is a lump in my breast
-      - something in my breast
-      - mass inside my breast
-      - breast tumour
-      - i think i may have a tumour in my breast
-      - breast lump
-      - breast mass
-      - lump inside my breast
-  - intent: headache
-    examples: |
-      - headache
-      - I have a headache
-      - my head hurts
-      - i think i have a migraine
-      - i have migraine
-      - head pain
-      - throbbing headache
-      - tension headache
-      - worst headache in my life
-      - head hurts
-      - head pain
-      - brain pain
-      - tension in my head
-      - throbbing
-      - got a headache
-  - intent: dizziness
-    examples: |
-      - i feel dizzy
-      - lightheaded
-      - feel like the world is spinning
-      - giddiness
-      - i feel giddy
-      - cannot stand properly
-      - vertigo
-  - intent: impaired_memory
-    examples: |
-      - having trouble remembering
-      - can't seem to remember common everyday things
-      - suddenly lost my memory about recent things
-      - i think i may have dementia
-      - i think i may have Alzheimer's disease
-      - losing my memory
-  - intent: neck_pain
-    examples: |
-      - my neck hurts
-      - neck pain
-      - pain in neck
-      - pain at the back of neck
-  - intent: dermatological_changes
-    examples: |
-      - skin
-      - rashes
-      - rash
-      - I think i have a skin condition
-      - I have rashes
-      - My skin feels weird
-      - My skin hurts
-      - dermatitis
-      - skin pain
-      - inflammation on skin
-      - bumps on skin
-      - rough skin
-      - red skin
-      - red lines on skin
-      - itchy skin
-      - skin becomes very itchy upon contact of water
-      - eczema
-      - dry skin
-      - i have eczema
-      - scaly skin
-      - bumps on skin
-  - intent: joint_pain
-    examples: |
-      - my knees hurt
-      - i have joint pain
-      - my joints feel painful
-      - joint hurts when i try to move my limbs
-      - joint hurts when i try to move my hands
-      - joint hurts when i try to move my legs
-      - elbow is painful
-      - shoulder joint painful
-      - may have arthritis
-      - arthritis
-      - stiff joints
-      - tender joints
-      - elbow joint painful
-      - knee joint painful
-      - ankle joint painful
-      - my knee hurts like hell
-  - intent: earache
-    examples: |
-      - my ear hurts
-      - something inside my ear is causing me pain
-      - ear is painful
-      - ear feels sore
-      - pain from ear and cannot hear anything
-  - intent: clogged_ear
-    examples: |
-      - something stuck inside my ear
-      - ear is clogged
-      - something blocking my ear
-      - clogging in my ear
-  - intent: decreased_hearing
-    examples: |
-      - cannot hear
-      - hearing is getting worse
-      - cannot hear anything
-      - unable to hear
-      - getting more deaf
-      - turning deaf
-      - losing my hearing
-      - deafness
-      - deaf
-      - decreased hearing
-      - cannot hear sounds
-  - intent: discharge_from_ear
-    examples: |
-      - pus coming out of my ear
-      - liquid dripping out of ear
-      - ear discharge
-      - blood flowing out of ear
-      - something coming out of ear
-      - fluids coming out of ear
-      - discharge from ear
-  - intent: numbness_of_part_of_ear
-    examples: |
-      - ear feels numb
-      - part of the ear feels numb
-      - numbness in ear
-  - intent: ear_canal_swelling
-    examples: |
-      - ear looks swollen
-      - swelling in ear canal
-      - enlarged ear
-      - ear is bigger than normal
-      - ear canal swollen
-  - intent: tinnitus
-    examples: |
-      - my ears are ringing
-      - nonstop ringing in my ears
-      - ringing in mmy left ear
-      - high pitch noise in my ear
-      - buzzing in my ear
-      - hearing ringing
-      - hearing noises in ear
-      - noise in ear
-  - intent: eye_pain
-    examples: |
-      - my eye hurts
-      - eye pain
-      - there is pain in my eyes
-  - intent: red_eye
-    examples: |
-      - my eyes are very red
-      - the pupils of my eyes are red
-      - i have bloodshot eyes
-      - eyes look red
-      - redness in eye
-      - red eyes
-      - i think i may have conjunctivitis
-  - intent: itching_of_eyes
-    examples: |
-      - my eyes are very itchy
-      - eyes feel very itchy
-      - keep rubbing my eyes as they are itchy
-      - eyes feel irritated and itchy
-  - intent: impaired_vision
-    examples: |
-      - cannot see
-      - vision loss
-      - vision is affected
-      - slowly losing vision
-      - losing sight
-      - unable to see
-      - loss of sight
-      - losing my vision
-      - decreased vision
-      - lesser vision
-      - can't see
-  - intent: decreased_visual_acuity
-    examples: |
-      - blurry vision
-      - foggy vision
-      - vision is foggy
-      - very foggy
-      - vision impaired
-      - blurring of sight
-  - intent: diplopia
-    examples: |
-      - double vision
-      - diplopia
-      - seeing 2 of the same things
-      - seeing double objects
-      - i can see 2 of the same object
-      - double sight
-  - intent: mild_pain
-    examples: |
-      - pain is mild
-      - mild
-      - does not affect daily activities
-      - pain is minimal
-      - minimal pain
-      - does not hurt a lot
-      - hurts very little
-      - little pain
-  - intent: moderate_pain
-    examples: |
-      - pain is average
-      - moderate pain
-      - decent pain
-      - moderate
-      - interferes with daily activities
-  - intent: severe_pain
-    examples: |
-      - worst pain ever
-      - extremely painful
-      - most pain i have experienced
-      - hurts a lot
-      - severe pain
-      - severe
-      - very painful
-  - intent: give_color
-    examples: |
-      - green / white
-      - yellowish green
-      - black
-      - white and clear
-      - white / clear
-      - green / yellow
-  - intent: other_symptoms
-    examples: |
-      - here for a diabetes checkup
-      - here for a hypertension checkup
-      - child developmental checkup
-      - checkup for child
-      - here for health checkup
-      - flareups due to COVID-19 vaccination
-      - flare ups due to covid 19 vaccination
-      - tiredness
-      - fainting
-      - snoring
-      - difficulty smelling
-      - cannot smell
-      - 
-  - intent: out_of_scope
-    examples: |
-      - that's not what I want to do
-      - wait stop
-      - you're no help
-      - this is no help at all
-      - how old are you
-      - I want to order a pizza
-      - tell me the weather
-      - this isn't working
-      - I already told you that
-      - don't like that
-      - I don't want to tell you that
-      - none of your business
-      - that's not right
-      - stop asking
-      - nevermind
-      - I want to do something else
-      - I changed my mind
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: thank_you
+  examples: |
+    - okay great thanks
+    - thank you
+    - sure thanks
+    - thanks bye
+    - thanks
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - goodbye!
+    - bye!
+    - centre
+- intent: give_age
+  examples: |
+    - 21
+    - 32
+    - 52
+    - 42
+    - 41
+    - 43
+    - 53
+    - 45
+    - 25
+    - 29
+    - 76
+    - 24
+    - 56
+    - 46
+    - 67
+    - 4
+    - 7
+    - 28
+    - 6
+    - 30
+    - 3
+    - 20
+- intent: give_temperature
+  examples: |
+    - 37.1
+    - 37.2
+    - 37.3
+    - 37.4
+    - 37.5
+    - 37.8
+    - 38.2
+    - 38.4
+    - 38.9
+    - 39.1
+    - 39.2
+    - 39.4
+    - 38.7
+- intent: give_body_part
+  examples: |
+    - hand
+    - left hand
+    - right hand
+    - leg
+    - calf
+    - foot
+    - my hand
+    - my foot
+    - my head
+    - ears
+    - eyes
+    - both my eyes
+    - behind the eyes
+    - forehead
+    - on left side
+    - both eyes
+    - sides
+- intent: give_gender
+  examples: |
+    - male
+    - female
+- intent: give_duration
+  examples: |
+    - more than a week
+    - more than 3 weeks
+    - 1-2 days
+    - 3-5 days
+    - close to a week
+    - couple of hours
+    - a few hours
+    - 10 days ago
+    - 3 days ago
+    - a little over 4 days
+    - 1 week
+    - less than 2 days
+    - between 1 to 2 weeks
+    - more than 2 weeks
+    - lasts up to 5 minutes
+    - lasts 5 minutes to 4 hours
+    - lasts 4 to 72 hours
+    - lasts 3 to 7 days
+    - 3 to 8 weeks
+    - 1 to 24 hours
+    - less than 30 minutes
+    - less than 1 hour
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - sure
+    - ok
+    - why not
+    - ok great
+    - yes I did
+    - yeah, great
+    - pretty good
+    - fine
+    - You bet
+    - I sure did
+    - more or less
+    - ye
+    - Yes
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - none
+    - absolutely not
+    - no thanks
+    - didn't do any
+    - no I didn't
+    - could have been better
+    - not great
+    - nope
+    - No eye surgery / treatment done
+    - No
+- intent: inform_allergy
+  examples: |
+    - I am allergic to [grass and tree pollen](allergy)
+    - [grass and tree pollen](allergy)
+    - [pollen](allergy)
+    - allergic to [grass](allergy)
+    - I have [hay fever](allergy)
+    - allergic to [dust](allergy)
+    - allergies to [nuts](allergy)
+    - [peanut](allergy) allergy
+    - [shellfish](allergy)
+    - allergic to [ibuprofen](allergy)
+    - [aspirin](allergy) allergy
+    - Have an allergy to [diary](allergy) products
+    - I have a [peanut](allergy) allergy
+    - yes, I have [peach allergy](allergy)
+    - yes, I am allergic to [peach](allergy)
+    - allergic to [eggs](allergy)
+    - allergic to [mould](allergy)
+    - allergic to [dustmites](allergy)
+    - allergic to [pollarax](allergy)
+    - allergic to [paracetemol](allergy)
+    - allergic to [amoxicillin](allergy)
+    - allergic to [ampicillin](allergy)
+    - allergic to [penicillin](allergy)
+    - allergic to [tetracycline](allergy)
+    - allergic to [aspirin](allergy)
+    - allergic to [naproxen](allergy)
+    - allergic to [cetuximab](allergy)
+    - allergic to [rituximab](allergy)
+    - allergic to [carbamazepine](allergy)
+    - allergic to [lamotrigine](allergy)
+    - allergic to [atracurium](allergy)
+    - allergic to [acidic fruits](allergy)
+- intent: abdominal_pain
+  examples: |
+    - i have abdominal pain
+    - abdominal pain
+    - pain in the abdomen
+    - stomach pain
+    - stomachache
+    - tummy is painful
+    - pain in the tummy
+    - bellyache
+    - upset stomach
+    - dysepepsia
+    - suffering from indigestion
+    - indigestion
+    - abdomen is aching
+    - it hurts when i press on my stomach
+    - my abdomen is tender
+    - stomach is tender
+    - there is pain when i apply pressure to my stomach
+    - pain when i touch my abdomen
+- intent: bloating
+  examples: |
+    - abdominal distension
+    - I feel bloated
+    - my stomach feels bloated
+    - distended stomach
+    - distension
+    - feeling full
+    - abdomen feels full
+    - feels like there is a lot fo fluids in my abdomen
+    - a lot of water in stomach
+    - stomach feels full
+    - belly feels swollen
+    - stomach is swollen
+    - stomach is big
+    - huge stomach
+    - stuffed feeling
+    - stomach feels stuffed
+    - stuffed stomach
+- intent: abdominal_pain_crampy
+  examples: |
+    - tight feeling in stomach
+    - cramping in abdomen
+    - stomach cramps
+    - cramping in stomach
+    - cramps in the belly
+    - cramps
+- intent: abdominal_mass
+  examples: |
+    - I can feel a lump in my stomach
+    - stomach lump
+    - stomach mass
+    - something is inside my abdomen
+    - something is inside my stomach
+    - soft and lumpy thing in my stomach
+    - abdominal lump
+    - abdominal mass
+- intent: flank_pain
+  examples: |
+    - my flanks hurt
+    - the sides of my stomach hurt
+    - left side of my abdomen is painful
+    - right side of stomach is painful
+    - flank pain
+- intent: diarrhea
+  examples: |
+    - I have watery stools
+    - when i pass motion, my shit is watery
+    - watery shit
+    - diarrhea
+    - i have diarrhea
+    - going to the toilet a lot
+    - passing motion very often
+- intent: constipation
+  examples: |
+    - i have constipation
+    - constipated
+    - cannot shit
+    - cannot pass motion
+    - hard stools
+    - shit is stuck
+    - dry bowel movements
+    - bowel is stuck
+- intent: nausea
+  examples: |
+    - i feel nauseous
+    - nausea
+    - i want to throw up
+- intent: vomiting
+  examples: |
+    - vomited
+    - i vomited
+    - throwing up
+    - i threw up
+    - vomited all my food out
+    - vomit water
+- intent: blood_in_stool
+  examples: |
+    - there is blood in my shit
+    - shit looks red
+    - reddish stools
+    - blood in stools
+    - blood comes out when i pass motion
+    - stools are red in color
+    - stools are unusually dark
+    - blood coming out when i pass motion
+    - red colour poo
+    - poop is red
+    - bloody poop
+    - blood in feces
+    - black feces
+- intent: dark_urine
+  examples: |
+    - my urine is unusually dark
+    - dark urine
+    - black urine
+    - brown urine
+    - urine is very dark
+- intent: blood_in_urine
+  examples: |
+    - there is blood in my urine
+    - blood in urine
+    - urine is reddish in color
+    - red urine
+    - blood in my piss
+    - blood comes out when i piss
+    - there is blood when i urinate
+- intent: pain_while_urinating
+  examples: |
+    - it hurts when i pee
+    - there is pain when i urinate
+    - hurts when i piss
+    - peeing is painful
+    - pain during urination
+- intent: fever
+  examples: |
+    - I have fever
+    - I currently have a fever
+    - I have high temperature
+    - mild fever
+    - I have high fever
+    - feeling feverish
+    - fever
+    - body temperature is high
+    - have a fever that won't go down
+    - having a fever
+    - I am having a bad fever
+- intent: cough
+  examples: |
+    - cough
+    - coughing
+    - coughing with phelgm
+    - coughing with blood
+    - rasp
+    - wheezing
+    - coughing for more than 3 days
+    - I have a cough
+    - I am wheezing
+    - coughing up phlegm
+    - cough last night
+    - I have chronic cough
+    - coughing a lot
+    - wheeze
+- intent: cough_dry
+  examples: |
+    - I have a dry cough
+    - my cough is dry
+    - dry cough
+    - it is a dry cough
+    - i am coughing with no phlegm
+    - coughing without phlegm
+    - cough dry
+- intent: cough_productive
+  examples: |
+    - my cough contains phlegm
+    - cough with phlegm
+    - i have phlegm in my cough
+    - coughing up phlegm
+    - phlegm
+- intent: hemoptysis
+  examples: |
+    - there is blood in my cough
+    - cough with blood
+    - cough up blood
+    - coughing with blood
+    - blood is coming out when i cough
+    - blood
+- intent: inform_asthma
+  examples: |
+    - I have childhood asthma
+    - I currently have asthma
+    - I have a history of asthma
+    - mild asthma
+    - I have severe asthma
+    - Patient has asthma
+    - History of asthma
+- intent: nasal_catarrh
+  examples: |
+    - runny nose
+    - nose mucus keeps dripping
+    - keeps sneezing
+    - my nose is runny
+    - I have runny nose
+    - sneezing
+- intent: nasal_congestion
+  examples: |
+    - blocked nose
+    - stuffy nose
+    - nasal congestion
+    - congested nose
+    - my nose has mucus stuck in it
+    - stucked nose
+    - my nose is blocked
+    - my nose is stuffy
+    - my nose is congested
+- intent: facial_pain
+  examples: |
+    - face pain
+    - facial pain
+    - pain at my sinuses
+    - face feels sore
+    - sinus pressure
+- intent: pharyngeal_pain
+  examples: |
+    - sore throat
+    - strep throat
+    - throat is swollen
+    - my tonsils are inflammed
+    - red throat
+    - hurts when i drink water
+    - throat is painful
+    - pharyngeal pain
+- intent: dyspnea
+  examples: |
+    - shortness of breath
+    - cannot breathe
+    - breathing difficulties
+    - feels like suffocating
+    - unable to breathe normally
+    - breathing rate increases suddenly
+    - panting for no reason
+- intent: chest_pain
+  examples: |
+    - chest pain
+    - chest feels very tight
+    - heart feels pain
+    - a lot of pressure on my chest
+    - chest pressure
+    - sharp stabbing feeling on my chest
+    - chest is very painful
+- intent: back_pain
+  examples: |
+    - my back hurts
+    - spine hurts
+    - back pain
+    - lower back pain
+    - upper back pain
+    - my back is very painful
+    - pin in my spine
+    - i think i may have a herniated disc
+    - i have slip disc
+    - chronic back pain
+- intent: pain_in_breast
+  examples: |
+    - my breasts hurt
+    - pain in my breast
+    - breast pain
+- intent: nodule_located_in_breast
+  examples: |
+    - there is a lump in my breast
+    - something in my breast
+    - mass inside my breast
+    - breast tumour
+    - i think i may have a tumour in my breast
+    - breast lump
+    - breast mass
+    - lump inside my breast
+- intent: headache
+  examples: |
+    - headache
+    - I have a headache
+    - my head hurts
+    - i think i have a migraine
+    - i have migraine
+    - head pain
+    - throbbing headache
+    - tension headache
+    - worst headache in my life
+    - head hurts
+    - brain pain
+    - tension in my head
+    - got a headache
+- intent: dizziness
+  examples: |
+    - i feel dizzy
+    - lightheaded
+    - feel like the world is spinning
+    - giddiness
+    - i feel giddy
+    - cannot stand properly
+    - vertigo
+- intent: impaired_memory
+  examples: |
+    - having trouble remembering
+    - can't seem to remember common everyday things
+    - suddenly lost my memory about recent things
+    - i think i may have dementia
+    - i think i may have Alzheimer's disease
+    - losing my memory
+- intent: neck_pain
+  examples: |
+    - my neck hurts
+    - neck pain
+    - pain in neck
+    - pain at the back of neck
+- intent: dermatological_changes
+  examples: |
+    - skin
+    - rashes
+    - rash
+    - I think i have a skin condition
+    - I have rashes
+    - My skin feels weird
+    - My skin hurts
+    - dermatitis
+    - skin pain
+    - inflammation on skin
+    - bumps on skin
+    - rough skin
+    - red skin
+    - red lines on skin
+    - itchy skin
+    - skin becomes very itchy upon contact of water
+    - eczema
+    - dry skin
+    - i have eczema
+    - scaly skin
+- intent: joint_pain
+  examples: |
+    - my knees hurt
+    - i have joint pain
+    - my joints feel painful
+    - joint hurts when i try to move my limbs
+    - joint hurts when i try to move my hands
+    - joint hurts when i try to move my legs
+    - elbow is painful
+    - shoulder joint painful
+    - may have arthritis
+    - arthritis
+    - stiff joints
+    - tender joints
+    - elbow joint painful
+    - knee joint painful
+    - ankle joint painful
+    - my knee hurts like hell
+- intent: earache
+  examples: |
+    - my ear hurts
+    - something inside my ear is causing me pain
+    - ear is painful
+    - ear feels sore
+    - pain from ear and cannot hear anything
+- intent: clogged_ear
+  examples: |
+    - something stuck inside my ear
+    - ear is clogged
+    - something blocking my ear
+    - clogging in my ear
+- intent: decreased_hearing
+  examples: |
+    - cannot hear
+    - hearing is getting worse
+    - cannot hear anything
+    - unable to hear
+    - getting more deaf
+    - turning deaf
+    - losing my hearing
+    - deafness
+    - deaf
+    - decreased hearing
+    - cannot hear sounds
+    - slowly losing hearing
+- intent: discharge_from_ear
+  examples: |
+    - pus coming out of my ear
+    - liquid dripping out of ear
+    - ear discharge
+    - blood flowing out of ear
+    - something coming out of ear
+    - fluids coming out of ear
+    - discharge from ear
+- intent: numbness_of_part_of_ear
+  examples: |
+    - ear feels numb
+    - part of the ear feels numb
+    - numbness in ear
+- intent: ear_canal_swelling
+  examples: |
+    - ear looks swollen
+    - swelling in ear canal
+    - enlarged ear
+    - ear is bigger than normal
+    - ear canal swollen
+- intent: tinnitus
+  examples: |
+    - my ears are ringing
+    - nonstop ringing in my ears
+    - ringing in mmy left ear
+    - high pitch noise in my ear
+    - buzzing in my ear
+    - hearing ringing
+    - hearing noises in ear
+    - noise in ear
+- intent: eye_pain
+  examples: |
+    - my eye hurts
+    - eye pain
+    - there is pain in my eyes
+- intent: red_eye
+  examples: |
+    - my eyes are very red
+    - the pupils of my eyes are red
+    - i have bloodshot eyes
+    - eyes look red
+    - redness in eye
+    - red eyes
+    - i think i may have conjunctivitis
+- intent: itching_of_eyes
+  examples: |
+    - my eyes are very itchy
+    - eyes feel very itchy
+    - keep rubbing my eyes as they are itchy
+    - eyes feel irritated and itchy
+- intent: impaired_vision
+  examples: |
+    - cannot see
+    - vision loss
+    - vision is affected
+    - slowly losing vision
+    - losing sight
+    - unable to see
+    - loss of sight
+    - losing my vision
+    - decreased vision
+    - lesser vision
+    - can't see
+- intent: decreased_visual_acuity
+  examples: |
+    - blurry vision
+    - foggy vision
+    - vision is foggy
+    - very foggy
+    - vision impaired
+    - blurring of sight
+- intent: diplopia
+  examples: |
+    - double vision
+    - diplopia
+    - seeing 2 of the same things
+    - seeing double objects
+    - i can see 2 of the same object
+    - double sight
+- intent: mild_pain
+  examples: |
+    - pain is mild
+    - mild
+    - does not affect daily activities
+    - pain is minimal
+    - minimal pain
+    - does not hurt a lot
+    - hurts very little
+    - little pain
+- intent: moderate_pain
+  examples: |
+    - pain is average
+    - moderate pain
+    - decent pain
+    - moderate
+    - interferes with daily activities
+- intent: severe_pain
+  examples: |
+    - worst pain ever
+    - extremely painful
+    - most pain i have experienced
+    - hurts a lot
+    - severe pain
+    - severe
+    - very painful
+- intent: give_color
+  examples: |
+    - green / white
+    - yellowish green
+    - black
+    - white and clear
+    - white / clear
+    - green / yellow
+    - pink and frothy
+    - yellow or green
+- intent: other_symptoms
+  examples: |
+    - here for a diabetes checkup
+    - here for a hypertension checkup
+    - child developmental checkup
+    - checkup for child
+    - here for health checkup
+    - flareups due to COVID-19 vaccination
+    - flare ups due to covid 19 vaccination
+    - tiredness
+    - fainting
+    - snoring
+    - difficulty smelling
+    - cannot smell
+- intent: give_asthma_history
+  examples: |
+    - history of asthma
+    - patient has asthma
+    - no asthma
+    - childhood asthma
+- intent: burning_gnawing
+  examples: |
+    - stomach is burning
+    - feels like my stomach is gnawing
+    - stomach feels hot
+- intent: sharp_stabbing
+  examples: |
+    - sharp and stabbing
+    - sharp pain
+    - stabbing pain
+    - stabbing
+- intent: pressing
+  examples: |
+    - feels like something is pressing on it
+    - pressing
+    - pressure
+    - tightness
+    - feels tight
+- intent: pulsating
+  examples: |
+    - throbbing
+    - pulsating
+    - pulsing
+    - beating
+    - pumping
+- intent: location
+  examples: |
+    - left upper
+    - left lower
+    - right upper
+    - right lower
+    - centre
+    - flanks
+    - pelvis
+    - all over
+    - hand
+    - feet
+    - arm
+    - leg
+    - forearm
+    - upper back
+    - lower back
+    - both upper and lower back
+    - forehead
+    - temples
+    - at the temples
+    - Lower Body excluding feet
+    - Upper Body excluding hands
+    - eyelid
+    - trunk
+    - mouth
+    - head
+    - face
+    - near a joint
+    - scalp
+    - genitals
+    - penis
+    - vagina
+    - other places
+- intent: onset_duration
+  examples: |
+    - gradually
+    - gradual
+    - suddenly
+    - sudden
+- intent: exacerbation
+  examples: |
+    - after caffeine consumption
+    - during coughing or movement
+    - during deep breaths
+    - on an empty stomach
+    - when under stress
+    - stress
+    - Coming into contact with buttons,fasteners or cosmetics
+    - Alcohol consumption
+    - Sunlight exposure
+- intent: intensity
+  examples: |
+    - light
+    - heavy
+    - lighten
+    - darken
+    - normal colour
+- intent: severity_description
+  examples: |
+    - when I am resting
+    - when resting
+    - after a few minutes of walking
+    - when i do physical activities
+    - after few minutes of walking
+- intent: radiating_pain
+  examples: |
+    - spreading to left upper limb
+    - pain spreading to left upper limb
+    - pain spreading to neck
+    - spreading to neck
+    - radiating to neck
+    - radiating between shoulder blades
+    - not spreading
+- intent: pus
+  examples: |
+    - pus in my ear
+    - pus
+- intent: none_of_the_above
+  examples: |
+    - none of the above
+    - others
+- intent: number_of_breast_affected
+  examples: |
+    - only one breast
+    - both breasts
+- intent: abnormal_size
+  examples: |
+    - larger than normal
+    - smaller than normal
+    - no change in size
+- intent: movement
+  examples: |
+    - moving downwards
+    - moving to the left/right
+    - moving back to the centre
+- intent: out_of_scope
+  examples: |
+    - that's not what I want to do
+    - wait stop
+    - you're no help
+    - this is no help at all
+    - how old are you
+    - I want to order a pizza
+    - tell me the weather
+    - this isn't working
+    - I already told you that
+    - don't like that
+    - I don't want to tell you that
+    - none of your business
+    - that's not right
+    - stop asking
+    - nevermind
+    - I want to do something else
+    - I changed my mind
+- intent: nlu_fallback
+  examples: |
+    - random message

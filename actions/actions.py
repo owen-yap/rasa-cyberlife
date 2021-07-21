@@ -592,8 +592,10 @@ class ValidateUrtiForm(FormValidationAction):
             return {"chest_pain_radiating": slot_value, "chest_pain_radiating_to_left_upper_limb": True}
         elif slot_value == "spreading to neck":
             return {"chest_pain_radiating": slot_value, "chest_pain_radiating_to_the_neck": True}
-        elif slot_value == "spreading to shoulders":
+        elif slot_value == "spreading between shoulders":
             return {"chest_pain_radiating": slot_value, "chest_pain_radiating_between_shoulder_blades": True}
+        elif slot_value == "spreading elsewhere":
+            return {"chest_pain_radiating": slot_value}
         elif slot_value == "not spreading":
             return {"chest_pain_radiating": "Not Spreading"}
         else:
@@ -821,13 +823,13 @@ class ValidateHeadacheForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         if slot_value == "lasts up to 5 minutes":
-            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": True}
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_up_to_five_minutes": True}
         elif slot_value == "lasts 5 minutes to 4 hours":
-            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": True,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": False }
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_five_minutes_to_four_hours": True }
         elif slot_value == "lasts 4 to 72 hours":
-            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": True,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": False,"headache_chronic_attack_lasting_up_to_five_minutes": False  }
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": True }
         elif slot_value == "lasts 3 to 7 days":
-            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_4_to_72_hours": False,"headache_chronic_attack_lasting_five_minutes_to_four_hours": False,"headache_chronic_attack_lasting_three_to_seven_days": True,"headache_chronic_attack_lasting_up_to_five_minutes": False }
+            return{"chronic_headache_duration":slot_value,"headache_chronic_attack_lasting_three_to_seven_days": True }
         else:
             dispatcher.utter_message(text = "Please select one of the options provided.")
             return {"chronic_headache_duration": None}
@@ -840,11 +842,11 @@ class ValidateHeadacheForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         if slot_value == "lasts less than 1 hour":
-            return{"recent_headache_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": True,"headache_recent_lasting_more_than_1_day": False }
+            return{"recent_headache_duration":slot_value,"headache_recent_lasting_less_than_1_hour": True }
         elif slot_value == "lasts for more than 1 hour":
-            return{"recent_headache_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": True,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": False }
+            return{"recent_headache_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": True }
         elif slot_value == "lasts more than 1 day":
-            return{"recent_headache_duration":slot_value,"headache_recent_lasting_for_more_than_1_hour_and_less_than_1_day": False,"headache_recent_lasting_less_than_1_hour": False,"headache_recent_lasting_more_than_1_day": True }
+            return{"recent_headache_duration":slot_value,"headache_recent_lasting_more_than_1_day": True }
         else:
             dispatcher.utter_message(text = "Please select one of the options provided.")
             return {"recent_headache_duration": None}
@@ -874,11 +876,11 @@ class ValidateHeadacheForm(FormValidationAction):
         domain: "DomainDict",
     ) -> Dict[Text, Any]:
         if slot_value == "Forehead":
-            return{"headache_location":slot_value,"headache_forehead":True,"headache_temporal_region": False,"headache_generalized": False}
+            return{"headache_location":slot_value,"headache_forehead":True}
         elif slot_value == "All over":
-            return{"headache_location":slot_value,"headache_generalized": True,"headache_forehead":False,"headache_temporal_region": False }
+            return{"headache_location":slot_value,"headache_generalized": True }
         elif slot_value == "At the temples":
-            return{"headache_location":slot_value,"headache_temporal_region": True, "headache_generalized": False,"headache_forehead":False}
+            return{"headache_location":slot_value,"headache_temporal_region": True }
         else:
             dispatcher.utter_message(text = "Please select one of the options provided.")
             return {"headache_location": None}
